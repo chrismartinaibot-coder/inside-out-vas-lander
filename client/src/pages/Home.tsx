@@ -1,25 +1,29 @@
 /* 
- * Editorial Luxury Design - VaDrop Services Landing Page
- * Design Philosophy: Sophisticated restraint with human-centric authenticity
- * Color Palette: Deep forest green (#1a3a2e), warm cream (#f5f3ef), muted gold (#c9a961)
+ * Blue Professional Design - VaDrop Services Landing Page
+ * Design Philosophy: Modern, professional, high-contrast
+ * Color Palette: Rich blue, bright blue accents, white/light backgrounds
  * Typography: Playfair Display (display) + Manrope (body)
  */
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { useState } from "react";
+import { CheckCircle2 } from "lucide-react";
+import { useEffect } from "react";
 
 export default function Home() {
-  const [email, setEmail] = useState("");
+  // Load Typeform embed script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = '//embed.typeform.com/next/embed.js';
+    script.async = true;
+    document.body.appendChild(script);
+    
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Email submitted:", email);
-  };
-
-      const whyNowItems = [
+  const whyNowItems = [
     {
       number: "01",
       title: "The \"Fractional\" Revolution",
@@ -78,8 +82,8 @@ export default function Home() {
               VaDrop
             </div>
             <Button 
-              variant="outline" 
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              variant="default" 
+              className="bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
             >
               Apply Now
             </Button>
@@ -87,52 +91,46 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
+      {/* Hero Section with Typeform */}
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        {/* Background with team photo - lighter overlay */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-primary/80 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/60 via-primary/50 to-primary/55 z-10" />
           <img 
             src="/images/team-photo.jpg" 
             alt="VaDrop team" 
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover opacity-70"
           />
         </div>
 
+        {/* Hero Content */}
         <div className="container relative z-20 py-24">
-          <div className="max-w-4xl">
-            <div className="inline-block mb-6 px-4 py-2 bg-accent/20 backdrop-blur-sm rounded-full border border-accent/30">
-              <p className="text-sm font-medium text-accent-foreground">
-                Now Accepting New Students for Q1 2026
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left side - Headline and subheadline */}
+            <div>
+              <div className="inline-block mb-6 px-4 py-2 bg-accent/20 backdrop-blur-sm rounded-full border border-accent/30">
+                <p className="text-sm font-medium text-primary-foreground">
+                  Now Accepting New Students for Q1 2026
+                </p>
+              </div>
+              
+              <h1 className="font-display text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground mb-8 leading-tight">
+                Build a 6-Figure Virtual Assistant AI Agency in 12 Weeks
+              </h1>
+              
+              <p className="text-xl lg:text-2xl text-primary-foreground/95 mb-8 leading-relaxed">
+                Escape the grind with a 100% work-from-home "drop-service" business model—even if you have no experience.
               </p>
             </div>
-            
-            <h1 className="font-display text-6xl lg:text-7xl font-bold text-primary-foreground mb-8 leading-tight">
-              Build a 6-Figure Virtual Assistant Business in 12 Weeks
-            </h1>
-            
-            <p className="text-xl lg:text-2xl text-primary-foreground/90 mb-12 leading-relaxed max-w-2xl">
-              Escape the grind with a 100% work-from-home "drop-service" business model—even if you have no experience.
-            </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
-                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Start Your Application
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-semibold text-lg px-8 py-6 transition-all duration-300"
-              >
-                Learn More
-              </Button>
+            {/* Right side - Typeform embed */}
+            <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-2xl p-2 lg:p-4">
+              <div data-tf-live="01KG004HD1E3ENXHJAYQTYAQHM" style={{ minHeight: '500px' }}></div>
             </div>
           </div>
         </div>
 
+        {/* Scroll indicator */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce">
           <div className="w-6 h-10 border-2 border-primary-foreground/50 rounded-full flex items-start justify-center p-2">
             <div className="w-1.5 h-3 bg-primary-foreground/50 rounded-full" />
@@ -182,7 +180,7 @@ export default function Home() {
         >
           <path 
             d="M0,0 L1200,20 L1200,100 L0,100 Z" 
-            fill="oklch(0.92 0.015 90)"
+            fill="oklch(0.95 0.01 250)"
           />
         </svg>
       </div>
@@ -248,67 +246,6 @@ export default function Home() {
                   ))}
                 </ul>
               </div>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <img 
-            src="/images/opportunity-visual.png" 
-            alt="" 
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        <div className="container relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-display text-5xl lg:text-6xl font-bold text-foreground mb-8">
-              Ready to Start?
-            </h2>
-            <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
-              Fill out the application below to see if you're a good fit for the program.
-            </p>
-
-            <Card className="p-10 bg-card border-border shadow-xl max-w-xl mx-auto">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Input
-                    type="text"
-                    placeholder="First Name"
-                    className="h-12 text-lg"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Input
-                    type="text"
-                    placeholder="Last Name"
-                    className="h-12 text-lg"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Input
-                    type="email"
-                    placeholder="Email Address"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="h-12 text-lg"
-                    required
-                  />
-                </div>
-                <Button 
-                  type="submit" 
-                  size="lg" 
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-lg py-6 shadow-lg hover:shadow-xl transition-all duration-300"
-                >
-                  Submit Application
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </form>
             </Card>
           </div>
         </div>
