@@ -74,25 +74,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-20">
-            <div className="font-display text-2xl font-semibold text-foreground">
-              VaDrop
-            </div>
-            <Button 
-              variant="default" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
-            >
-              Apply Now
-            </Button>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section with Typeform */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background with team photo - lighter overlay */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/60 via-primary/50 to-primary/55 z-10" />
@@ -108,9 +91,11 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left side - Headline and subheadline */}
             <div>
-              <div className="inline-block mb-6 px-4 py-2 bg-accent/20 backdrop-blur-sm rounded-full border border-accent/30">
-                <p className="text-sm font-medium text-primary-foreground">
-                  Now Accepting New Students for Q1 2026
+              <div className="inline-flex items-center gap-3 mb-8 px-6 py-4 bg-accent backdrop-blur-sm rounded-full border-2 border-accent-foreground/20 shadow-xl animate-pulse-slow">
+                <div className="w-3 h-3 bg-accent-foreground rounded-full animate-ping absolute" />
+                <div className="w-3 h-3 bg-accent-foreground rounded-full relative" />
+                <p className="text-base font-bold text-accent-foreground tracking-wide">
+                  NOW ACCEPTING NEW STUDENTS FOR Q1 2026
                 </p>
               </div>
               
