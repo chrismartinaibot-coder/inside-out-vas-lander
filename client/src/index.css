@@ -8,6 +8,14 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Premium InsideOut Colors */
+  --color-forest-green: #1B4332;
+  --color-teal: #2C5F5D;
+  --color-gold: #D4AF37;
+  --color-cream: #F8F6F3;
+  --color-charcoal: #2D2D2D;
+  
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -40,82 +48,77 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  
-  /* Blue Design System - Custom font families */
-  --font-display: 'Playfair Display', serif;
-  --font-body: 'Manrope', sans-serif;
 }
 
 :root {
-  /* Blue Color Palette inspired by insideoutvas.com */
-  --primary: oklch(0.45 0.18 250); /* Rich blue */
-  --primary-foreground: oklch(0.98 0.01 250); /* Almost white */
-  --sidebar-primary: oklch(0.50 0.18 250);
-  --sidebar-primary-foreground: oklch(0.98 0.01 250);
-  --chart-1: oklch(0.60 0.15 250);
-  --chart-2: oklch(0.50 0.18 250);
-  --chart-3: oklch(0.40 0.16 250);
-  --chart-4: oklch(0.35 0.15 250);
-  --chart-5: oklch(0.30 0.12 250);
-  --radius: 0.5rem;
-  --background: oklch(0.98 0.005 250); /* Very light blue-white */
-  --foreground: oklch(0.20 0.02 250); /* Dark blue-gray */
-  --card: oklch(1 0 0); /* Pure white for cards */
-  --card-foreground: oklch(0.20 0.02 250);
+  --primary: #2C5F5D;
+  --primary-foreground: #F8F6F3;
+  --sidebar-primary: #2C5F5D;
+  --sidebar-primary-foreground: #F8F6F3;
+  --chart-1: #2C5F5D;
+  --chart-2: #1B4332;
+  --chart-3: #D4AF37;
+  --chart-4: #F8F6F3;
+  --chart-5: #2D2D2D;
+  --radius: 0.75rem;
+  --background: oklch(0.98 0.005 85);
+  --foreground: oklch(0.18 0.01 85);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.01 85);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.20 0.02 250);
-  --secondary: oklch(0.95 0.01 250); /* Light blue-gray */
-  --secondary-foreground: oklch(0.25 0.03 250);
-  --muted: oklch(0.92 0.015 250);
-  --muted-foreground: oklch(0.50 0.05 250);
-  --accent: oklch(0.55 0.22 250); /* Bright blue accent */
-  --accent-foreground: oklch(0.98 0.01 250);
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.88 0.015 250);
-  --input: oklch(0.88 0.015 250);
-  --ring: oklch(0.45 0.18 250);
-  --sidebar: oklch(0.98 0.005 250);
-  --sidebar-foreground: oklch(0.20 0.02 250);
-  --sidebar-accent: oklch(0.95 0.01 250);
-  --sidebar-accent-foreground: oklch(0.20 0.02 250);
-  --sidebar-border: oklch(0.88 0.015 250);
-  --sidebar-ring: oklch(0.45 0.18 250);
+  --popover-foreground: oklch(0.18 0.01 85);
+  --secondary: oklch(0.96 0.01 85);
+  --secondary-foreground: oklch(0.18 0.01 85);
+  --muted: oklch(0.96 0.01 85);
+  --muted-foreground: oklch(0.45 0.01 85);
+  --accent: oklch(0.96 0.01 85);
+  --accent-foreground: oklch(0.18 0.01 85);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.90 0.01 85);
+  --input: oklch(0.90 0.01 85);
+  --ring: oklch(0.35 0.05 175);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.18 0.01 85);
+  --sidebar-accent: oklch(0.96 0.01 85);
+  --sidebar-accent-foreground: oklch(0.18 0.01 85);
+  --sidebar-border: oklch(0.90 0.01 85);
+  --sidebar-ring: oklch(0.35 0.05 175);
 }
 
 .dark {
-  --primary: oklch(0.55 0.20 250);
-  --primary-foreground: oklch(0.98 0.01 250);
-  --sidebar-primary: oklch(0.55 0.20 250);
-  --sidebar-primary-foreground: oklch(0.98 0.01 250);
-  --background: oklch(0.15 0.03 250);
-  --foreground: oklch(0.95 0.01 250);
-  --card: oklch(0.20 0.04 250);
-  --card-foreground: oklch(0.95 0.01 250);
-  --popover: oklch(0.20 0.04 250);
-  --popover-foreground: oklch(0.95 0.01 250);
-  --secondary: oklch(0.25 0.04 250);
-  --secondary-foreground: oklch(0.90 0.01 250);
-  --muted: oklch(0.30 0.05 250);
-  --muted-foreground: oklch(0.70 0.03 250);
-  --accent: oklch(0.55 0.22 250);
-  --accent-foreground: oklch(0.15 0.03 250);
-  --destructive: oklch(0.65 0.20 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 18%);
-  --ring: oklch(0.55 0.20 250);
-  --chart-1: oklch(0.60 0.15 250);
-  --chart-2: oklch(0.50 0.18 250);
-  --chart-3: oklch(0.40 0.16 250);
-  --chart-4: oklch(0.35 0.15 250);
-  --chart-5: oklch(0.30 0.12 250);
-  --sidebar: oklch(0.20 0.04 250);
-  --sidebar-foreground: oklch(0.95 0.01 250);
-  --sidebar-accent: oklch(0.30 0.05 250);
-  --sidebar-accent-foreground: oklch(0.98 0.01 250);
-  --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.55 0.20 250);
+  --primary: #2C5F5D;
+  --primary-foreground: #F8F6F3;
+  --sidebar-primary: #2C5F5D;
+  --sidebar-primary-foreground: #F8F6F3;
+  --background: oklch(0.18 0.01 85);
+  --foreground: oklch(0.95 0.005 85);
+  --card: oklch(0.22 0.01 85);
+  --card-foreground: oklch(0.95 0.005 85);
+  --popover: oklch(0.22 0.01 85);
+  --popover-foreground: oklch(0.95 0.005 85);
+  --secondary: oklch(0.26 0.01 85);
+  --secondary-foreground: oklch(0.85 0.005 85);
+  --muted: oklch(0.28 0.01 85);
+  --muted-foreground: oklch(0.65 0.01 85);
+  --accent: oklch(0.28 0.01 85);
+  --accent-foreground: oklch(0.95 0.005 85);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.45 0.08 175);
+  --chart-1: #2C5F5D;
+  --chart-2: #1B4332;
+  --chart-3: #D4AF37;
+  --chart-4: #F8F6F3;
+  --chart-5: #2D2D2D;
+  --sidebar: oklch(0.22 0.01 85);
+  --sidebar-foreground: oklch(0.95 0.005 85);
+  --sidebar-accent: oklch(0.28 0.01 85);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.45 0.08 175);
 }
 
 @layer base {
@@ -125,9 +128,6 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -139,6 +139,11 @@
   input[type="checkbox"]:not(:disabled),
   input[type="radio"]:not(:disabled) {
     @apply cursor-pointer;
+  }
+  
+  /* Premium Typography */
+  .font-serif {
+    font-family: 'Playfair Display', serif;
   }
 }
 
@@ -169,15 +174,5 @@
       padding-right: 2rem;
       max-width: 1280px;
     }
-  }
-  
-  /* Custom utility for display font */
-  .font-display {
-    font-family: var(--font-display);
-  }
-  
-  /* Custom utility for body font */
-  .font-body {
-    font-family: var(--font-body);
   }
 }
