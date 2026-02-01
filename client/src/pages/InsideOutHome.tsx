@@ -166,21 +166,23 @@ export default function InsideOutHome() {
             </div>
           </div>
 
-          {/* VSL Video with Play Overlay */}
+          {/* VSL Video */}
           <div className="max-w-4xl mx-auto mb-16">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-              {/* Play Button Overlay */}
-              <div className="absolute top-4 right-4 z-20 bg-gold hover:bg-gold/90 text-forest-green px-6 py-3 rounded-full flex items-center gap-2 shadow-lg cursor-pointer transition-all group-hover:scale-105">
-                <Play className="w-5 h-5 fill-current" />
-                <span className="font-semibold">Watch Now</span>
-              </div>
-              
+            <div className="rounded-2xl overflow-hidden shadow-2xl">
               <div 
                 dangerouslySetInnerHTML={{
                   __html: `
-                    <script src="https://fast.wistia.com/embed/7pdcefp4vc.js" async type="module"></script>
-                    <style>wistia-player[media-id='7pdcefp4vc']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/7pdcefp4vc/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
-                    <wistia-player media-id="7pdcefp4vc" aspect="1.7777777777777777"></wistia-player>
+                    <script src="https://fast.wistia.com/embed/medias/7pdcefp4vc.jsonp" async></script>
+                    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                      <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                        <div class="wistia_embed wistia_async_7pdcefp4vc seo=true videoFoam=true" style="height:100%;position:relative;width:100%">
+                          <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                            <img src="https://fast.wistia.com/embed/medias/7pdcefp4vc/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   `
                 }}
               />
