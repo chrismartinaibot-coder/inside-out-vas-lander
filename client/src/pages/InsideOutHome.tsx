@@ -1,7 +1,14 @@
-import { CheckCircle2, Users } from 'lucide-react';
+import { CheckCircle2, Users, Play, ArrowRight } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 export default function InsideOutHome() {
+  const scrollToForm = () => {
+    const formElement = document.getElementById('typeform-section');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
   const videoTestimonials = [
     { name: "Weilynn", videoId: "ks9ztv0qd7" },
     { name: "Anthony", videoId: "5xk4zfwxp6" },
@@ -159,9 +166,15 @@ export default function InsideOutHome() {
             </div>
           </div>
 
-          {/* VSL Video */}
+          {/* VSL Video with Play Overlay */}
           <div className="max-w-4xl mx-auto mb-16">
-            <div className="rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+              {/* Play Button Overlay */}
+              <div className="absolute top-4 right-4 z-20 bg-gold hover:bg-gold/90 text-forest-green px-6 py-3 rounded-full flex items-center gap-2 shadow-lg cursor-pointer transition-all group-hover:scale-105">
+                <Play className="w-5 h-5 fill-current" />
+                <span className="font-semibold">Watch Now</span>
+              </div>
+              
               <div 
                 dangerouslySetInnerHTML={{
                   __html: `
@@ -175,7 +188,7 @@ export default function InsideOutHome() {
           </div>
 
           {/* Typeform */}
-          <div className="max-w-2xl mx-auto">
+          <div id="typeform-section" className="max-w-2xl mx-auto">
             <div className="bg-white rounded-2xl shadow-2xl p-8 lg:p-12">
               <div className="text-center mb-6">
                 <h3 className="font-serif text-3xl font-bold text-forest-green mb-2">
@@ -186,6 +199,7 @@ export default function InsideOutHome() {
               
               {/* Typeform Embed */}
               <div data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13" style={{ minHeight: "400px" }}></div>
+              <script src="//embed.typeform.com/next/embed.js"></script>
             </div>
           </div>
         </div>
@@ -203,10 +217,10 @@ export default function InsideOutHome() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 rounded-full bg-teal/10 flex items-center justify-center mb-6">
-                <CheckCircle2 className="w-8 h-8 text-teal" />
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white rounded-xl p-8 shadow-lg">
+              <div className="w-16 h-16 rounded-full bg-gold/20 flex items-center justify-center mb-6">
+                <CheckCircle2 className="w-8 h-8 text-gold" />
               </div>
               <h3 className="font-serif text-2xl font-bold text-forest-green mb-4">
                 Pay Only When You Hire
@@ -216,9 +230,9 @@ export default function InsideOutHome() {
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 rounded-full bg-teal/10 flex items-center justify-center mb-6">
-                <CheckCircle2 className="w-8 h-8 text-teal" />
+            <div className="bg-white rounded-xl p-8 shadow-lg">
+              <div className="w-16 h-16 rounded-full bg-gold/20 flex items-center justify-center mb-6">
+                <CheckCircle2 className="w-8 h-8 text-gold" />
               </div>
               <h3 className="font-serif text-2xl font-bold text-forest-green mb-4">
                 Done-For-You VA Hiring
@@ -228,9 +242,9 @@ export default function InsideOutHome() {
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="w-16 h-16 rounded-full bg-teal/10 flex items-center justify-center mb-6">
-                <CheckCircle2 className="w-8 h-8 text-teal" />
+            <div className="bg-white rounded-xl p-8 shadow-lg">
+              <div className="w-16 h-16 rounded-full bg-gold/20 flex items-center justify-center mb-6">
+                <CheckCircle2 className="w-8 h-8 text-gold" />
               </div>
               <h3 className="font-serif text-2xl font-bold text-forest-green mb-4">
                 6-Month Perfect Hire Guarantee
@@ -239,6 +253,17 @@ export default function InsideOutHome() {
                 If they don't exceed expectations, we'll replace them at no cost. Your success is our guarantee.
               </p>
             </div>
+          </div>
+
+          <div className="text-center">
+            <Button 
+              onClick={scrollToForm}
+              size="lg"
+              className="bg-forest-green hover:bg-forest-green/90 text-white font-semibold px-8 py-6 text-lg"
+            >
+              Start Your Search Today
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
           </div>
         </div>
       </section>
@@ -255,13 +280,13 @@ export default function InsideOutHome() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {processSteps.map((step, index) => (
               <div key={index} className="bg-cream/50 rounded-xl p-8 hover:shadow-lg transition-shadow">
                 <div 
                   className="w-16 h-16 rounded-full flex items-center justify-center mb-6 text-white font-bold text-2xl"
                   style={{
-                    background: `linear-gradient(135deg, rgb(20, 83, 75) 0%, rgb(15, 118, 110) 100%)`
+                    background: `linear-gradient(135deg, rgb(30, 64, 175) 0%, rgb(59, 130, 246) 100%)`
                   }}
                 >
                   {step.number}
@@ -274,6 +299,17 @@ export default function InsideOutHome() {
                 </p>
               </div>
             ))}
+          </div>
+
+          <div className="text-center">
+            <Button 
+              onClick={scrollToForm}
+              size="lg"
+              className="bg-forest-green hover:bg-forest-green/90 text-white font-semibold px-8 py-6 text-lg"
+            >
+              Get Started Now
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
           </div>
         </div>
       </section>
@@ -290,7 +326,7 @@ export default function InsideOutHome() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {roles.map((role, index) => (
               <div key={index} className="bg-white rounded-xl p-8 shadow-lg">
                 <h3 className="font-serif text-xl font-bold text-forest-green mb-6">
@@ -306,6 +342,17 @@ export default function InsideOutHome() {
                 </ul>
               </div>
             ))}
+          </div>
+
+          <div className="text-center">
+            <Button 
+              onClick={scrollToForm}
+              size="lg"
+              className="bg-forest-green hover:bg-forest-green/90 text-white font-semibold px-8 py-6 text-lg"
+            >
+              Find Your Perfect VA
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
           </div>
         </div>
       </section>
@@ -329,9 +376,17 @@ export default function InsideOutHome() {
                   <div 
                     dangerouslySetInnerHTML={{
                       __html: `
-                        <script src="https://fast.wistia.com/embed/${testimonial.videoId}.js" async type="module"></script>
-                        <style>wistia-player[media-id='${testimonial.videoId}']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/${testimonial.videoId}/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
-                        <wistia-player media-id="${testimonial.videoId}" aspect="1.7777777777777777"></wistia-player>
+                        <script src="https://fast.wistia.com/embed/medias/${testimonial.videoId}.jsonp" async></script>
+                        <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                        <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                          <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                            <div class="wistia_embed wistia_async_${testimonial.videoId} seo=true videoFoam=true" style="height:100%;position:relative;width:100%">
+                              <div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                                <img src="https://fast.wistia.com/embed/medias/${testimonial.videoId}/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       `
                     }}
                   />
@@ -343,10 +398,12 @@ export default function InsideOutHome() {
 
           <div className="text-center">
             <Button 
+              onClick={scrollToForm}
               size="lg"
-              className="bg-gold hover:bg-gold/90 text-forest-green font-semibold px-8 py-6 text-lg"
+              className="bg-forest-green hover:bg-forest-green/90 text-white font-semibold px-8 py-6 text-lg"
             >
-              Watch More Success Stories
+              Join Them Today
+              <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
         </div>
@@ -364,7 +421,7 @@ export default function InsideOutHome() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {writtenTestimonials.map((testimonial, index) => (
               <div key={index} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="mb-6">
@@ -379,6 +436,17 @@ export default function InsideOutHome() {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="text-center">
+            <Button 
+              onClick={scrollToForm}
+              size="lg"
+              className="bg-forest-green hover:bg-forest-green/90 text-white font-semibold px-8 py-6 text-lg"
+            >
+              Get Your VA Today
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
           </div>
         </div>
       </section>
@@ -403,33 +471,19 @@ export default function InsideOutHome() {
           </p>
           
           <Button 
+            onClick={scrollToForm}
             size="lg"
-            className="bg-gold hover:bg-gold/90 text-forest-green font-semibold px-12 py-6 text-lg mb-6"
+            className="bg-gold hover:bg-gold/90 text-forest-green font-bold px-12 py-8 text-xl"
           >
             Start Your Search Today
+            <ArrowRight className="ml-2 w-6 h-6" />
           </Button>
-          
-          <p className="text-cream/80 text-sm">
+
+          <p className="text-cream/80 mt-8">
             6-Month Perfect Hire Guarantee • Pay Only When You Hire
           </p>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-forest-green text-white py-12">
-        <div className="container text-center">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-full bg-gold flex items-center justify-center">
-              <Users className="w-5 h-5 text-forest-green" />
-            </div>
-            <span className="text-xl font-serif font-bold">InsideOut</span>
-          </div>
-          <p className="text-cream/70">© 2026 Virtual Assistant Business Coaching. All rights reserved.</p>
-        </div>
-      </footer>
-
-      {/* Typeform Script */}
-      <script src="//embed.typeform.com/next/embed.js" async></script>
     </div>
   );
 }
