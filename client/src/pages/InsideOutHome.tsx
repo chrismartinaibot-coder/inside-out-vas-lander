@@ -122,7 +122,7 @@ export default function InsideOutHome() {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-green/95 via-teal/90 to-forest-green/95" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-forest-green/90 to-teal/85" />
         
         <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
           {/* Logo and Headline */}
@@ -392,7 +392,7 @@ export default function InsideOutHome() {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-green/95 via-teal/90 to-forest-green/95" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-forest-green/90 to-teal/85" />
         
         <div className="container relative z-10 text-center" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
