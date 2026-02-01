@@ -11,6 +11,54 @@ export default function InsideOutHome() {
     { name: "Brandon Gaty", videoId: "5xk4zfwxp6" },
   ];
 
+  const writtenTestimonials = [
+    {
+      name: "Aiden Clark",
+      company: "ArcStone Construction",
+      quote: "Inside Out helped me reclaim 30 hours per week. I was swamped and had no time to spend on hiring an assistant."
+    },
+    {
+      name: "Anna Tan",
+      company: "Dynamic Marketing",
+      quote: "I was hesitant to delegate at first, worried no one could match my standards, but this service proved me wrong. They found me an A-player who I can no longer survive without!"
+    },
+    {
+      name: "Daniel Aroustamian",
+      company: "CJC Roofing",
+      quote: "I was missing phone calls from prospective customers and get distracted while on job sites. Hiring a VA has allowed me to scale my roofing business. Chris' team saved me dozens of hours of having to interview people myself."
+    },
+    {
+      name: "Anthony Lazarus",
+      company: "HappyNuts",
+      quote: "Hiring a virtual assistant allowed me to stop spending time on lower value work so I could finally scale my D2C e-commerce brand into physical retailers."
+    },
+    {
+      name: "Shea Trecwicz",
+      company: "Stylez Salon",
+      quote: "I went from being a 'solopreneur' to an actual CEO by hiring virtual assistants and it was way easier than I thought it would be. I wish I took action a lot earlier!"
+    },
+    {
+      name: "Ryan Garvin",
+      company: "TFG Benefits Insurance",
+      quote: "I've thought about hiring a VA for years but I had no idea where to find them or what to look for. Chris' team at Inside Out held my hand throughout the recruitment process and found me a rockstar in less than a week."
+    },
+    {
+      name: "Simon Ellery",
+      company: "White Rabbit",
+      quote: "Working with Inside Out has been such a seamless and efficient experience. The whole process was handled so well – great communication the whole way through, and they made it incredibly easy for me."
+    },
+    {
+      name: "Stephen Ceausu",
+      company: "Axe Property Management",
+      quote: "We struggled to keep up with high lead volume, tenant communications, and daily admin while scaling. The process has been seamless — clear communication, smooth onboarding, and a responsive, professional team."
+    },
+    {
+      name: "Michael Kozlowski",
+      company: "FreeportForRent.com",
+      quote: "I have been hiring and building teams for 20 years and I have never ever seen anything like this service. Your company provides excellent service."
+    }
+  ];
+
   const roles = [
     {
       category: "Assistants",
@@ -300,6 +348,37 @@ export default function InsideOutHome() {
             >
               Watch More Success Stories
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Written Testimonials */}
+      <section className="py-24 bg-cream/50">
+        <div className="container" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-forest-green mb-4">
+              What Our Clients Say
+            </h2>
+            <p className="text-xl text-charcoal/70 max-w-3xl mx-auto">
+              Real results from business owners who transformed their operations with elite VAs
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {writtenTestimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                <div className="mb-6">
+                  <div className="text-gold text-4xl mb-4">&ldquo;</div>
+                  <p className="text-charcoal/80 leading-relaxed italic mb-6">
+                    {testimonial.quote}
+                  </p>
+                </div>
+                <div className="border-t border-cream pt-6">
+                  <p className="font-semibold text-forest-green">{testimonial.name}</p>
+                  <p className="text-sm text-charcoal/60">{testimonial.company}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
