@@ -9,13 +9,24 @@ export default function InsideOutHome() {
     }
   };
 
-  const videoTestimonials = [
-    { name: "Weilynn", videoId: "k6hpbydwi1" },
-    { name: "Anthony", videoId: "j97tjir20s" },
-    { name: "Dayne", videoId: "gt8twx9i89" },
-    { name: "Marc Sieber", videoId: "0bqco9u2rq" },
-    { name: "Fady", videoId: "munyre4w59" },
-    { name: "Brandon Gaty", videoId: "ojr6x18878" },
+  // First batch of video testimonials - mix of portrait and landscape
+  const videoTestimonialsSection1 = [
+    { name: "Weilynn", videoId: "k6hpbydwi1", isPortrait: true },
+    { name: "Anthony", videoId: "j97tjir20s", isPortrait: true },
+    { name: "Dayne", videoId: "gt8twx9i89", isPortrait: true },
+    { name: "Marc Sieber", videoId: "0bqco9u2rq", isPortrait: false },
+    { name: "Fady", videoId: "munyre4w59", isPortrait: true },
+    { name: "Brandon Gaty", videoId: "ojr6x18878", isPortrait: false },
+  ];
+
+  // Second batch of video testimonials - all portraits
+  const videoTestimonialsSection2 = [
+    { name: "Aiden Clark", videoId: "fzm8fc424t", isPortrait: true },
+    { name: "Nick Wingo", videoId: "s25bg924zq", isPortrait: true },
+    { name: "Daniel Aroustamian", videoId: "fzm8fc424t", isPortrait: true },
+    { name: "Ryan Garvin", videoId: "lrbzjkj1a6", isPortrait: true },
+    { name: "Mohammad", videoId: "e3wrmp5fnn", isPortrait: true },
+    { name: "Tracy", videoId: "f7b1j80laz", isPortrait: true },
   ];
 
   const writtenTestimonials = [
@@ -422,7 +433,7 @@ export default function InsideOutHome() {
         </div>
       </section>
 
-      {/* Video Testimonials Section - Circular grid pattern inspired by Persona */}
+      {/* Video Testimonials Section 1 - Mix of portrait and landscape */}
       <section className="py-24 bg-white relative overflow-hidden">
         {/* Decorative dot pattern background */}
         <div className="absolute inset-0 opacity-5">
@@ -446,9 +457,9 @@ export default function InsideOutHome() {
             </p>
           </div>
 
-          {/* Circular grid layout with videos */}
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
-            {videoTestimonials.map((testimonial, index) => (
+          {/* Grid layout with proper aspect ratios for portrait and landscape */}
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+            {videoTestimonialsSection1.map((testimonial, index) => (
               <div key={index} className="relative group">
                 <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1 ring-2 ring-gray-100 hover:ring-blue-300">
                   <iframe 
@@ -456,7 +467,7 @@ export default function InsideOutHome() {
                     title={`${testimonial.name} testimonial`}
                     allow="autoplay; fullscreen"
                     allowFullScreen
-                    className="w-full aspect-video"
+                    className={`w-full ${testimonial.isPortrait ? 'aspect-[9/16]' : 'aspect-video'}`}
                   />
                 </div>
                 <div className="text-center mt-4">
@@ -520,6 +531,55 @@ export default function InsideOutHome() {
               className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Get Your VA Today
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Testimonials Section 2 - All portraits near the end */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Decorative background */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20"></div>
+
+        <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+              More Success Stories
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Hear from more business owners who scaled with InsideOut VAs
+            </p>
+          </div>
+
+          {/* Grid layout for portrait videos */}
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+            {videoTestimonialsSection2.map((testimonial, index) => (
+              <div key={index} className="relative group">
+                <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1 ring-2 ring-gray-100 hover:ring-blue-300">
+                  <iframe 
+                    src={`https://fast.wistia.net/embed/iframe/${testimonial.videoId}?seo=true&videoFoam=true`}
+                    title={`${testimonial.name} testimonial`}
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    className="w-full aspect-[9/16]"
+                  />
+                </div>
+                <div className="text-center mt-4">
+                  <p className="font-semibold text-blue-900">{testimonial.name}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Button 
+              onClick={scrollToForm}
+              size="lg"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+            >
+              Start Your Search Today
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
