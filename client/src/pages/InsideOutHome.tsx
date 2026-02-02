@@ -119,17 +119,29 @@ export default function InsideOutHome() {
   ];
 
   return (
-    <div className="min-h-screen bg-cream">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-white">
+      {/* Hero Section with Decorative Dot Pattern Background */}
       <section 
-        className="relative py-24"
+        className="relative py-24 overflow-hidden"
         style={{
           backgroundImage: 'url(/images/insideout-hero-abstract.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-forest-green/90 to-teal/85" />
+        {/* Decorative dot pattern overlay - inspired by Persona */}
+        <div className="absolute inset-0 opacity-10">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="dot-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+                <circle cx="30" cy="30" r="2" fill="currentColor" className="text-white" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#dot-pattern)" />
+          </svg>
+        </div>
+        
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/95 via-blue-800/90 to-blue-700/85" />
         
         <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
           {/* Logo and Headline */}
@@ -146,30 +158,39 @@ export default function InsideOutHome() {
               Hire Global Talent at 90% Lower Cost
             </h1>
             
-            <p className="text-xl md:text-2xl text-cream/90 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-blue-100 leading-relaxed max-w-3xl mx-auto">
               Go from Overwhelmed Solopreneur to Confident CEO. Elite $4-8/hr VAs handle the busywork, so you scale faster.
             </p>
 
-            {/* Stats */}
+            {/* Stats with decorative elements */}
             <div className="flex justify-center gap-12 py-8">
-              <div>
-                <div className="text-4xl font-bold text-gold">1,500+</div>
-                <div className="text-sm text-cream/80 mt-1">Clients Served</div>
+              <div className="relative">
+                <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
+                <div className="relative">
+                  <div className="text-4xl font-bold text-yellow-400">1,500+</div>
+                  <div className="text-sm text-blue-100 mt-1">Clients Served</div>
+                </div>
               </div>
-              <div>
-                <div className="text-4xl font-bold text-gold">8,000+</div>
-                <div className="text-sm text-cream/80 mt-1">VAs Hired</div>
+              <div className="relative">
+                <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
+                <div className="relative">
+                  <div className="text-4xl font-bold text-yellow-400">8,000+</div>
+                  <div className="text-sm text-blue-100 mt-1">VAs Hired</div>
+                </div>
               </div>
-              <div>
-                <div className="text-4xl font-bold text-gold">$100M+</div>
-                <div className="text-sm text-cream/80 mt-1">Payroll Savings</div>
+              <div className="relative">
+                <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
+                <div className="relative">
+                  <div className="text-4xl font-bold text-yellow-400">$100M+</div>
+                  <div className="text-sm text-blue-100 mt-1">Payroll Savings</div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* VSL Video */}
           <div className="max-w-4xl mx-auto mb-16">
-            <div className="rounded-2xl overflow-hidden shadow-2xl">
+            <div className="rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/10">
               <iframe 
                 src="https://fast.wistia.net/embed/iframe/7pdcefp4vc?seo=true&videoFoam=true"
                 title="VSL Video"
@@ -184,10 +205,10 @@ export default function InsideOutHome() {
           <div id="typeform-section" className="max-w-2xl mx-auto">
             <div className="bg-white rounded-2xl shadow-2xl p-8 lg:p-12">
               <div className="text-center mb-6">
-                <h3 className="font-serif text-3xl font-bold text-forest-green mb-2">
+                <h3 className="font-serif text-3xl font-bold text-blue-900 mb-2">
                   See If You Qualify
                 </h3>
-                <p className="text-charcoal/70">Takes 1 minute ✓</p>
+                <p className="text-gray-600">Takes 1 minute ✓</p>
               </div>
               
               {/* Typeform Embed */}
@@ -198,51 +219,64 @@ export default function InsideOutHome() {
         </div>
       </section>
 
-      {/* Value Propositions */}
-      <section className="py-24 bg-cream/50">
-        <div className="container" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+      {/* Value Propositions - Asymmetric Layout inspired by Persona */}
+      <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        {/* Decorative curved shape */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 -translate-y-1/2 translate-x-1/3"></div>
+        
+        <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-forest-green mb-4">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               Why Choose InsideOut
             </h2>
-            <p className="text-xl text-charcoal/70 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Our proven headhunting process doesn't just fill positions—we place the elite VAs who grow your business.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="bg-white rounded-xl p-8 shadow-lg">
-              <div className="w-16 h-16 rounded-full bg-gold/20 flex items-center justify-center mb-6">
-                <CheckCircle2 className="w-8 h-8 text-gold" />
+          {/* Asymmetric grid layout */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12 max-w-6xl mx-auto">
+            {/* Large featured card */}
+            <div className="md:row-span-2 bg-gradient-to-br from-blue-900 to-blue-800 rounded-3xl p-10 shadow-2xl text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-2xl"></div>
+              <div className="relative z-10">
+                <div className="w-20 h-20 rounded-2xl bg-yellow-400/20 flex items-center justify-center mb-6 backdrop-blur-sm">
+                  <CheckCircle2 className="w-10 h-10 text-yellow-400" />
+                </div>
+                <h3 className="font-serif text-3xl font-bold mb-6">
+                  Pay Only When You Hire
+                </h3>
+                <p className="text-blue-100 leading-relaxed text-lg mb-8">
+                  Once you've found your perfect VA, one simple fee covers everything. No monthly subscriptions, no hidden costs, no surprises.
+                </p>
+                <div className="pt-6 border-t border-white/20">
+                  <div className="text-5xl font-bold text-yellow-400 mb-2">$0</div>
+                  <div className="text-blue-200">Until you find your perfect match</div>
+                </div>
               </div>
-              <h3 className="font-serif text-2xl font-bold text-forest-green mb-4">
-                Pay Only When You Hire
-              </h3>
-              <p className="text-charcoal/70 leading-relaxed">
-                Once you've found your perfect VA, one simple fee covers everything. No monthly subscriptions, no hidden costs, no surprises.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-lg">
-              <div className="w-16 h-16 rounded-full bg-gold/20 flex items-center justify-center mb-6">
-                <CheckCircle2 className="w-8 h-8 text-gold" />
+            {/* Two smaller cards */}
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
+                <CheckCircle2 className="w-8 h-8 text-blue-900" />
               </div>
-              <h3 className="font-serif text-2xl font-bold text-forest-green mb-4">
+              <h3 className="font-serif text-2xl font-bold text-blue-900 mb-4">
                 Done-For-You VA Hiring
               </h3>
-              <p className="text-charcoal/70 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 Our proven recruitment team finds, screens, and delivers pre-vetted A-players while you focus on what matters most—scaling your business.
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-lg">
-              <div className="w-16 h-16 rounded-full bg-gold/20 flex items-center justify-center mb-6">
-                <CheckCircle2 className="w-8 h-8 text-gold" />
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
+                <CheckCircle2 className="w-8 h-8 text-blue-900" />
               </div>
-              <h3 className="font-serif text-2xl font-bold text-forest-green mb-4">
+              <h3 className="font-serif text-2xl font-bold text-blue-900 mb-4">
                 6-Month Perfect Hire Guarantee
               </h3>
-              <p className="text-charcoal/70 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed">
                 If they don't exceed expectations, we'll replace them at no cost. Your success is our guarantee.
               </p>
             </div>
@@ -252,84 +286,122 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-forest-green hover:bg-forest-green/90 text-white font-semibold px-8 py-6 text-lg"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Start Your Search Today
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-24 bg-white">
-        <div className="container" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
-          <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-forest-green mb-4">
+      {/* Process Section - Custom Timeline Visualization inspired by Persona */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Decorative background shapes */}
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20 translate-y-1/2 -translate-x-1/3"></div>
+        
+        <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+          <div className="text-center mb-20">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               Our Proven System for Finding A-Players
             </h2>
-            <p className="text-xl text-charcoal/70 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Our systematic process screens 50,000+ candidates every month—so you only meet the top 1%
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {processSteps.map((step, index) => (
-              <div key={index} className="bg-cream/50 rounded-xl p-8 hover:shadow-lg transition-shadow">
-                <div 
-                  className="w-16 h-16 rounded-full flex items-center justify-center mb-6 text-white font-bold text-2xl"
-                  style={{
-                    background: `linear-gradient(135deg, rgb(30, 64, 175) 0%, rgb(59, 130, 246) 100%)`
-                  }}
-                >
-                  {step.number}
+          {/* Custom curved timeline */}
+          <div className="max-w-5xl mx-auto relative">
+            {/* Curved connecting line - SVG path */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none hidden md:block" style={{ zIndex: 0 }}>
+              <defs>
+                <linearGradient id="timeline-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style={{ stopColor: '#1e40af', stopOpacity: 0.3 }} />
+                  <stop offset="50%" style={{ stopColor: '#3b82f6', stopOpacity: 0.5 }} />
+                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.3 }} />
+                </linearGradient>
+              </defs>
+              <path 
+                d="M 100 100 Q 250 50, 400 100 T 700 100 T 1000 100" 
+                stroke="url(#timeline-gradient)" 
+                strokeWidth="3" 
+                fill="none"
+                strokeDasharray="8,8"
+              />
+            </svg>
+
+            <div className="grid md:grid-cols-3 gap-8 relative" style={{ zIndex: 1 }}>
+              {processSteps.map((step, index) => (
+                <div key={index} className="relative">
+                  {/* Step card */}
+                  <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1">
+                    {/* Number badge */}
+                    <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-br from-blue-900 to-blue-700 text-white flex items-center justify-center font-bold text-lg shadow-lg">
+                      {step.number}
+                    </div>
+                    
+                    <div className="pt-4">
+                      <h3 className="font-serif text-xl font-bold text-blue-900 mb-3">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed text-sm">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-serif text-xl font-bold text-forest-green mb-4">
-                  {step.title}
-                </h3>
-                <p className="text-charcoal/70 leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          <div className="text-center">
+          <div className="text-center mt-16">
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-forest-green hover:bg-forest-green/90 text-white font-semibold px-8 py-6 text-lg"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Get Started Now
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Roles Section */}
-      <section className="py-24 bg-cream/50">
-        <div className="container" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+      {/* Roles Section - Masonry-style layout inspired by Persona */}
+      <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-100 rounded-full blur-3xl opacity-20"></div>
+        
+        <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-forest-green mb-4">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               Roles We Fill with Amazing People
             </h2>
-            <p className="text-xl text-charcoal/70 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               From assistants to specialists, we source top-tier talent across all business functions
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* Asymmetric masonry grid */}
+          <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {roles.map((role, index) => (
-              <div key={index} className="bg-white rounded-xl p-8 shadow-lg">
-                <h3 className="font-serif text-xl font-bold text-forest-green mb-6">
+              <div 
+                key={index} 
+                className={`
+                  rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1
+                  ${index === 0 ? 'md:col-span-2 md:row-span-2 bg-gradient-to-br from-blue-900 to-blue-800 text-white' : 
+                    index === 1 ? 'md:col-span-2 bg-white border border-gray-100' :
+                    index === 2 ? 'md:col-span-2 bg-white border border-gray-100' :
+                    'md:col-span-2 bg-gradient-to-br from-blue-100 to-blue-50 border border-blue-200'}
+                `}
+              >
+                <h3 className={`font-serif text-2xl font-bold mb-6 ${index === 0 ? 'text-white' : 'text-blue-900'}`}>
                   {role.category}
                 </h3>
                 <ul className="space-y-3">
                   {role.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
-                      <span className="text-charcoal/70">{item}</span>
+                    <li key={itemIndex} className="flex items-start">
+                      <CheckCircle2 className={`w-5 h-5 mr-3 flex-shrink-0 mt-0.5 ${index === 0 ? 'text-yellow-400' : 'text-blue-600'}`} />
+                      <span className={index === 0 ? 'text-blue-100' : 'text-gray-700'}>{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -337,44 +409,59 @@ export default function InsideOutHome() {
             ))}
           </div>
 
-          <div className="text-center">
+          <div className="text-center mt-16">
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-forest-green hover:bg-forest-green/90 text-white font-semibold px-8 py-6 text-lg"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Find Your Perfect VA
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Video Testimonials */}
-      <section className="py-24 bg-white">
-        <div className="container" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+      {/* Video Testimonials Section - Circular grid pattern inspired by Persona */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Decorative dot pattern background */}
+        <div className="absolute inset-0 opacity-5">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="testimonial-dots" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+                <circle cx="40" cy="40" r="3" fill="currentColor" className="text-blue-900" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#testimonial-dots)" />
+          </svg>
+        </div>
+
+        <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-forest-green mb-4">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               Trusted by 1,500+ Business Owners
             </h2>
-            <p className="text-xl text-charcoal/70 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Real stories from leaders who found their ideal team through InsideOut
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {/* Circular grid layout with videos */}
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
             {videoTestimonials.map((testimonial, index) => (
-              <div key={index} className="space-y-4">
-                <div className="rounded-xl overflow-hidden shadow-lg">
+              <div key={index} className="relative group">
+                <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1 ring-2 ring-gray-100 hover:ring-blue-300">
                   <iframe 
                     src={`https://fast.wistia.net/embed/iframe/${testimonial.videoId}?seo=true&videoFoam=true`}
-                    title={`${testimonial.name} Testimonial`}
+                    title={`${testimonial.name} testimonial`}
                     allow="autoplay; fullscreen"
                     allowFullScreen
                     className="w-full aspect-video"
                   />
                 </div>
-                <p className="text-center font-semibold text-forest-green">{testimonial.name}</p>
+                <div className="text-center mt-4">
+                  <p className="font-semibold text-blue-900">{testimonial.name}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -383,88 +470,98 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-forest-green hover:bg-forest-green/90 text-white font-semibold px-8 py-6 text-lg"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Join Them Today
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Written Testimonials */}
-      <section className="py-24 bg-cream/50">
+      {/* Written Testimonials - Elegant card layout */}
+      <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
         <div className="container" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-forest-green mb-4">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               What Our Clients Say
             </h2>
-            <p className="text-xl text-charcoal/70 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Real results from business owners who transformed their operations with elite VAs
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {writtenTestimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+              <div 
+                key={index} 
+                className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1"
+              >
                 <div className="mb-6">
-                  <div className="text-gold text-4xl mb-4">&ldquo;</div>
-                  <p className="text-charcoal/80 leading-relaxed italic mb-6">
-                    {testimonial.quote}
-                  </p>
+                  <svg className="w-10 h-10 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
                 </div>
-                <div className="border-t border-cream pt-6">
-                  <p className="font-semibold text-forest-green">{testimonial.name}</p>
-                  <p className="text-sm text-charcoal/60">{testimonial.company}</p>
+                <p className="text-gray-700 leading-relaxed mb-6 italic">
+                  {testimonial.quote}
+                </p>
+                <div className="pt-4 border-t border-gray-100">
+                  <p className="font-bold text-blue-900">{testimonial.name}</p>
+                  <p className="text-sm text-gray-500">{testimonial.company}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="text-center">
+          <div className="text-center mt-16">
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-forest-green hover:bg-forest-green/90 text-white font-semibold px-8 py-6 text-lg"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Get Your VA Today
-              <ArrowRight className="ml-2 w-5 h-5" />
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section 
-        className="relative py-24"
-        style={{
-          backgroundImage: 'url(/images/insideout-trust-visual.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-forest-green/90 to-teal/85" />
+      {/* Final CTA Section with organic shapes */}
+      <section className="py-32 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative overflow-hidden">
+        {/* Decorative organic shapes */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-2xl"></div>
         
-        <div className="container relative z-10 text-center" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Build Your Dream Team?
-          </h2>
-          <p className="text-xl text-cream/90 mb-12 max-w-2xl mx-auto">
-            Join 1,500+ business owners who've scaled faster with elite global talent
-          </p>
-          
-          <Button 
-            onClick={scrollToForm}
-            size="lg"
-            className="bg-gold hover:bg-gold/90 text-forest-green font-bold px-12 py-8 text-xl"
-          >
-            Start Your Search Today
-            <ArrowRight className="ml-2 w-6 h-6" />
-          </Button>
-
-          <p className="text-cream/80 mt-8">
-            6-Month Perfect Hire Guarantee • Pay Only When You Hire
-          </p>
+        <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+          <div className="text-center max-w-4xl mx-auto">
+            <h2 className="font-serif text-5xl md:text-6xl font-bold mb-6">
+              Ready to Build Your Dream Team?
+            </h2>
+            <p className="text-2xl text-blue-100 mb-12 leading-relaxed">
+              Join 1,500+ business owners who've scaled faster with elite global talent
+            </p>
+            
+            <Button 
+              onClick={scrollToForm}
+              size="lg"
+              className="bg-white hover:bg-gray-100 text-blue-900 px-12 py-8 text-xl rounded-full shadow-2xl hover:shadow-3xl transition-all font-semibold"
+            >
+              Start Your Search Today
+              <ArrowRight className="ml-3 h-6 w-6" />
+            </Button>
+            
+            <div className="mt-8 flex items-center justify-center gap-8 text-blue-200">
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-yellow-400" />
+                6-Month Perfect Hire Guarantee
+              </span>
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5 text-yellow-400" />
+                Pay Only When You Hire
+              </span>
+            </div>
+          </div>
         </div>
       </section>
     </div>
