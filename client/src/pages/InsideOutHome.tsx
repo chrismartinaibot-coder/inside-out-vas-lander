@@ -10,12 +10,12 @@ export default function InsideOutHome() {
   };
 
   const videoTestimonials = [
-    { name: "Weilynn", videoId: "ks9ztv0qd7" },
-    { name: "Anthony", videoId: "5xk4zfwxp6" },
-    { name: "Dayne", videoId: "rvtc6bw9w1" },
-    { name: "Marc Sieber", videoId: "3dn1zqjw9k" },
-    { name: "Fady", videoId: "ks9ztv0qd7" },
-    { name: "Brandon Gaty", videoId: "5xk4zfwxp6" },
+    { name: "Weilynn", videoId: "k6hpbydwi1" },
+    { name: "Anthony", videoId: "j97tjir20s" },
+    { name: "Dayne", videoId: "gt8twx9i89" },
+    { name: "Marc Sieber", videoId: "0bqco9u2rq" },
+    { name: "Fady", videoId: "munyre4w59" },
+    { name: "Brandon Gaty", videoId: "ojr6x18878" },
   ];
 
   const writtenTestimonials = [
@@ -134,11 +134,12 @@ export default function InsideOutHome() {
         <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
           {/* Logo and Headline */}
           <div className="text-center text-white space-y-8 mb-16">
-            <div className="flex items-center justify-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-gold flex items-center justify-center">
-                <Users className="w-6 h-6 text-forest-green" />
-              </div>
-              <span className="text-2xl font-serif font-bold">InsideOut</span>
+            <div className="flex items-center justify-center">
+              <img 
+                src="/images/insideout-logo-white.svg" 
+                alt="InsideOut" 
+                className="h-12 w-auto"
+              />
             </div>
 
             <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-5xl mx-auto">
