@@ -182,51 +182,26 @@ export default function InsideOutHome() {
         
         <div className="container relative z-10" style={{ paddingTop: "48px", paddingBottom: "48px" }}>
           {/* Logo and Headline */}
-          <div className="text-center text-white space-y-8 mb-16">
+          <div className="text-center text-white space-y-4 mb-8">
             <div className="flex items-center justify-center">
               <img 
                 src="/images/insideout-logo-white.svg" 
                 alt="InsideOut" 
-                className="h-12 w-auto"
+                className="h-8 w-auto"
               />
             </div>
 
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-5xl mx-auto px-4">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-4xl mx-auto px-4">
               Hire Global Talent at 90% Lower Cost
             </h1>
             
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-100 leading-relaxed max-w-3xl mx-auto px-4">
+            <p className="text-sm sm:text-base md:text-lg text-blue-100 leading-relaxed max-w-2xl mx-auto px-4">
               Go from Overwhelmed Solopreneur to Confident CEO. Elite $4-8/hr VAs handle the busywork, so you scale faster.
             </p>
-
-            {/* Stats with decorative elements */}
-            <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 py-8 px-4">
-              <div className="relative">
-                <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
-                <div className="relative">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">1,500+</div>
-                  <div className="text-xs sm:text-sm text-blue-100 mt-1">Clients Served</div>
-                </div>
-              </div>
-              <div className="relative">
-                <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
-                <div className="relative">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">8,000+</div>
-                  <div className="text-xs sm:text-sm text-blue-100 mt-1">VAs Hired</div>
-                </div>
-              </div>
-              <div className="relative">
-                <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
-                <div className="relative">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">$100M+</div>
-                  <div className="text-xs sm:text-sm text-blue-100 mt-1">Payroll Savings</div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* VSL Video */}
-          <div className="max-w-4xl mx-auto mb-16">
+          <div className="max-w-3xl mx-auto mb-8">
             <div className="rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/10">
               <iframe 
                 src="https://fast.wistia.net/embed/iframe/7pdcefp4vc?seo=true&videoFoam=true"
@@ -235,6 +210,31 @@ export default function InsideOutHome() {
                 allowFullScreen
                 className="w-full aspect-video"
               />
+            </div>
+          </div>
+
+          {/* Stats with decorative elements */}
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 py-6 px-4 mb-8">
+            <div className="relative">
+              <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
+              <div className="relative">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">1,500+</div>
+                <div className="text-xs sm:text-sm text-blue-100 mt-1">Clients Served</div>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
+              <div className="relative">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">8,000+</div>
+                <div className="text-xs sm:text-sm text-blue-100 mt-1">VAs Hired</div>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
+              <div className="relative">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">$100M+</div>
+                <div className="text-xs sm:text-sm text-blue-100 mt-1">Payroll Savings</div>
+              </div>
             </div>
           </div>
 
