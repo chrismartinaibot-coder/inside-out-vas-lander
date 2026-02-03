@@ -1,7 +1,27 @@
 import { CheckCircle2, Users, Play, ArrowRight } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { useEffect } from 'react';
 
 export default function InsideOutHome() {
+  // Initialize Typeform after component mounts
+  useEffect(() => {
+    // Check if Typeform script is loaded
+    if (typeof window !== 'undefined' && (window as any).tf) {
+      (window as any).tf.load();
+    } else if (typeof window !== 'undefined') {
+      // If not loaded yet, wait and try again
+      const checkTypeform = setInterval(() => {
+        if ((window as any).tf) {
+          (window as any).tf.load();
+          clearInterval(checkTypeform);
+        }
+      }, 100);
+      
+      // Clear interval after 5 seconds
+      setTimeout(() => clearInterval(checkTypeform), 5000);
+    }
+  }, []);
+
   const scrollToForm = () => {
     const formElement = document.getElementById('typeform-section');
     if (formElement) {
@@ -225,7 +245,7 @@ export default function InsideOutHome() {
               </div>
               
               {/* Typeform Embed */}
-              <div data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13" style={{ minHeight: "400px" }}></div>
+              <div data-tf-widget="01JSJDSKMS5ZETT7ECR59YFC13" data-tf-opacity="100" data-tf-iframe-props="title=InsideOut VA Application" data-tf-transitive-search-params data-tf-medium="snippet" style={{ width: "100%", height: "500px" }}></div>
             </div>
           </div>
         </div>
