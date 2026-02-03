@@ -191,35 +191,35 @@ export default function InsideOutHome() {
               />
             </div>
 
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-5xl mx-auto">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight max-w-5xl mx-auto px-4">
               Hire Global Talent at 90% Lower Cost
             </h1>
             
-            <p className="text-xl md:text-2xl text-blue-100 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-100 leading-relaxed max-w-3xl mx-auto px-4">
               Go from Overwhelmed Solopreneur to Confident CEO. Elite $4-8/hr VAs handle the busywork, so you scale faster.
             </p>
 
             {/* Stats with decorative elements */}
-            <div className="flex justify-center gap-12 py-8">
+            <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 py-8 px-4">
               <div className="relative">
                 <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
                 <div className="relative">
-                  <div className="text-4xl font-bold text-yellow-400">1,500+</div>
-                  <div className="text-sm text-blue-100 mt-1">Clients Served</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">1,500+</div>
+                  <div className="text-xs sm:text-sm text-blue-100 mt-1">Clients Served</div>
                 </div>
               </div>
               <div className="relative">
                 <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
                 <div className="relative">
-                  <div className="text-4xl font-bold text-yellow-400">8,000+</div>
-                  <div className="text-sm text-blue-100 mt-1">VAs Hired</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">8,000+</div>
+                  <div className="text-xs sm:text-sm text-blue-100 mt-1">VAs Hired</div>
                 </div>
               </div>
               <div className="relative">
                 <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
                 <div className="relative">
-                  <div className="text-4xl font-bold text-yellow-400">$100M+</div>
-                  <div className="text-sm text-blue-100 mt-1">Payroll Savings</div>
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">$100M+</div>
+                  <div className="text-xs sm:text-sm text-blue-100 mt-1">Payroll Savings</div>
                 </div>
               </div>
             </div>
