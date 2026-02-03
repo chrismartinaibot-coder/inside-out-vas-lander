@@ -1,12 +1,6 @@
 import { CheckCircle2, Users, Play, ArrowRight } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useEffect } from 'react';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 export default function InsideOutHome() {
   // Initialize Typeform after component mounts
@@ -132,38 +126,32 @@ export default function InsideOutHome() {
     {
       number: "01",
       title: "Book Your Strategy Call",
-      shortDescription: "Schedule a call with our senior placement advisors to discuss your business needs and the specific role you're looking to fill.",
-      fullDescription: "Schedule a call with our senior placement advisors to discuss your business needs and the specific role you're looking to fill. During the call we'll guide you on competitive pay rates, the best regions to source top talent and proven strategies for hiring and managing remote staff. By the end of the call, you'll have a clear understanding of how to achieve your hiring goals with confidence."
+      description: "Schedule a call with our senior placement advisors to discuss your business needs and the specific role you're looking to fill."
     },
     {
       number: "02",
       title: "Launch Your Candidate Search",
-      shortDescription: "Our recruitment team begins sourcing top talent from competitive pay rates, the best regions to source talent, and proven strategies for hiring and managing remote staff.",
-      fullDescription: "Your dedicated recruiter will launch a tailored search to find top-tier candidates for your role. With over 30,000 interviews conducted monthly, we endorse only the top 2% - the absolute best equipped to excel in your business. This ensures you're hiring elite talent, not just filling a position."
+      description: "Our recruitment team begins sourcing top talent from competitive pay rates, the best regions to source talent, and proven strategies for hiring and managing remote staff."
     },
     {
       number: "03",
       title: "Receive Your Curated Shortlist",
-      shortDescription: "Within 5-7 business days, we deliver 3-5 pre-vetted candidates who match your exact requirements.",
-      fullDescription: "After an extensive screening and vetting process, we identify the top candidates tailored to your role. Within just a few days, you'll receive a curated shortlist complete with resumes, video introductions and a recorded 20-minute interview conducted by our team. Plus, our recruiters are available to collaborate with you at any point, ensuring you're confident in every step of the process."
+      description: "Within 5-7 business days, we deliver 3-5 pre-vetted candidates who match your exact requirements."
     },
     {
       number: "04",
       title: "Interview Shortlisted Candidates",
-      shortDescription: "Conduct interviews with your top picks. We provide interview guides and support throughout the process.",
-      fullDescription: "Interview your curated shortlist of A-Player candidates with 100% control over who joins your team. Your feedback fine-tunes the search as we work together to ensure the perfect fit. We're by your side every step of the way, making sure you hire with confidence."
+      description: "Conduct interviews with your top picks. We provide interview guides and support throughout the process."
     },
     {
       number: "05",
       title: "Make an Offer",
-      shortDescription: "Found your perfect match? We'll handle the offer negotiation and onboarding logistics.",
-      fullDescription: "We help you craft an irresistible job offer and negotiate a competitive salary that not only attracts top talent but gets them genuinely excited to join your team. Our proven process ensures the opportunity is crystal clear, setting the foundation for a long-term, successful partnership."
+      description: "Found your perfect match? We'll handle the offer negotiation and onboarding logistics."
     },
     {
       number: "06",
       title: "Beyond the Hire - Ongoing Support",
-      shortDescription: "We provide continued support to ensure your VA's success and your satisfaction with our 6-month guarantee.",
-      fullDescription: "Our support doesn't stop at hiring. We handle comprehensive onboarding to ensure your new team member hits the ground running. From setting clear expectations to implementing phone and time tracking systems, we manage every detail for a seamless transition and a fast, effective ramp-up."
+      description: "We provide continued support to ensure your VA's success and your satisfaction with our 6-month guarantee."
     }
   ];
 
@@ -355,43 +343,48 @@ export default function InsideOutHome() {
             </p>
           </div>
 
-          {/* Expandable Process Steps Accordion */}
-          <div className="max-w-4xl mx-auto">
-            <Accordion type="single" collapsible className="space-y-4">
+          {/* Custom curved timeline */}
+          <div className="max-w-5xl mx-auto relative">
+            {/* Curved connecting line - SVG path */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none hidden md:block" style={{ zIndex: 0 }}>
+              <defs>
+                <linearGradient id="timeline-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style={{ stopColor: '#1e40af', stopOpacity: 0.3 }} />
+                  <stop offset="50%" style={{ stopColor: '#3b82f6', stopOpacity: 0.5 }} />
+                  <stop offset="100%" style={{ stopColor: '#1e40af', stopOpacity: 0.3 }} />
+                </linearGradient>
+              </defs>
+              <path 
+                d="M 100 100 Q 250 50, 400 100 T 700 100 M 100 450 Q 250 400, 400 450 T 700 450" 
+                stroke="url(#timeline-gradient)" 
+                strokeWidth="3" 
+                fill="none"
+                strokeDasharray="8,8"
+              />
+            </svg>
+
+            <div className="grid md:grid-cols-3 gap-8 relative" style={{ zIndex: 1 }}>
               {processSteps.map((step, index) => (
-                <AccordionItem 
-                  key={index} 
-                  value={`step-${index}`}
-                  className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden"
-                >
-                  <AccordionTrigger className="px-8 py-6 hover:no-underline hover:bg-gray-50 transition-colors">
-                    <div className="flex items-start gap-4 text-left w-full">
-                      {/* Number badge */}
-                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-blue-900 to-blue-700 text-white flex items-center justify-center font-bold text-lg shadow-lg">
-                        {step.number}
-                      </div>
-                      
-                      <div className="flex-1">
-                        <h3 className="font-serif text-xl font-bold text-blue-900 mb-2">
-                          {step.title}
-                        </h3>
-                        <p className="text-gray-600 text-sm leading-relaxed">
-                          {step.shortDescription}
-                        </p>
-                      </div>
+                <div key={index} className="relative">
+                  {/* Step card */}
+                  <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1">
+                    {/* Number badge */}
+                    <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-br from-blue-900 to-blue-700 text-white flex items-center justify-center font-bold text-lg shadow-lg">
+                      {step.number}
                     </div>
-                  </AccordionTrigger>
-                  
-                  <AccordionContent className="px-8 pb-6">
-                    <div className="pl-16 pr-4">
-                      <p className="text-gray-700 leading-relaxed">
-                        {step.fullDescription}
+                    
+                    <div className="pt-4">
+                      <h3 className="font-serif text-xl font-bold text-blue-900 mb-3">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed text-sm">
+                        {step.description}
                       </p>
                     </div>
-                  </AccordionContent>
-                </AccordionItem>
+                  </div>
+                </div>
               ))}
-            </Accordion>
+            </div>
           </div>
 
           <div className="text-center mt-16">
