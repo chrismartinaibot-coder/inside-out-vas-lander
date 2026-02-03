@@ -119,6 +119,10 @@ export default function InsideOutHome() {
     {
       category: "Marketing & Creative",
       items: ["Social Media Manager", "Video Editor", "Graphic Designer", "Digital Marketer"]
+    },
+    {
+      category: "Accounting",
+      items: ["Accountants", "Bookkeepers", "Auditors", "Payroll"]
     }
   ];
 
