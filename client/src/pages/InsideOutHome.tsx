@@ -15,14 +15,14 @@ export default function InsideOutHome() {
     { name: "Anna Tan", company: "Dynamic Marketing", videoId: "k6hpbydwi1", isPortrait: true },
     { name: "Dayne Kamela", company: "LitWithPrayer", videoId: "gt8twx9i89", isPortrait: true },
     { name: "Nick Wingo", company: "Building Grit", videoId: "s25bg924zq", isPortrait: true },
-    { name: "Daniel Aroustamian", company: "CJC Roofing", videoId: "j97tjir20s", isPortrait: true },
+    { name: "Daniel Aroustamian", company: "CJC Roofing", videoId: "1m8u26ck9m", isPortrait: true },
     { name: "Anthony Lazarus", company: "HappyNuts", videoId: "j97tjir20s", isPortrait: true },
   ];
 
   // Second batch of video testimonials - 3 portraits + 2 landscapes
   const videoTestimonialsSection2 = [
-    { name: "Cedric Merrills", company: "Wow 1 Day Painting", videoId: "j97tjir20s", isPortrait: true },
-    { name: "Shea Trecwicz", company: "Stylez Salon", videoId: "j97tjir20s", isPortrait: true },
+    { name: "Cedric Merrills", company: "Wow 1 Day Painting", videoId: "6r24xorc62", isPortrait: true },
+    { name: "Shea Trecwicz", company: "Stylez Salon", videoId: "6fsyf5y9ni", isPortrait: true },
     { name: "Tracy Hall", company: "Center Stage Dance", videoId: "f7b1j80laz", isPortrait: true },
     { name: "Mohammad Alwazy", company: "Fitness Influencer", videoId: "e3wrmp5fnn", isPortrait: true },
     { name: "Fady Gamal", company: "G-Mobile Detailing", videoId: "munyre4w59", isPortrait: true },
@@ -258,13 +258,9 @@ export default function InsideOutHome() {
                 <h3 className="font-serif text-3xl font-bold mb-6">
                   Pay Only When You Hire
                 </h3>
-                <p className="text-blue-100 leading-relaxed text-lg mb-8">
+                <p className="text-blue-100 leading-relaxed text-lg">
                   Once you've found your perfect VA, one simple fee covers everything. No monthly subscriptions, no hidden costs, no surprises.
                 </p>
-                <div className="pt-6 border-t border-white/20">
-                  <div className="text-5xl font-bold text-yellow-400 mb-2">$0</div>
-                  <div className="text-blue-200">Until you find your perfect match</div>
-                </div>
               </div>
             </div>
 
@@ -334,7 +330,7 @@ export default function InsideOutHome() {
                 </linearGradient>
               </defs>
               <path 
-                d="M 100 100 Q 250 50, 400 100 T 700 100 T 1000 100" 
+                d="M 100 100 Q 250 50, 400 100 T 700 100 M 100 450 Q 250 400, 400 450 T 700 450" 
                 stroke="url(#timeline-gradient)" 
                 strokeWidth="3" 
                 fill="none"
