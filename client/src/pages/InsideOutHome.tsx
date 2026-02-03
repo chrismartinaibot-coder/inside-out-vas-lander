@@ -114,7 +114,7 @@ export default function InsideOutHome() {
     },
     {
       category: "Operations & HR",
-      items: ["Operations Manager", "Recruiter", "Human Resources", "Team Leaders"]
+      items: ["Operations Manager", "Recruiter", "Human Resources", "Team Leaders", "Project Management"]
     },
     {
       category: "Marketing & Creative",
@@ -123,6 +123,10 @@ export default function InsideOutHome() {
     {
       category: "Accounting",
       items: ["Accountants", "Bookkeepers", "Auditors", "Payroll"]
+    },
+    {
+      category: "Finance",
+      items: ["Financial Analysts", "Controllers", "Treasurers", "Managers"]
     }
   ];
 
@@ -418,17 +422,16 @@ export default function InsideOutHome() {
             </p>
           </div>
 
-          {/* Asymmetric masonry grid */}
-          <div className="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {/* Grid layout with equal card heights */}
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {roles.map((role, index) => (
               <div 
                 key={index} 
                 className={`
                   rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1
-                  ${index === 0 ? 'md:col-span-2 md:row-span-2 bg-gradient-to-br from-blue-900 to-blue-800 text-white' : 
-                    index === 1 ? 'md:col-span-2 bg-white border border-gray-100' :
-                    index === 2 ? 'md:col-span-2 bg-white border border-gray-100' :
-                    'md:col-span-2 bg-gradient-to-br from-blue-100 to-blue-50 border border-blue-200'}
+                  ${index === 0 ? 'bg-gradient-to-br from-blue-900 to-blue-800 text-white' : 
+                    index % 2 === 1 ? 'bg-white border border-gray-100' :
+                    'bg-gradient-to-br from-blue-100 to-blue-50 border border-blue-200'}
                 `}
               >
                 <h3 className={`font-serif text-2xl font-bold mb-6 ${index === 0 ? 'text-white' : 'text-blue-900'}`}>
