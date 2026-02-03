@@ -242,9 +242,12 @@ export default function InsideOutHome() {
           <div id="typeform-section" className="max-w-2xl mx-auto">
             <div className="bg-white rounded-2xl shadow-2xl p-8 lg:p-12">
               <div className="text-center mb-6">
-                <h3 className="font-serif text-3xl font-bold text-blue-900 mb-2">
-                  See If You Qualify
+                <h3 className="font-serif text-3xl md:text-4xl font-bold text-blue-900 mb-3">
+                  Zero Risk. Pay When You Hire.
                 </h3>
+                <h4 className="font-serif text-2xl font-semibold text-blue-800 mb-2">
+                  See If You Qualify
+                </h4>
                 <p className="text-gray-600">Takes 1 minute ✓</p>
               </div>
               
