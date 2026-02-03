@@ -9,24 +9,26 @@ export default function InsideOutHome() {
     }
   };
 
-  // First batch of video testimonials - mix of portrait and landscape
+  // First batch of video testimonials - 6 portraits as specified by user
   const videoTestimonialsSection1 = [
-    { name: "Weilynn", videoId: "k6hpbydwi1", isPortrait: true },
-    { name: "Anthony", videoId: "j97tjir20s", isPortrait: true },
-    { name: "Dayne", videoId: "gt8twx9i89", isPortrait: true },
-    { name: "Marc Sieber", videoId: "0bqco9u2rq", isPortrait: false },
-    { name: "Fady", videoId: "munyre4w59", isPortrait: true },
-    { name: "Brandon Gaty", videoId: "ojr6x18878", isPortrait: false },
+    { name: "Aiden Clark", company: "ArcStone Construction", videoId: "fzm8fc424t", isPortrait: true },
+    { name: "Anna Tan", company: "Dynamic Marketing", videoId: "k6hpbydwi1", isPortrait: true },
+    { name: "Dayne Kamela", company: "LitWithPrayer", videoId: "gt8twx9i89", isPortrait: true },
+    { name: "Nick Wingo", company: "Building Grit", videoId: "s25bg924zq", isPortrait: true },
+    { name: "Daniel Aroustamian", company: "CJC Roofing", videoId: "j97tjir20s", isPortrait: true },
+    { name: "Anthony Lazarus", company: "HappyNuts", videoId: "j97tjir20s", isPortrait: true },
   ];
 
-  // Second batch of video testimonials - all portraits
+  // Second batch of video testimonials - 3 portraits + 2 landscapes
   const videoTestimonialsSection2 = [
-    { name: "Aiden Clark", videoId: "fzm8fc424t", isPortrait: true },
-    { name: "Nick Wingo", videoId: "s25bg924zq", isPortrait: true },
-    { name: "Daniel Aroustamian", videoId: "fzm8fc424t", isPortrait: true },
-    { name: "Ryan Garvin", videoId: "lrbzjkj1a6", isPortrait: true },
-    { name: "Mohammad", videoId: "e3wrmp5fnn", isPortrait: true },
-    { name: "Tracy", videoId: "f7b1j80laz", isPortrait: true },
+    { name: "Cedric Merrills", company: "Wow 1 Day Painting", videoId: "j97tjir20s", isPortrait: true },
+    { name: "Shea Trecwicz", company: "Stylez Salon", videoId: "j97tjir20s", isPortrait: true },
+    { name: "Tracy Hall", company: "Center Stage Dance", videoId: "f7b1j80laz", isPortrait: true },
+    { name: "Mohammad Alwazy", company: "Fitness Influencer", videoId: "e3wrmp5fnn", isPortrait: true },
+    { name: "Fady Gamal", company: "G-Mobile Detailing", videoId: "munyre4w59", isPortrait: true },
+    { name: "Ryan Garvin", company: "TFG Benefits Insurance", videoId: "lrbzjkj1a6", isPortrait: true },
+    { name: "Brandon Gaty", company: "LettrLabs", videoId: "ojr6x18878", isPortrait: false },
+    { name: "Marc Sieber", company: "Wow 1 Day Painting", videoId: "0bqco9u2rq", isPortrait: false },
   ];
 
   const writtenTestimonials = [
@@ -224,7 +226,6 @@ export default function InsideOutHome() {
               
               {/* Typeform Embed */}
               <div data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13" style={{ minHeight: "400px" }}></div>
-              <script src="//embed.typeform.com/next/embed.js"></script>
             </div>
           </div>
         </div>
@@ -472,6 +473,7 @@ export default function InsideOutHome() {
                 </div>
                 <div className="text-center mt-4">
                   <p className="font-semibold text-blue-900">{testimonial.name}</p>
+                  <p className="text-sm text-gray-600">{testimonial.company}</p>
                 </div>
               </div>
             ))}
@@ -553,24 +555,70 @@ export default function InsideOutHome() {
             </p>
           </div>
 
-          {/* Grid layout for portrait videos */}
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-            {videoTestimonialsSection2.map((testimonial, index) => (
-              <div key={index} className="relative group">
-                <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1 ring-2 ring-gray-100 hover:ring-blue-300">
-                  <iframe 
-                    src={`https://fast.wistia.net/embed/iframe/${testimonial.videoId}?seo=true&videoFoam=true`}
-                    title={`${testimonial.name} testimonial`}
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                    className="w-full aspect-[9/16]"
-                  />
+          {/* Grid layout: 3 portraits on top row, 2 landscapes on bottom row */}
+          <div className="max-w-6xl mx-auto mb-12">
+            {/* Top row - 3 portraits */}
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              {videoTestimonialsSection2.slice(0, 3).map((testimonial, index) => (
+                <div key={index} className="relative group">
+                  <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1 ring-2 ring-gray-100 hover:ring-blue-300">
+                    <iframe 
+                      src={`https://fast.wistia.net/embed/iframe/${testimonial.videoId}?seo=true&videoFoam=true`}
+                      title={`${testimonial.name} testimonial`}
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      className={`w-full ${testimonial.isPortrait ? 'aspect-[9/16]' : 'aspect-video'}`}
+                    />
+                  </div>
+                  <div className="text-center mt-4">
+                    <p className="font-semibold text-blue-900">{testimonial.name}</p>
+                    <p className="text-sm text-gray-600">{testimonial.company}</p>
+                  </div>
                 </div>
-                <div className="text-center mt-4">
-                  <p className="font-semibold text-blue-900">{testimonial.name}</p>
+              ))}
+            </div>
+            
+            {/* Middle row - 3 more portraits */}
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              {videoTestimonialsSection2.slice(3, 6).map((testimonial, index) => (
+                <div key={index} className="relative group">
+                  <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1 ring-2 ring-gray-100 hover:ring-blue-300">
+                    <iframe 
+                      src={`https://fast.wistia.net/embed/iframe/${testimonial.videoId}?seo=true&videoFoam=true`}
+                      title={`${testimonial.name} testimonial`}
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      className={`w-full ${testimonial.isPortrait ? 'aspect-[9/16]' : 'aspect-video'}`}
+                    />
+                  </div>
+                  <div className="text-center mt-4">
+                    <p className="font-semibold text-blue-900">{testimonial.name}</p>
+                    <p className="text-sm text-gray-600">{testimonial.company}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            
+            {/* Bottom row - 2 landscape videos centered */}
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {videoTestimonialsSection2.slice(6, 8).map((testimonial, index) => (
+                <div key={index} className="relative group">
+                  <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1 ring-2 ring-gray-100 hover:ring-blue-300">
+                    <iframe 
+                      src={`https://fast.wistia.net/embed/iframe/${testimonial.videoId}?seo=true&videoFoam=true`}
+                      title={`${testimonial.name} testimonial`}
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      className={`w-full ${testimonial.isPortrait ? 'aspect-[9/16]' : 'aspect-video'}`}
+                    />
+                  </div>
+                  <div className="text-center mt-4">
+                    <p className="font-semibold text-blue-900">{testimonial.name}</p>
+                    <p className="text-sm text-gray-600">{testimonial.company}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="text-center">
