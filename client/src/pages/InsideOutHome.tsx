@@ -270,26 +270,23 @@ export default function InsideOutHome() {
             </p>
           </div>
 
-          {/* Asymmetric grid layout */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12 max-w-6xl mx-auto">
-            {/* Large featured card */}
-            <div className="md:row-span-2 bg-gradient-to-br from-blue-900 to-blue-800 rounded-3xl p-10 shadow-2xl text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-2xl"></div>
-              <div className="relative z-10">
-                <div className="w-20 h-20 rounded-2xl bg-yellow-400/20 flex items-center justify-center mb-6 backdrop-blur-sm">
-                  <CheckCircle2 className="w-10 h-10 text-yellow-400" />
-                </div>
-                <h3 className="font-serif text-3xl font-bold mb-6">
-                  Pay Only When You Hire
-                </h3>
-                <p className="text-blue-100 leading-relaxed text-lg">
-                  Once you've found your perfect VA, one simple fee covers everything. No monthly subscriptions, no hidden costs, no surprises.
-                </p>
+          {/* Balanced 3-column grid layout */}
+          <div className="grid md:grid-cols-3 gap-8 mb-12 max-w-6xl mx-auto">
+            {/* Card 1 */}
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1">
+              <div className="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
+                <CheckCircle2 className="w-8 h-8 text-blue-900" />
               </div>
+              <h3 className="font-serif text-2xl font-bold text-blue-900 mb-4">
+                Pay Only When You Hire
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                Once you've found your perfect VA, one simple fee covers everything. No monthly subscriptions, no hidden costs, no surprises.
+              </p>
             </div>
 
-            {/* Two smaller cards */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+            {/* Card 2 */}
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1">
               <div className="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
                 <CheckCircle2 className="w-8 h-8 text-blue-900" />
               </div>
@@ -301,7 +298,8 @@ export default function InsideOutHome() {
               </p>
             </div>
 
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow">
+            {/* Card 3 */}
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1">
               <div className="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
                 <CheckCircle2 className="w-8 h-8 text-blue-900" />
               </div>
