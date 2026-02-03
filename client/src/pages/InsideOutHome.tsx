@@ -180,7 +180,7 @@ export default function InsideOutHome() {
         
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/95 via-blue-800/90 to-blue-700/85" />
         
-        <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="container relative z-10" style={{ paddingTop: "48px", paddingBottom: "48px" }}>
           {/* Logo and Headline */}
           <div className="text-center text-white space-y-8 mb-16">
             <div className="flex items-center justify-center">
@@ -256,11 +256,11 @@ export default function InsideOutHome() {
       </section>
 
       {/* Value Propositions - Asymmetric Layout inspired by Persona */}
-      <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         {/* Decorative curved shape */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 -translate-y-1/2 translate-x-1/3"></div>
         
-        <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="container relative z-10" style={{ paddingTop: "48px", paddingBottom: "48px" }}>
           <div className="text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               Why Choose InsideOut
@@ -326,11 +326,11 @@ export default function InsideOutHome() {
       </section>
 
       {/* Process Section - Custom Timeline Visualization inspired by Persona */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-16 bg-white relative overflow-hidden">
         {/* Decorative background shapes */}
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20 translate-y-1/2 -translate-x-1/3"></div>
         
-        <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="container relative z-10" style={{ paddingTop: "48px", paddingBottom: "48px" }}>
           <div className="text-center mb-20">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               Our Proven System for Finding A-Players
@@ -398,10 +398,10 @@ export default function InsideOutHome() {
       </section>
 
       {/* Roles Section - Masonry-style layout inspired by Persona */}
-      <section className="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-100 rounded-full blur-3xl opacity-20"></div>
         
-        <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="container relative z-10" style={{ paddingTop: "48px", paddingBottom: "48px" }}>
           <div className="text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               Roles We Fill with Amazing People
@@ -453,7 +453,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* Video Testimonials Section 1 - Mix of portrait and landscape */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-16 bg-white relative overflow-hidden">
         {/* Decorative dot pattern background */}
         <div className="absolute inset-0 opacity-5">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -466,7 +466,7 @@ export default function InsideOutHome() {
           </svg>
         </div>
 
-        <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="container relative z-10" style={{ paddingTop: "48px", paddingBottom: "48px" }}>
           <div className="text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               Trusted by 1,500+ Business Owners
@@ -511,8 +511,8 @@ export default function InsideOutHome() {
       </section>
 
       {/* Written Testimonials - Elegant card layout */}
-      <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
-        <div className="container" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+      <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container" style={{ paddingTop: "48px", paddingBottom: "48px" }}>
           <div className="text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               What Our Clients Say
@@ -558,12 +558,12 @@ export default function InsideOutHome() {
       </section>
 
       {/* Video Testimonials Section 2 - All portraits near the end */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-16 bg-white relative overflow-hidden">
         {/* Decorative background */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20"></div>
 
-        <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="container relative z-10" style={{ paddingTop: "48px", paddingBottom: "48px" }}>
           <div className="text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               More Success Stories
@@ -659,7 +659,7 @@ export default function InsideOutHome() {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-2xl"></div>
         
-        <div className="container relative z-10" style={{ paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="container relative z-10" style={{ paddingTop: "48px", paddingBottom: "48px" }}>
           <div className="text-center max-w-4xl mx-auto">
             <h2 className="font-serif text-5xl md:text-6xl font-bold mb-6">
               Ready to Build Your Dream Team?
