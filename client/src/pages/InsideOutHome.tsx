@@ -576,7 +576,7 @@ export default function InsideOutHome() {
             <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {/* InsideOut - Highlighted */}
               <div className="bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-xl p-6 shadow-xl relative border-2 border-blue-400 transform md:scale-105">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-blue-900 px-4 py-1 text-xs font-semibold tracking-wide uppercase">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-400 text-blue-900 px-4 py-1 text-xs font-semibold tracking-wide uppercase">
                   Recommended
                 </div>
                 <h4 className="text-xl font-bold mb-3 mt-2">InsideOut</h4>
