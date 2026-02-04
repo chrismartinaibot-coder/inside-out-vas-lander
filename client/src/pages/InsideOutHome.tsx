@@ -1328,7 +1328,7 @@ export default function InsideOutHome() {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-2xl"></div>
         
-        <div className="container relative z-10 py-12 md:py-16">
+        <div className="container relative z-10 py-8 md:py-12">
           <div className="text-center max-w-4xl mx-auto">
             <h2 className="font-serif text-5xl md:text-6xl font-bold mb-6">
               Ready to Build Your Dream Team?
