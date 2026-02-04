@@ -1,4 +1,4 @@
-import { CheckCircle2, Users, Play, ArrowRight, ChevronDown } from 'lucide-react';
+import { CheckCircle2, Users, Play, ArrowRight, ChevronDown, Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -13,6 +13,9 @@ export default function InsideOutHome() {
   const [counters, setCounters] = useState({ clients: 0, vas: 0, savings: 0 });
   const [hasAnimated, setHasAnimated] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
+  
+  // State for mobile menu
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Animated counter effect
   useEffect(() => {
@@ -272,7 +275,7 @@ export default function InsideOutHome() {
   return (
     <div className="min-h-screen bg-white">
       {/* Sticky Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-blue-900/95 backdrop-blur-sm border-b border-blue-800 shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -280,57 +283,115 @@ export default function InsideOutHome() {
               <img 
                 src="/images/insideout-logo-white.svg" 
                 alt="InsideOut" 
-                className="h-6 w-auto brightness-0"
+                className="h-6 w-auto"
               />
             </div>
             
-            {/* Navigation Links */}
+            {/* Mobile Menu Button */}
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden text-white p-2"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+            
+            {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
               <button 
                 onClick={() => scrollToSection('why-choose')}
-                className="text-sm font-medium text-gray-700 hover:text-blue-900 transition-colors"
+                className="text-sm font-medium text-white/90 hover:text-white transition-colors"
               >
                 Why Choose Us
               </button>
               <button 
                 onClick={() => scrollToSection('process')}
-                className="text-sm font-medium text-gray-700 hover:text-blue-900 transition-colors"
+                className="text-sm font-medium text-white/90 hover:text-white transition-colors"
               >
                 Our Process
               </button>
               <button 
                 onClick={() => scrollToSection('global-talent')}
-                className="text-sm font-medium text-gray-700 hover:text-blue-900 transition-colors"
+                className="text-sm font-medium text-white/90 hover:text-white transition-colors"
               >
                 Global Talent
               </button>
               <button 
                 onClick={() => scrollToSection('roles')}
-                className="text-sm font-medium text-gray-700 hover:text-blue-900 transition-colors"
+                className="text-sm font-medium text-white/90 hover:text-white transition-colors"
               >
                 Roles
               </button>
               <button 
                 onClick={() => scrollToSection('testimonials')}
-                className="text-sm font-medium text-gray-700 hover:text-blue-900 transition-colors"
+                className="text-sm font-medium text-white/90 hover:text-white transition-colors"
               >
                 Testimonials
               </button>
               <button 
                 onClick={() => scrollToSection('faq')}
-                className="text-sm font-medium text-gray-700 hover:text-blue-900 transition-colors"
+                className="text-sm font-medium text-white/90 hover:text-white transition-colors"
               >
                 FAQ
               </button>
               <Button 
                 onClick={() => scrollToSection('typeform-section')}
                 size="sm"
-                className="bg-blue-900 hover:bg-blue-800 text-white rounded-full"
+                className="bg-white text-blue-900 hover:bg-gray-100 rounded-full"
               >
                 Get Started
               </Button>
             </div>
           </div>
+          
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden pb-4 pt-2 space-y-2">
+              <button 
+                onClick={() => { scrollToSection('why-choose'); setMobileMenuOpen(false); }}
+                className="block w-full text-left px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-blue-800 rounded transition-colors"
+              >
+                Why Choose Us
+              </button>
+              <button 
+                onClick={() => { scrollToSection('process'); setMobileMenuOpen(false); }}
+                className="block w-full text-left px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-blue-800 rounded transition-colors"
+              >
+                Our Process
+              </button>
+              <button 
+                onClick={() => { scrollToSection('global-talent'); setMobileMenuOpen(false); }}
+                className="block w-full text-left px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-blue-800 rounded transition-colors"
+              >
+                Global Talent
+              </button>
+              <button 
+                onClick={() => { scrollToSection('roles'); setMobileMenuOpen(false); }}
+                className="block w-full text-left px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-blue-800 rounded transition-colors"
+              >
+                Roles
+              </button>
+              <button 
+                onClick={() => { scrollToSection('testimonials'); setMobileMenuOpen(false); }}
+                className="block w-full text-left px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-blue-800 rounded transition-colors"
+              >
+                Testimonials
+              </button>
+              <button 
+                onClick={() => { scrollToSection('faq'); setMobileMenuOpen(false); }}
+                className="block w-full text-left px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-blue-800 rounded transition-colors"
+              >
+                FAQ
+              </button>
+              <Button 
+                onClick={() => { scrollToSection('typeform-section'); setMobileMenuOpen(false); }}
+                size="sm"
+                className="w-full bg-white text-blue-900 hover:bg-gray-100 rounded-full mt-2"
+              >
+                Get Started
+              </Button>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -359,16 +420,8 @@ export default function InsideOutHome() {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/95 via-blue-800/90 to-blue-700/85" />
         
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
-          {/* Logo and Headline */}
+          {/* Headline */}
           <div className="text-center text-white space-y-4 mb-8">
-            <div className="flex items-center justify-center">
-              <img 
-                src="/images/insideout-logo-white.svg" 
-                alt="InsideOut" 
-                className="h-8 w-auto"
-              />
-            </div>
-
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-4xl mx-auto px-4">
               Hire Global Talent at 90% Lower Cost
             </h1>
@@ -513,7 +566,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* Process Section - Custom Timeline Visualization inspired by Persona */}
-      <section className="py-8 md:py-16 bg-white relative overflow-hidden">
+      <section id="process" className="py-8 md:py-16 bg-white relative overflow-hidden">
         {/* Decorative background shapes */}
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20 translate-y-1/2 -translate-x-1/3"></div>
         
@@ -836,7 +889,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* Video Testimonials Section 1 - Mix of portrait and landscape */}
-      <section className="py-8 md:py-16 bg-white relative overflow-hidden">
+      <section id="testimonials" className="py-8 md:py-16 bg-white relative overflow-hidden">
         {/* Decorative dot pattern background */}
         <div className="absolute inset-0 opacity-5">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
