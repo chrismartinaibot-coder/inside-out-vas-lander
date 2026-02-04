@@ -506,7 +506,7 @@ export default function InsideOutHome() {
                 <p className="text-gray-600 leading-relaxed transition-colors">
                   The world's premier BPO hub. Filipino VAs excel in back-office operations, customer service, and administrative tasks. With exceptional English proficiency, strong work ethic, and the lowest hourly rates ($4-6/hr), they deliver unmatched value for high-volume operational roles.
                 </p>
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-6 flex gap-2">
                   <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Back Office</span>
                   <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Customer Service</span>
                   <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Operations</span>
@@ -531,7 +531,7 @@ export default function InsideOutHome() {
                 <p className="text-gray-600 leading-relaxed transition-colors">
                   Perfect for bilingual roles and real-time collaboration. Latin American VAs offer native Spanish fluency, cultural alignment with US business practices, and overlapping work hours. Ideal for sales, customer-facing roles, and teams requiring synchronous communication ($6-8/hr).
                 </p>
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-6 flex gap-2">
                   <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Spanish Speaking</span>
                   <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">US Time Zones</span>
                   <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Sales & Support</span>
@@ -556,7 +556,7 @@ export default function InsideOutHome() {
                 <p className="text-gray-600 leading-relaxed transition-colors">
                   Premium English proficiency meets affordability. South African VAs bring native-level English, sophisticated communication skills, and strong educational backgrounds. Perfect for client-facing roles, content creation, and positions requiring nuanced language mastery ($7-9/hr).
                 </p>
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-6 flex gap-2">
                   <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Native English</span>
                   <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Client-Facing</span>
                   <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Content Creation</span>
@@ -581,7 +581,7 @@ export default function InsideOutHome() {
                 <p className="text-gray-600 leading-relaxed transition-colors">
                   Emerging tech and creative powerhouse. Egyptian VAs excel in digital marketing, graphic design, web development, and technical roles. With strong STEM education, creative talent, and competitive rates ($5-7/hr), they're ideal for specialized and technical positions.
                 </p>
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-6 flex gap-2">
                   <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Tech & IT</span>
                   <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Digital Marketing</span>
                   <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Creative Design</span>
