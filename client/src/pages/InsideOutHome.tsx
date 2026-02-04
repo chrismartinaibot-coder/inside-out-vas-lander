@@ -433,7 +433,7 @@ export default function InsideOutHome() {
         
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           {/* Headline */}
-          <div className="text-center text-white space-y-4 mb-8">
+          <div className="text-center text-white space-y-4 mb-8 pt-6 md:pt-0">
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-4xl mx-auto px-4">
               Hire Global Talent at 90% Lower Cost
             </h1>
@@ -1324,7 +1324,7 @@ export default function InsideOutHome() {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-2xl"></div>
         
-        <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
+        <div className="container relative z-10 py-12 md:py-16">
           <div className="text-center max-w-4xl mx-auto">
             <h2 className="font-serif text-5xl md:text-6xl font-bold mb-6">
               Ready to Build Your Dream Team?
