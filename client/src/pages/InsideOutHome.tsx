@@ -1,8 +1,77 @@
-import { CheckCircle2, Users, Play, ArrowRight } from 'lucide-react';
+import { CheckCircle2, Users, Play, ArrowRight, ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { useEffect } from 'react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { useEffect, useState, useRef } from 'react';
 
 export default function InsideOutHome() {
+  // State for animated counters
+  const [counters, setCounters] = useState({ clients: 0, vas: 0, savings: 0 });
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const statsRef = useRef<HTMLDivElement>(null);
+
+  // Animated counter effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+          
+          // Animate clients counter to 1500
+          let clientsCount = 0;
+          const clientsInterval = setInterval(() => {
+            clientsCount += 50;
+            if (clientsCount >= 1500) {
+              setCounters(prev => ({ ...prev, clients: 1500 }));
+              clearInterval(clientsInterval);
+            } else {
+              setCounters(prev => ({ ...prev, clients: clientsCount }));
+            }
+          }, 20);
+
+          // Animate VAs counter to 8000
+          let vasCount = 0;
+          const vasInterval = setInterval(() => {
+            vasCount += 250;
+            if (vasCount >= 8000) {
+              setCounters(prev => ({ ...prev, vas: 8000 }));
+              clearInterval(vasInterval);
+            } else {
+              setCounters(prev => ({ ...prev, vas: vasCount }));
+            }
+          }, 20);
+
+          // Animate savings counter to 100
+          let savingsCount = 0;
+          const savingsInterval = setInterval(() => {
+            savingsCount += 3;
+            if (savingsCount >= 100) {
+              setCounters(prev => ({ ...prev, savings: 100 }));
+              clearInterval(savingsInterval);
+            } else {
+              setCounters(prev => ({ ...prev, savings: savingsCount }));
+            }
+          }, 20);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current);
+      }
+    };
+  }, [hasAnimated]);
+
   // Initialize Typeform after component mounts
   useEffect(() => {
     // Add a small delay to ensure DOM is ready
@@ -169,7 +238,7 @@ export default function InsideOutHome() {
       <section 
         className="relative py-12 md:py-24 overflow-hidden"
         style={{
-          backgroundImage: 'url(/images/insideout-hero-abstract.png)',
+          backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/wuwGkeAhPkyEYDWC.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -221,26 +290,32 @@ export default function InsideOutHome() {
             </div>
           </div>
 
-          {/* Stats with decorative elements */}
-          <div className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 py-6 px-4 mb-8">
+          {/* Stats with decorative elements and animated counters */}
+          <div ref={statsRef} className="flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 py-6 px-4 mb-8">
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
               <div className="relative">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">1,500+</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">
+                  {counters.clients.toLocaleString()}+
+                </div>
                 <div className="text-xs sm:text-sm text-blue-100 mt-1">Clients Served</div>
               </div>
             </div>
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
               <div className="relative">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">8,000+</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">
+                  {counters.vas.toLocaleString()}+
+                </div>
                 <div className="text-xs sm:text-sm text-blue-100 mt-1">VAs Hired</div>
               </div>
             </div>
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-yellow-400/20 blur-xl"></div>
               <div className="relative">
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">$100M+</div>
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-yellow-400">
+                  ${counters.savings}M+
+                </div>
                 <div className="text-xs sm:text-sm text-blue-100 mt-1">Payroll Savings</div>
               </div>
             </div>
@@ -855,6 +930,114 @@ export default function InsideOutHome() {
               Start Your Search Today
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-8 md:py-16 bg-gradient-to-b from-white to-gray-50">
+        <div className="container" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
+          <div className="text-center mb-12">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+              FAQ
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Common questions about working with InsideOut VAs
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-4">
+              <AccordionItem value="item-1" className="bg-white rounded-xl shadow-md border border-blue-100 px-6">
+                <AccordionTrigger className="text-left text-lg font-semibold text-blue-900 hover:text-blue-700 py-5">
+                  Do I need to sign any contracts?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-700 pb-5 leading-relaxed">
+                  None whatsoever! There are no contracts with us or your virtual assistant. Everything is negotiable with your virtual assistant(s) and you can stop working with them whenever you want without any liability. Most of our clients will hire their virtual assistant(s) for 45 hours/week to work Mon-Fri, 8am to 5pm.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-2" className="bg-white rounded-xl shadow-md border border-blue-100 px-6">
+                <AccordionTrigger className="text-left text-lg font-semibold text-blue-900 hover:text-blue-700 py-5">
+                  How do I pay my virtual assistant?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-700 pb-5 leading-relaxed">
+                  You can use any payment platform. Some examples include PayPal, Wise or Payoneer.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-3" className="bg-white rounded-xl shadow-md border border-blue-100 px-6">
+                <AccordionTrigger className="text-left text-lg font-semibold text-blue-900 hover:text-blue-700 py-5">
+                  How do you ensure a virtual employee matches my company's needs?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-700 pb-5 leading-relaxed">
+                  We conduct a detailed assessment of your business requirements and match you with assistants who have the skills and experience that align with your specific needs.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4" className="bg-white rounded-xl shadow-md border border-blue-100 px-6">
+                <AccordionTrigger className="text-left text-lg font-semibold text-blue-900 hover:text-blue-700 py-5">
+                  Can virtual employees handle confidential information?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-700 pb-5 leading-relaxed">
+                  Yes, your virtual assistant can sign a confidentiality agreement to ensure your information remains secure and private.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-5" className="bg-white rounded-xl shadow-md border border-blue-100 px-6">
+                <AccordionTrigger className="text-left text-lg font-semibold text-blue-900 hover:text-blue-700 py-5">
+                  How are virtual employees kept accountable for their work?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-700 pb-5 leading-relaxed">
+                  We use time-tracking software and productivity metrics, along with regular check-ins, to ensure accountability and transparency. For example, you can monitor their screens using a tool like HubStaff.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-6" className="bg-white rounded-xl shadow-md border border-blue-100 px-6">
+                <AccordionTrigger className="text-left text-lg font-semibold text-blue-900 hover:text-blue-700 py-5">
+                  How do you handle time zone differences?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-700 pb-5 leading-relaxed">
+                  We select virtual assistants who are flexible and can adjust their working hours to ensure they overlap with your business hours. Don't worry about this at all.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-7" className="bg-white rounded-xl shadow-md border border-blue-100 px-6">
+                <AccordionTrigger className="text-left text-lg font-semibold text-blue-900 hover:text-blue-700 py-5">
+                  What is the process for communicating with my virtual employee?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-700 pb-5 leading-relaxed">
+                  Communication is typically conducted through email, instant messaging, video calls, VOIP such as Skype or any preferred project management tool.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-8" className="bg-white rounded-xl shadow-md border border-blue-100 px-6">
+                <AccordionTrigger className="text-left text-lg font-semibold text-blue-900 hover:text-blue-700 py-5">
+                  Can virtual employees handle tasks beyond administrative work?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-700 pb-5 leading-relaxed">
+                  Yes, we source virtual assistants with a range of skills from administrative to specialized technical abilities.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-9" className="bg-white rounded-xl shadow-md border border-blue-100 px-6">
+                <AccordionTrigger className="text-left text-lg font-semibold text-blue-900 hover:text-blue-700 py-5">
+                  What's the typical duration for finding a virtual employee?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-700 pb-5 leading-relaxed">
+                  You'll start to receive candidates within only a few days! Conservatively, from start to finish, 2-3 weeks is enough time to go through plenty of candidates to make a selection.
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-10" className="bg-white rounded-xl shadow-md border border-blue-100 px-6">
+                <AccordionTrigger className="text-left text-lg font-semibold text-blue-900 hover:text-blue-700 py-5">
+                  What if I'm not happy with your service?
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-700 pb-5 leading-relaxed">
+                  We are so confident that we will find you an amazing hire that we offer a replacement guarantee. If you are dissatisfied with your placement, we will go out and find you a brand new hire.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
       </section>
