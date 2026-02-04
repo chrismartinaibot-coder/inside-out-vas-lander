@@ -72,6 +72,30 @@ export default function InsideOutHome() {
     };
   }, [hasAnimated]);
 
+  // Scroll-triggered animations
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections and cards
+    const elements = document.querySelectorAll('.fade-in-section, .fade-in-card');
+    elements.forEach(el => observer.observe(el));
+
+    return () => {
+      elements.forEach(el => observer.unobserve(el));
+    };
+  }, []);
+
   // Initialize Typeform after component mounts
   useEffect(() => {
     // Add a small delay to ensure DOM is ready
@@ -232,10 +256,87 @@ export default function InsideOutHome() {
     }
   ];
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 80; // Account for fixed nav height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Sticky Navigation Bar */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex items-center">
+              <img 
+                src="/images/insideout-logo-white.svg" 
+                alt="InsideOut" 
+                className="h-6 w-auto brightness-0"
+              />
+            </div>
+            
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center space-x-8">
+              <button 
+                onClick={() => scrollToSection('why-choose')}
+                className="text-sm font-medium text-gray-700 hover:text-blue-900 transition-colors"
+              >
+                Why Choose Us
+              </button>
+              <button 
+                onClick={() => scrollToSection('process')}
+                className="text-sm font-medium text-gray-700 hover:text-blue-900 transition-colors"
+              >
+                Our Process
+              </button>
+              <button 
+                onClick={() => scrollToSection('global-talent')}
+                className="text-sm font-medium text-gray-700 hover:text-blue-900 transition-colors"
+              >
+                Global Talent
+              </button>
+              <button 
+                onClick={() => scrollToSection('roles')}
+                className="text-sm font-medium text-gray-700 hover:text-blue-900 transition-colors"
+              >
+                Roles
+              </button>
+              <button 
+                onClick={() => scrollToSection('testimonials')}
+                className="text-sm font-medium text-gray-700 hover:text-blue-900 transition-colors"
+              >
+                Testimonials
+              </button>
+              <button 
+                onClick={() => scrollToSection('faq')}
+                className="text-sm font-medium text-gray-700 hover:text-blue-900 transition-colors"
+              >
+                FAQ
+              </button>
+              <Button 
+                onClick={() => scrollToSection('typeform-section')}
+                size="sm"
+                className="bg-blue-900 hover:bg-blue-800 text-white rounded-full"
+              >
+                Get Started
+              </Button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
       {/* Hero Section with Decorative Dot Pattern Background */}
       <section 
+        id="hero" 
         className="relative py-12 md:py-24 overflow-hidden"
         style={{
           backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/wuwGkeAhPkyEYDWC.png)',
@@ -342,12 +443,12 @@ export default function InsideOutHome() {
       </section>
 
       {/* Value Propositions - Asymmetric Layout inspired by Persona */}
-      <section className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section id="why-choose" className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         {/* Decorative curved shape */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 -translate-y-1/2 translate-x-1/3"></div>
         
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 fade-in-section">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               Why Choose InsideOut
             </h2>
@@ -359,7 +460,7 @@ export default function InsideOutHome() {
           {/* Balanced 3-column grid layout */}
           <div className="grid md:grid-cols-3 gap-8 mb-12 max-w-6xl mx-auto">
             {/* Card 1 */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1">
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1 fade-in-card">
               <div className="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
                 <CheckCircle2 className="w-8 h-8 text-blue-900" />
               </div>
@@ -372,7 +473,7 @@ export default function InsideOutHome() {
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1">
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1 fade-in-card">
               <div className="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
                 <CheckCircle2 className="w-8 h-8 text-blue-900" />
               </div>
@@ -385,7 +486,7 @@ export default function InsideOutHome() {
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1">
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1 fade-in-card">
               <div className="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
                 <CheckCircle2 className="w-8 h-8 text-blue-900" />
               </div>
@@ -485,7 +586,7 @@ export default function InsideOutHome() {
 
 
       {/* Global Talent Regions Section */}
-      <section className="py-8 md:py-16 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
+      <section id="global-talent" className="py-8 md:py-16 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
         {/* Dotted world map background */}
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
@@ -935,7 +1036,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-8 md:py-16 bg-gradient-to-b from-white to-gray-50">
+      <section id="faq" className="py-8 md:py-16 bg-gradient-to-b from-white to-gray-50">
         <div className="container" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           <div className="text-center mb-12">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">

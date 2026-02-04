@@ -176,3 +176,41 @@
     }
   }
 }
+
+/* Scroll-triggered animations */
+.fade-in-section,
+.fade-in-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-section.animate-in,
+.fade-in-card.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-card {
+  transition-delay: 0.1s;
+}
+
+.fade-in-card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.fade-in-card:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.fade-in-card:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.fade-in-card:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+.fade-in-card:nth-child(6) {
+  transition-delay: 0.6s;
+}
