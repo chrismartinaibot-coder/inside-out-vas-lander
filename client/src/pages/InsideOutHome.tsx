@@ -594,7 +594,7 @@ export default function InsideOutHome() {
                   </li>
                   <li className="flex items-start">
                     <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
-                    <span>Hired in 5-7 days</span>
+                    <span>Candidates in 5 days</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
@@ -603,9 +603,9 @@ export default function InsideOutHome() {
                 </ul>
                 
                 <div className="border-t border-blue-600 pt-3">
-                  <div className="text-xs text-blue-200 mb-1">Typical Monthly Cost</div>
-                  <div className="text-2xl font-bold">$700 - $1,800</div>
-                  <div className="text-xs text-blue-300 mt-1">70-90% savings vs US hire</div>
+                  <div className="text-xs text-blue-200 mb-1">Your Monthly Savings</div>
+                  <div className="text-2xl font-bold text-yellow-300">$2.2K - $13.2K</div>
+                  <div className="text-xs text-blue-300 mt-1">vs US hire ($4K-15K/mo)</div>
                 </div>
               </div>
 
