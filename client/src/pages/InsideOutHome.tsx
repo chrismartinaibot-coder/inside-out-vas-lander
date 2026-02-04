@@ -75,6 +75,18 @@ export default function InsideOutHome() {
     };
   }, [hasAnimated]);
 
+  // Close mobile menu on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [mobileMenuOpen]);
+
   // Scroll-triggered animations
   useEffect(() => {
     const observerOptions = {
@@ -549,6 +561,129 @@ export default function InsideOutHome() {
               <p className="text-gray-600 leading-relaxed">
                 If they don't exceed expectations, we'll replace them at no cost. Your success is our guarantee.
               </p>
+            </div>
+          </div>
+
+          {/* ROI Comparison Section */}
+          <div className="mt-20 mb-16">
+            <h3 className="text-3xl md:text-4xl font-serif font-bold text-center text-blue-900 mb-4">
+              Simple, Transparent Pricing
+            </h3>
+            <p className="text-center text-gray-600 text-lg mb-12 max-w-2xl mx-auto">
+              One placement fee. No hidden costs. No monthly subscriptions.
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {/* InsideOut - Highlighted */}
+              <div className="bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-2xl p-8 shadow-xl relative border-4 border-blue-600 transform md:scale-105">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-blue-900 px-6 py-2 rounded-full text-sm font-bold">
+                  BEST VALUE
+                </div>
+                <h4 className="text-2xl font-bold mb-2 mt-2">InsideOut</h4>
+                <div className="text-4xl font-bold mb-4">$2,495</div>
+                <div className="text-blue-200 text-sm mb-6">One-time placement fee</div>
+                
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5" />
+                    <span>Pre-vetted top 1% talent</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5" />
+                    <span>5-7 day placement</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5" />
+                    <span>6-month guarantee</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5" />
+                    <span>Pay only when you hire</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5" />
+                    <span>No monthly fees</span>
+                  </li>
+                </ul>
+                
+                <div className="border-t border-blue-600 pt-4">
+                  <div className="text-sm text-blue-200 mb-1">First Year Total</div>
+                  <div className="text-2xl font-bold">~$12K - $18K</div>
+                  <div className="text-xs text-blue-300 mt-1">($2,495 + VA salary at $4-8/hr)</div>
+                </div>
+              </div>
+
+              {/* Agency */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200">
+                <h4 className="text-2xl font-bold mb-2 text-gray-900">Agency</h4>
+                <div className="text-4xl font-bold mb-4 text-gray-900">$500+</div>
+                <div className="text-gray-600 text-sm mb-6">Per month recurring</div>
+                
+                <ul className="space-y-3 mb-8 text-gray-700">
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
+                    <span>Managed service</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
+                    <span>Variable quality</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
+                    <span>Limited control</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
+                    <span>Ongoing fees</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
+                    <span>Markup on labor</span>
+                  </li>
+                </ul>
+                
+                <div className="border-t border-gray-200 pt-4">
+                  <div className="text-sm text-gray-600 mb-1">First Year Total</div>
+                  <div className="text-2xl font-bold text-gray-900">$18K - $30K+</div>
+                  <div className="text-xs text-gray-500 mt-1">($500-2,500/mo × 12 months)</div>
+                </div>
+              </div>
+
+              {/* DIY Hiring */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200">
+                <h4 className="text-2xl font-bold mb-2 text-gray-900">DIY Hiring</h4>
+                <div className="text-4xl font-bold mb-4 text-gray-900">"Free"</div>
+                <div className="text-gray-600 text-sm mb-6">Your time investment</div>
+                
+                <ul className="space-y-3 mb-8 text-gray-700">
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
+                    <span>Full control</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
+                    <span>50+ hours screening</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
+                    <span>High turnover risk</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
+                    <span>Trial & error</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
+                    <span>No guarantee</span>
+                  </li>
+                </ul>
+                
+                <div className="border-t border-gray-200 pt-4">
+                  <div className="text-sm text-gray-600 mb-1">First Year Total</div>
+                  <div className="text-2xl font-bold text-gray-900">$15K - $25K</div>
+                  <div className="text-xs text-gray-500 mt-1">(50+ hrs @ your rate + bad hires)</div>
+                </div>
+              </div>
             </div>
           </div>
 
