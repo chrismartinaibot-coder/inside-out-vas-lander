@@ -835,7 +835,7 @@ export default function InsideOutHome() {
         </div>
       </section>
       {/* Roles Section - Masonry-style layout inspired by Persona */}
-      <section className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section id="roles" className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-100 rounded-full blur-3xl opacity-20"></div>
         
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
