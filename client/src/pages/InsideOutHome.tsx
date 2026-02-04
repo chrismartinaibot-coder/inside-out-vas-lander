@@ -590,7 +590,7 @@ export default function InsideOutHome() {
                   </li>
                   <li className="flex items-start">
                     <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
-                    <span>Full-time dedicated VA</span>
+                    <span>Hire directly, no middleman</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
