@@ -448,104 +448,100 @@ export default function InsideOutHome() {
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Philippines */}
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100 group-hover:border-transparent">
+              <div className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-blue-200">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center flex-shrink-0 group-hover:from-white group-hover:to-blue-50 transition-colors">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center flex-shrink-0 transition-colors">
                     <span className="text-3xl">🇵🇭</span>
                   </div>
                   <div>
-                    <h3 className="font-serif text-2xl font-bold text-blue-900 group-hover:text-white transition-colors">
+                    <h3 className="font-serif text-2xl font-bold text-blue-900 transition-colors">
                       Philippines
                     </h3>
-                    <p className="text-sm text-blue-600 font-medium group-hover:text-blue-200 transition-colors">Most Cost-Effective</p>
+                    <p className="text-sm text-blue-600 font-medium transition-colors">Most Cost-Effective</p>
                   </div>
                 </div>
-                <p className="text-gray-600 leading-relaxed group-hover:text-blue-50 transition-colors">
+                <p className="text-gray-600 leading-relaxed transition-colors">
                   The world's premier BPO hub. Filipino VAs excel in back-office operations, customer service, and administrative tasks. With exceptional English proficiency, strong work ethic, and the lowest hourly rates ($4-6/hr), they deliver unmatched value for high-volume operational roles.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium group-hover:bg-white/20 group-hover:text-white transition-colors">Back Office</span>
-                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium group-hover:bg-white/20 group-hover:text-white transition-colors">Customer Service</span>
-                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium group-hover:bg-white/20 group-hover:text-white transition-colors">Operations</span>
+                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Back Office</span>
+                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Customer Service</span>
+                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Operations</span>
                 </div>
               </div>
             </div>
 
             {/* Latin America */}
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100 group-hover:border-transparent">
+              <div className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-blue-200">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center flex-shrink-0 group-hover:from-white group-hover:to-blue-50 transition-colors">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center flex-shrink-0 transition-colors">
                     <span className="text-3xl">🌎</span>
                   </div>
                   <div>
-                    <h3 className="font-serif text-2xl font-bold text-blue-900 group-hover:text-white transition-colors">
+                    <h3 className="font-serif text-2xl font-bold text-blue-900 transition-colors">
                       Latin America
                     </h3>
-                    <p className="text-sm text-blue-600 font-medium group-hover:text-blue-200 transition-colors">US Time Zone Aligned</p>
+                    <p className="text-sm text-blue-600 font-medium transition-colors">US Time Zone Aligned</p>
                   </div>
                 </div>
-                <p className="text-gray-600 leading-relaxed group-hover:text-blue-50 transition-colors">
+                <p className="text-gray-600 leading-relaxed transition-colors">
                   Perfect for bilingual roles and real-time collaboration. Latin American VAs offer native Spanish fluency, cultural alignment with US business practices, and overlapping work hours. Ideal for sales, customer-facing roles, and teams requiring synchronous communication ($6-8/hr).
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium group-hover:bg-white/20 group-hover:text-white transition-colors">Spanish Speaking</span>
-                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium group-hover:bg-white/20 group-hover:text-white transition-colors">US Time Zones</span>
-                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium group-hover:bg-white/20 group-hover:text-white transition-colors">Sales & Support</span>
+                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Spanish Speaking</span>
+                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">US Time Zones</span>
+                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Sales & Support</span>
                 </div>
               </div>
             </div>
 
             {/* South Africa */}
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100 group-hover:border-transparent">
+              <div className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-blue-200">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center flex-shrink-0 group-hover:from-white group-hover:to-blue-50 transition-colors">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center flex-shrink-0 transition-colors">
                     <span className="text-3xl">🇿🇦</span>
                   </div>
                   <div>
-                    <h3 className="font-serif text-2xl font-bold text-blue-900 group-hover:text-white transition-colors">
+                    <h3 className="font-serif text-2xl font-bold text-blue-900 transition-colors">
                       South Africa
                     </h3>
-                    <p className="text-sm text-blue-600 font-medium group-hover:text-blue-200 transition-colors">Native English Speakers</p>
+                    <p className="text-sm text-blue-600 font-medium transition-colors">Native English Speakers</p>
                   </div>
                 </div>
-                <p className="text-gray-600 leading-relaxed group-hover:text-blue-50 transition-colors">
+                <p className="text-gray-600 leading-relaxed transition-colors">
                   Premium English proficiency meets affordability. South African VAs bring native-level English, sophisticated communication skills, and strong educational backgrounds. Perfect for client-facing roles, content creation, and positions requiring nuanced language mastery ($7-9/hr).
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium group-hover:bg-white/20 group-hover:text-white transition-colors">Native English</span>
-                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium group-hover:bg-white/20 group-hover:text-white transition-colors">Client-Facing</span>
-                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium group-hover:bg-white/20 group-hover:text-white transition-colors">Content Creation</span>
+                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Native English</span>
+                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Client-Facing</span>
+                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Content Creation</span>
                 </div>
               </div>
             </div>
 
             {/* Egypt */}
             <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100 group-hover:border-transparent">
+              <div className="relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-blue-200">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center flex-shrink-0 group-hover:from-white group-hover:to-blue-50 transition-colors">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center flex-shrink-0 transition-colors">
                     <span className="text-3xl">🇪🇬</span>
                   </div>
                   <div>
-                    <h3 className="font-serif text-2xl font-bold text-blue-900 group-hover:text-white transition-colors">
+                    <h3 className="font-serif text-2xl font-bold text-blue-900 transition-colors">
                       Egypt
                     </h3>
-                    <p className="text-sm text-blue-600 font-medium group-hover:text-blue-200 transition-colors">Technical & Creative Talent</p>
+                    <p className="text-sm text-blue-600 font-medium transition-colors">Technical & Creative Talent</p>
                   </div>
                 </div>
-                <p className="text-gray-600 leading-relaxed group-hover:text-blue-50 transition-colors">
+                <p className="text-gray-600 leading-relaxed transition-colors">
                   Emerging tech and creative powerhouse. Egyptian VAs excel in digital marketing, graphic design, web development, and technical roles. With strong STEM education, creative talent, and competitive rates ($5-7/hr), they're ideal for specialized and technical positions.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium group-hover:bg-white/20 group-hover:text-white transition-colors">Tech & IT</span>
-                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium group-hover:bg-white/20 group-hover:text-white transition-colors">Digital Marketing</span>
-                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium group-hover:bg-white/20 group-hover:text-white transition-colors">Creative Design</span>
+                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Tech & IT</span>
+                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Digital Marketing</span>
+                  <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium transition-colors">Creative Design</span>
                 </div>
               </div>
             </div>
