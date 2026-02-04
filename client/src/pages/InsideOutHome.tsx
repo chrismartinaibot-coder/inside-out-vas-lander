@@ -603,9 +603,9 @@ export default function InsideOutHome() {
                 </ul>
                 
                 <div className="border-t border-blue-600 pt-3">
-                  <div className="text-xs text-blue-200 mb-1">Your Monthly Savings</div>
-                  <div className="text-2xl font-bold text-yellow-300">$2.2K - $13.2K</div>
-                  <div className="text-xs text-blue-300 mt-1">vs US hire ($4K-15K/mo)</div>
+                  <div className="text-xs text-blue-200 mb-1">Average Client Saves</div>
+                  <div className="text-2xl font-bold text-yellow-300">$50K+ Per Year</div>
+                  <div className="text-xs text-blue-300 mt-1">5-10x ROI on your investment</div>
                 </div>
               </div>
 
