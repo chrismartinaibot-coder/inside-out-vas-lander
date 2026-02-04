@@ -436,13 +436,56 @@ export default function InsideOutHome() {
         </div>
 
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               Global Talent, Strategic Sourcing
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
               We source elite VAs from four strategic regions, each offering unique advantages for your business
             </p>
+            
+            {/* Key Attributes - Compact horizontal layout */}
+            <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto mt-8 mb-4">
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <div className="text-left">
+                  <p className="text-sm font-semibold text-gray-900">Fluent English</p>
+                  <p className="text-xs text-gray-600">Clear, professional communication</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <div className="text-left">
+                  <p className="text-sm font-semibold text-gray-900">Neutral Accents</p>
+                  <p className="text-xs text-gray-600">Seamless team integration</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <div className="text-left">
+                  <p className="text-sm font-semibold text-gray-900">College-Educated</p>
+                  <p className="text-xs text-gray-600">Skilled professionals</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <div className="text-left">
+                  <p className="text-sm font-semibold text-gray-900">Proven Experience</p>
+                  <p className="text-xs text-gray-600">Trusted by U.S. businesses</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
