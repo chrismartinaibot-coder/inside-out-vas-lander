@@ -622,7 +622,7 @@ export default function InsideOutHome() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                    <span>No direct communication</span>
+                    <span>You overpay monthly</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
@@ -630,7 +630,11 @@ export default function InsideOutHome() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                    <span>Locked into fees</span>
+                    <span>Locked into contracts</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
+                    <span>Lower quality talent, less committed</span>
                   </li>
                 </ul>
                 
