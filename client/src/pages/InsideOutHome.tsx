@@ -567,121 +567,135 @@ export default function InsideOutHome() {
           {/* ROI Comparison Section */}
           <div className="mt-20 mb-16">
             <h3 className="text-3xl md:text-4xl font-serif font-bold text-center text-blue-900 mb-4">
-              Simple, Transparent Pricing
+              Why Smart Business Owners Choose InsideOut
             </h3>
             <p className="text-center text-gray-600 text-lg mb-12 max-w-2xl mx-auto">
-              One placement fee. No hidden costs. No monthly subscriptions.
+              Get elite talent at a fraction of the cost—without the headaches of agencies or US hiring.
             </p>
             
             <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {/* InsideOut - Highlighted */}
-              <div className="bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-2xl p-8 shadow-xl relative border-4 border-blue-600 transform md:scale-105">
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-blue-900 px-6 py-2 rounded-full text-sm font-bold">
-                  BEST VALUE
+              <div className="bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-2xl p-8 shadow-xl relative border-4 border-yellow-400 transform md:scale-110">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-400 text-blue-900 px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                  ⭐ THE SMART CHOICE ⭐
                 </div>
-                <h4 className="text-2xl font-bold mb-2 mt-2">InsideOut</h4>
-                <div className="text-4xl font-bold mb-4">$2,495</div>
-                <div className="text-blue-200 text-sm mb-6">One-time placement fee</div>
+                <h4 className="text-2xl font-bold mb-2 mt-2">InsideOut VAs</h4>
+                <div className="text-5xl font-bold mb-2">$700-1,800</div>
+                <div className="text-yellow-300 text-base font-semibold mb-6">/month</div>
                 
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5" />
-                    <span>Pre-vetted top 1% talent</span>
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-yellow-400" />
+                    <span className="font-medium">Elite pre-vetted talent (top 1%)</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5" />
-                    <span>5-7 day placement</span>
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-yellow-400" />
+                    <span className="font-medium">Full-time dedicated to YOU</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5" />
-                    <span>6-month guarantee</span>
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-yellow-400" />
+                    <span className="font-medium">Hired in 5-7 days</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5" />
-                    <span>Pay only when you hire</span>
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-yellow-400" />
+                    <span className="font-medium">6-month guarantee</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5" />
-                    <span>No monthly fees</span>
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-yellow-400" />
+                    <span className="font-medium">Direct communication</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-yellow-400" />
+                    <span className="font-medium">YOU own the relationship</span>
                   </li>
                 </ul>
                 
-                <div className="border-t border-blue-600 pt-4">
-                  <div className="text-sm text-blue-200 mb-1">First Year Total</div>
-                  <div className="text-2xl font-bold">~$12K - $18K</div>
-                  <div className="text-xs text-blue-300 mt-1">($2,495 + VA salary at $4-8/hr)</div>
+                <div className="border-t border-yellow-400 pt-4">
+                  <div className="text-sm text-yellow-300 mb-1 font-semibold">Annual Savings vs US Hire</div>
+                  <div className="text-3xl font-bold text-yellow-400">$38K - $158K</div>
+                  <div className="text-xs text-blue-200 mt-1">Save 70-90% on labor costs</div>
                 </div>
               </div>
 
               {/* Agency */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200">
+              <div className="bg-gray-50 rounded-2xl p-8 shadow-lg border-2 border-red-200 opacity-75">
+                <div className="text-red-600 text-xs font-bold mb-2 uppercase">Middleman Markup</div>
                 <h4 className="text-2xl font-bold mb-2 text-gray-900">Agency</h4>
-                <div className="text-4xl font-bold mb-4 text-gray-900">$500+</div>
-                <div className="text-gray-600 text-sm mb-6">Per month recurring</div>
+                <div className="text-4xl font-bold mb-2 text-red-600">$2K-3.5K</div>
+                <div className="text-gray-600 text-base font-semibold mb-6">/month forever</div>
                 
                 <ul className="space-y-3 mb-8 text-gray-700">
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
-                    <span>Managed service</span>
+                    <span className="text-red-500 mr-3 flex-shrink-0 mt-0.5 text-xl">✗</span>
+                    <span>They own the VA, not you</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
-                    <span>Variable quality</span>
+                    <span className="text-red-500 mr-3 flex-shrink-0 mt-0.5 text-xl">✗</span>
+                    <span>Can't communicate directly</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
-                    <span>Limited control</span>
+                    <span className="text-red-500 mr-3 flex-shrink-0 mt-0.5 text-xl">✗</span>
+                    <span>Shared resources (not dedicated)</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
-                    <span>Ongoing fees</span>
+                    <span className="text-red-500 mr-3 flex-shrink-0 mt-0.5 text-xl">✗</span>
+                    <span>Locked into monthly fees</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
-                    <span>Markup on labor</span>
+                    <span className="text-red-500 mr-3 flex-shrink-0 mt-0.5 text-xl">✗</span>
+                    <span>Huge markup on labor</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-red-500 mr-3 flex-shrink-0 mt-0.5 text-xl">✗</span>
+                    <span>Lose VA if you stop paying</span>
                   </li>
                 </ul>
                 
-                <div className="border-t border-gray-200 pt-4">
-                  <div className="text-sm text-gray-600 mb-1">First Year Total</div>
-                  <div className="text-2xl font-bold text-gray-900">$18K - $30K+</div>
-                  <div className="text-xs text-gray-500 mt-1">($500-2,500/mo × 12 months)</div>
+                <div className="border-t border-red-200 pt-4">
+                  <div className="text-sm text-gray-600 mb-1">Annual Cost</div>
+                  <div className="text-2xl font-bold text-red-600">$24K - $42K</div>
+                  <div className="text-xs text-gray-500 mt-1">2-3x more expensive than InsideOut</div>
                 </div>
               </div>
 
-              {/* DIY Hiring */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200">
-                <h4 className="text-2xl font-bold mb-2 text-gray-900">DIY Hiring</h4>
-                <div className="text-4xl font-bold mb-4 text-gray-900">"Free"</div>
-                <div className="text-gray-600 text-sm mb-6">Your time investment</div>
+              {/* US Hire */}
+              <div className="bg-gray-50 rounded-2xl p-8 shadow-lg border-2 border-red-200 opacity-75">
+                <div className="text-red-600 text-xs font-bold mb-2 uppercase">Expensive & Risky</div>
+                <h4 className="text-2xl font-bold mb-2 text-gray-900">US Hire</h4>
+                <div className="text-4xl font-bold mb-2 text-red-600">$4K-15K</div>
+                <div className="text-gray-600 text-base font-semibold mb-6">/month + benefits</div>
                 
                 <ul className="space-y-3 mb-8 text-gray-700">
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
-                    <span>Full control</span>
+                    <span className="text-red-500 mr-3 flex-shrink-0 mt-0.5 text-xl">✗</span>
+                    <span>5-10x more expensive</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
-                    <span>50+ hours screening</span>
+                    <span className="text-red-500 mr-3 flex-shrink-0 mt-0.5 text-xl">✗</span>
+                    <span>Benefits, taxes, overhead</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
-                    <span>High turnover risk</span>
+                    <span className="text-red-500 mr-3 flex-shrink-0 mt-0.5 text-xl">✗</span>
+                    <span>Months to find & onboard</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
-                    <span>Trial & error</span>
+                    <span className="text-red-500 mr-3 flex-shrink-0 mt-0.5 text-xl">✗</span>
+                    <span>Expensive to fire</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle2 className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-gray-400" />
-                    <span>No guarantee</span>
+                    <span className="text-red-500 mr-3 flex-shrink-0 mt-0.5 text-xl">✗</span>
+                    <span>Limited to local talent pool</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-red-500 mr-3 flex-shrink-0 mt-0.5 text-xl">✗</span>
+                    <span>PTO, sick days, turnover costs</span>
                   </li>
                 </ul>
                 
-                <div className="border-t border-gray-200 pt-4">
-                  <div className="text-sm text-gray-600 mb-1">First Year Total</div>
-                  <div className="text-2xl font-bold text-gray-900">$15K - $25K</div>
-                  <div className="text-xs text-gray-500 mt-1">(50+ hrs @ your rate + bad hires)</div>
+                <div className="border-t border-red-200 pt-4">
+                  <div className="text-sm text-gray-600 mb-1">Annual Cost</div>
+                  <div className="text-2xl font-bold text-red-600">$48K - $180K</div>
+                  <div className="text-xs text-gray-500 mt-1">5-10x more than InsideOut</div>
                 </div>
               </div>
             </div>
