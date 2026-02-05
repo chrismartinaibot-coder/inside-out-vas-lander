@@ -447,11 +447,10 @@ export default function InsideOutHome() {
           <div className="max-w-3xl mx-auto mb-8">
             <div className="rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/10">
               <iframe 
-                src="https://fast.wistia.net/embed/iframe/7pdcefp4vc?seo=true&videoFoam=true&preload=true"
+                src="https://fast.wistia.net/embed/iframe/7pdcefp4vc?seo=true&videoFoam=true"
                 title="VSL Video"
                 allow="autoplay; fullscreen"
                 allowFullScreen
-                loading="eager"
                 className="w-full aspect-video"
               />
             </div>
