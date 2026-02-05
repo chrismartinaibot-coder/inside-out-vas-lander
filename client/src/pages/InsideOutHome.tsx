@@ -89,31 +89,29 @@ export default function InsideOutHome() {
 
   // Scroll-triggered animations
   useEffect(() => {
-    // Wait for DOM to be fully rendered
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    // Wait for DOM to be fully rendered before observing
     const timer = setTimeout(() => {
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in');
-          }
-        });
-      }, observerOptions);
-
-      // Observe all sections and cards
       const elements = document.querySelectorAll('.fade-in-section, .fade-in-card');
       elements.forEach(el => observer.observe(el));
-
-      return () => {
-        elements.forEach(el => observer.unobserve(el));
-      };
     }, 100);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, []);
 
   // Initialize Typeform after component mounts
