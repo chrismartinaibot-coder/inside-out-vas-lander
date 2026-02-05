@@ -224,36 +224,64 @@
   }
 }
 
-/* Scroll-triggered animations */
+/* Directional scroll animations */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-80px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-in-left.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(80px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-in-right.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-up {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-in-up.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .fade-in-section,
 .fade-in-card {
   opacity: 0;
-  transform: translateY(60px) scale(0.95);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fade-in-section.animate-in,
 .fade-in-card.animate-in {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
-.fade-in-card {
-  transition-delay: 0.1s;
-}
-
-.fade-in-card:nth-child(2) {
-  transition-delay: 0.2s;
-}
-
-.fade-in-card:nth-child(3) {
-  transition-delay: 0.3s;
-}
-
-.fade-in-card:nth-child(4) {
-  transition-delay: 0.4s;
-}
+/* Staggered card animations */
+.fade-in-card:nth-child(1) { transition-delay: 0.1s; }
+.fade-in-card:nth-child(2) { transition-delay: 0.2s; }
+.fade-in-card:nth-child(3) { transition-delay: 0.3s; }
+.fade-in-card:nth-child(4) { transition-delay: 0.4s; }
+.fade-in-card:nth-child(5) { transition-delay: 0.5s; }
+.fade-in-card:nth-child(6) { transition-delay: 0.6s; }
 
 .fade-in-card:nth-child(5) {
   transition-delay: 0.5s;

@@ -87,15 +87,15 @@ export default function InsideOutHome() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [mobileMenuOpen]);
 
-  // Scroll-triggered animations
+  // Directional scroll animations
   useEffect(() => {
     const animateOnScroll = () => {
-      const elements = document.querySelectorAll('.fade-in-section, .fade-in-card');
+      const elements = document.querySelectorAll('.fade-in-section, .fade-in-card, .slide-in-left, .slide-in-right, .slide-in-up');
       elements.forEach(el => {
         const rect = el.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-        // Trigger animation when element is 85% down the screen (earlier)
-        if (rect.top < windowHeight * 0.85) {
+        // Trigger animation when element is 80% down the screen
+        if (rect.top < windowHeight * 0.8) {
           el.classList.add('animate-in');
         }
       });
@@ -526,7 +526,7 @@ export default function InsideOutHome() {
         
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           <div className="text-center mb-16 fade-in-section">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4 slide-in-left">
               Why Choose InsideOut
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -587,7 +587,7 @@ export default function InsideOutHome() {
         
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           <div className="text-center mb-20">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4 slide-in-left">
               Our Proven System for Finding A-Players
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -681,7 +681,7 @@ export default function InsideOutHome() {
 
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           <div className="text-center mb-12">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4 slide-in-left">
               Global Talent, Strategic Sourcing
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
@@ -855,7 +855,7 @@ export default function InsideOutHome() {
         
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4 slide-in-left">
               Roles We Fill with Amazing People
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -1045,11 +1045,11 @@ export default function InsideOutHome() {
 
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
-              Trusted by 1,500+ Business Owners
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4 slide-in-left">
+              Why Choose InsideOut
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Real stories from leaders who found their ideal team through InsideOut
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto slide-in-right">
+              Our proven headhunting process doesn't just fill positions—we place the elite VAs who grow your business.
             </p>
           </div>
 
