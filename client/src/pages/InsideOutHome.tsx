@@ -91,7 +91,7 @@ export default function InsideOutHome() {
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
+      rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -105,7 +105,15 @@ export default function InsideOutHome() {
     // Wait for DOM to be fully rendered before observing
     const timer = setTimeout(() => {
       const elements = document.querySelectorAll('.fade-in-section, .fade-in-card');
-      elements.forEach(el => observer.observe(el));
+      elements.forEach(el => {
+        observer.observe(el);
+        // Trigger animation immediately for elements already in viewport
+        const rect = el.getBoundingClientRect();
+        const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
+        if (isInViewport) {
+          el.classList.add('animate-in');
+        }
+      });
     }, 100);
 
     return () => {
