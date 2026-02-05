@@ -508,7 +508,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* Value Propositions - Asymmetric Layout inspired by Persona */}
-      <section id="why-choose" className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section id="why-choose" className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden fade-in-section">
         {/* Decorative curved shape */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 -translate-y-1/2 translate-x-1/3"></div>
         
@@ -569,7 +569,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* Process Section - Custom Timeline Visualization inspired by Persona */}
-      <section id="process" className="py-8 md:py-16 bg-white relative overflow-hidden">
+      <section id="process" className="py-8 md:py-16 bg-white relative overflow-hidden fade-in-section">
         {/* Decorative background shapes */}
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20 translate-y-1/2 -translate-x-1/3"></div>
         
@@ -642,7 +642,7 @@ export default function InsideOutHome() {
 
 
       {/* Global Talent Regions Section */}
-      <section id="global-talent" className="py-8 md:py-16 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
+      <section id="global-talent" className="py-8 md:py-16 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden fade-in-section">
         {/* Dotted world map background */}
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
@@ -838,7 +838,7 @@ export default function InsideOutHome() {
         </div>
       </section>
       {/* Roles Section - Masonry-style layout inspired by Persona */}
-      <section id="roles" className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section id="roles" className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden fade-in-section">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-100 rounded-full blur-3xl opacity-20"></div>
         
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
@@ -893,7 +893,7 @@ export default function InsideOutHome() {
 
 
       {/* ROI Comparison Section */}
-      <section className="py-8 md:py-16 bg-white">
+      <section className="py-8 md:py-16 bg-white fade-in-section">
         <div className="container">
           <h3 className="text-3xl md:text-4xl font-serif font-bold text-center text-blue-900 mb-4">
             Why Smart Business Owners Choose InsideOut
@@ -1018,7 +1018,7 @@ export default function InsideOutHome() {
         </div>
       </section>
       {/* Video Testimonials Section 1 - Mix of portrait and landscape */}
-      <section id="testimonials" className="py-8 md:py-16 bg-white relative overflow-hidden">
+      <section id="testimonials" className="py-8 md:py-16 bg-white relative overflow-hidden fade-in-section">
         {/* Decorative dot pattern background */}
         <div className="absolute inset-0 opacity-5">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -1076,7 +1076,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* Written Testimonials - Elegant card layout */}
-      <section className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white">
+      <section className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white fade-in-section">
         <div className="container" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           <div className="text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
@@ -1123,7 +1123,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* Video Testimonials Section 2 - All portraits near the end */}
-      <section className="py-8 md:py-16 bg-white relative overflow-hidden">
+      <section className="py-8 md:py-16 bg-white relative overflow-hidden fade-in-section">
         {/* Decorative background */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20"></div>
@@ -1218,7 +1218,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-8 md:py-16 bg-gradient-to-b from-white to-gray-50">
+      <section id="faq" className="py-8 md:py-16 bg-gradient-to-b from-white to-gray-50 fade-in-section">
         <div className="container" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           <div className="text-center mb-12">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
@@ -1326,7 +1326,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* Final CTA Section with organic shapes */}
-      <section className="py-32 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative overflow-hidden">
+      <section className="py-32 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative overflow-hidden fade-in-section">
         {/* Decorative organic shapes */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
