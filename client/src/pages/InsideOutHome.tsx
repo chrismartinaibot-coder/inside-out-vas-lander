@@ -89,36 +89,37 @@ export default function InsideOutHome() {
 
   // Scroll-triggered animations
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-        }
-      });
-    }, observerOptions);
-
-    // Wait for DOM to be fully rendered before observing
-    const timer = setTimeout(() => {
+    const animateOnScroll = () => {
       const elements = document.querySelectorAll('.fade-in-section, .fade-in-card');
       elements.forEach(el => {
-        observer.observe(el);
-        // Trigger animation immediately for elements already in viewport
         const rect = el.getBoundingClientRect();
-        const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
-        if (isInViewport) {
+        const windowHeight = window.innerHeight;
+        // Trigger animation when element is 85% down the screen (earlier)
+        if (rect.top < windowHeight * 0.85) {
           el.classList.add('animate-in');
         }
       });
-    }, 100);
+    };
 
+    // Run on mount
+    animateOnScroll();
+    
+    // Run on scroll with throttling for better performance
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          animateOnScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
     return () => {
-      clearTimeout(timer);
-      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
