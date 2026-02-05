@@ -564,129 +564,7 @@ export default function InsideOutHome() {
             </div>
           </div>
 
-          {/* ROI Comparison Section */}
-          <div className="mt-20 mb-16">
-            <h3 className="text-3xl md:text-4xl font-serif font-bold text-center text-blue-900 mb-4">
-              Why Smart Business Owners Choose InsideOut
-            </h3>
-            <p className="text-center text-gray-600 text-lg mb-12 max-w-2xl mx-auto">
-              Get elite talent at a fraction of the cost—without the headaches of agencies or US hiring.
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              {/* InsideOut - Highlighted */}
-              <div className="bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-xl p-6 shadow-xl relative border-2 border-blue-400 transform md:scale-105">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-400 text-blue-900 px-4 py-1 text-xs font-semibold tracking-wide uppercase">
-                  Recommended
-                </div>
-                <h4 className="text-xl font-bold mb-3 mt-2">InsideOut</h4>
-                <div className="text-3xl font-bold mb-1">One-Time Fee</div>
-                <div className="text-blue-200 text-sm mb-6">Pay only when you hire</div>
-                
-                <ul className="space-y-2 mb-6 text-sm">
-                  <li className="flex items-start">
-                    <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
-                    <span>Elite pre-vetted talent</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
-                    <span>Hire directly, no middleman</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
-                    <span>Candidates in 5 days</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
-                    <span>You own the relationship</span>
-                  </li>
-                </ul>
-                
-                <div className="border-t border-blue-600 pt-3">
-                  <div className="text-xs text-blue-200 mb-1">Average Client Saves</div>
-                  <div className="text-2xl font-bold text-yellow-300">$50K+ Per Year</div>
-                  <div className="text-xs text-blue-300 mt-1">5-10x ROI on your investment</div>
-                </div>
-              </div>
 
-              {/* Agency */}
-              <div className="bg-gray-50 rounded-xl p-6 shadow-lg border-2 border-gray-300 opacity-80">
-                <h4 className="text-xl font-bold mb-3 text-gray-900">Agency</h4>
-                <div className="text-3xl font-bold mb-1 text-gray-700">$2K-3.5K</div>
-                <div className="text-gray-500 text-sm mb-6">/month recurring</div>
-                
-                <ul className="space-y-2 mb-6 text-sm text-gray-600">
-                  <li className="flex items-start">
-                    <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                    <span>They own the VA</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                    <span>You overpay monthly</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                    <span>Shared resources</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                    <span>Locked into contracts</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                    <span>Lower quality talent, less committed</span>
-                  </li>
-                </ul>
-                
-                <div className="border-t border-gray-300 pt-3">
-                  <div className="text-xs text-gray-500 mb-1">Annual Cost</div>
-                  <div className="text-2xl font-bold text-gray-700">$24K - $42K</div>
-                </div>
-              </div>
-
-              {/* US Hire */}
-              <div className="bg-gray-50 rounded-xl p-6 shadow-lg border-2 border-gray-300 opacity-80">
-                <h4 className="text-xl font-bold mb-3 text-gray-900">US Hire</h4>
-                <div className="text-3xl font-bold mb-1 text-gray-700">$4K-15K</div>
-                <div className="text-gray-500 text-sm mb-6">/month + benefits</div>
-                
-                <ul className="space-y-2 mb-6 text-sm text-gray-600">
-                  <li className="flex items-start">
-                    <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                    <span>5-10x more expensive</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                    <span>Benefits & overhead</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                    <span>Months to hire</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                    <span>Limited talent pool</span>
-                  </li>
-                </ul>
-                
-                <div className="border-t border-gray-300 pt-3">
-                  <div className="text-xs text-gray-500 mb-1">Annual Cost</div>
-                  <div className="text-2xl font-bold text-gray-700">$48K - $180K</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <Button 
-              onClick={scrollToForm}
-              size="lg"
-              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
-            >
-              Start Your Search Today
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
         </div>
       </section>
 
@@ -1013,6 +891,132 @@ export default function InsideOutHome() {
         </div>
       </section>
 
+
+      {/* ROI Comparison Section */}
+      <section className="py-8 md:py-16 bg-white">
+        <div className="container">
+          <h3 className="text-3xl md:text-4xl font-serif font-bold text-center text-blue-900 mb-4">
+            Why Smart Business Owners Choose InsideOut
+          </h3>
+          <p className="text-center text-gray-600 text-lg mb-12 max-w-2xl mx-auto">
+            Get elite talent at a fraction of the cost—without the headaches of agencies or US hiring.
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {/* InsideOut - Highlighted */}
+            <div className="bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-xl p-6 shadow-xl relative border-2 border-blue-400 transform md:scale-105">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-400 text-blue-900 px-4 py-1 text-xs font-semibold tracking-wide uppercase">
+                Recommended
+              </div>
+              <h4 className="text-xl font-bold mb-3 mt-2">InsideOut</h4>
+              <div className="text-3xl font-bold mb-1">One-Time Fee</div>
+              <div className="text-blue-200 text-sm mb-6">Pay only when you hire</div>
+              
+              <ul className="space-y-2 mb-6 text-sm">
+                <li className="flex items-start">
+                  <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
+                  <span>Elite pre-vetted talent</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
+                  <span>Hire directly, no middleman</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
+                  <span>Candidates in 5 days</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
+                  <span>You own the relationship</span>
+                </li>
+              </ul>
+              
+              <div className="border-t border-blue-600 pt-3">
+                <div className="text-xs text-blue-200 mb-1">Average Client Saves</div>
+                <div className="text-2xl font-bold text-yellow-300">$50K+ Per Year</div>
+                <div className="text-xs text-blue-300 mt-1">5-10x ROI on your investment</div>
+              </div>
+            </div>
+
+            {/* Agency */}
+            <div className="bg-gray-50 rounded-xl p-6 shadow-lg border-2 border-gray-300 opacity-80">
+              <h4 className="text-xl font-bold mb-3 text-gray-900">Agency</h4>
+              <div className="text-3xl font-bold mb-1 text-gray-700">$2K-3.5K</div>
+              <div className="text-gray-500 text-sm mb-6">/month recurring</div>
+              
+              <ul className="space-y-2 mb-6 text-sm text-gray-600">
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
+                  <span>They own the VA</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
+                  <span>You overpay monthly</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
+                  <span>Shared resources</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
+                  <span>Locked into contracts</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
+                  <span>Lower quality talent, less committed</span>
+                </li>
+              </ul>
+              
+              <div className="border-t border-gray-300 pt-3">
+                <div className="text-xs text-gray-500 mb-1">Annual Cost</div>
+                <div className="text-2xl font-bold text-gray-700">$24K - $42K</div>
+              </div>
+            </div>
+
+            {/* US Hire */}
+            <div className="bg-gray-50 rounded-xl p-6 shadow-lg border-2 border-gray-300 opacity-80">
+              <h4 className="text-xl font-bold mb-3 text-gray-900">US Hire</h4>
+              <div className="text-3xl font-bold mb-1 text-gray-700">$4K-15K</div>
+              <div className="text-gray-500 text-sm mb-6">/month + benefits</div>
+              
+              <ul className="space-y-2 mb-6 text-sm text-gray-600">
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
+                  <span>5-10x more expensive</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
+                  <span>Benefits & overhead</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
+                  <span>Months to hire</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
+                  <span>Limited talent pool</span>
+                </li>
+              </ul>
+              
+              <div className="border-t border-gray-300 pt-3">
+                <div className="text-xs text-gray-500 mb-1">Annual Cost</div>
+                <div className="text-2xl font-bold text-gray-700">$48K - $180K</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Button 
+              onClick={scrollToForm}
+              size="lg"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+            >
+              Start Your Search Today
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </div>
+      </section>
       {/* Video Testimonials Section 1 - Mix of portrait and landscape */}
       <section id="testimonials" className="py-8 md:py-16 bg-white relative overflow-hidden">
         {/* Decorative dot pattern background */}
