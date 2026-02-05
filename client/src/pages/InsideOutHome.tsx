@@ -89,26 +89,31 @@ export default function InsideOutHome() {
 
   // Scroll-triggered animations
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
+    // Wait for DOM to be fully rendered
+    const timer = setTimeout(() => {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-        }
-      });
-    }, observerOptions);
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      }, observerOptions);
 
-    // Observe all sections and cards
-    const elements = document.querySelectorAll('.fade-in-section, .fade-in-card');
-    elements.forEach(el => observer.observe(el));
+      // Observe all sections and cards
+      const elements = document.querySelectorAll('.fade-in-section, .fade-in-card');
+      elements.forEach(el => observer.observe(el));
 
-    return () => {
-      elements.forEach(el => observer.unobserve(el));
-    };
+      return () => {
+        elements.forEach(el => observer.unobserve(el));
+      };
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   // Initialize Typeform after component mounts
@@ -631,7 +636,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="cta-button bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Get Started Now
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -829,7 +834,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="cta-button bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Find Your Perfect VA
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -882,7 +887,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="cta-button bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Find Your Perfect VA
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -1009,7 +1014,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="cta-button bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Start Your Search Today
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -1066,7 +1071,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="cta-button bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Join Them Today
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -1113,7 +1118,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="cta-button bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Get Your VA Today
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -1208,7 +1213,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="cta-button bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Start Your Search Today
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -1344,7 +1349,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-white hover:bg-gray-100 text-blue-900 px-12 py-8 text-xl rounded-full shadow-2xl hover:shadow-3xl transition-all font-semibold"
+              className="cta-button cta-button-glow bg-white hover:bg-gray-100 text-blue-900 px-12 py-8 text-xl rounded-full shadow-2xl hover:shadow-3xl transition-all font-semibold"
             >
               Start Your Search Today
               <ArrowRight className="ml-3 h-6 w-6" />
