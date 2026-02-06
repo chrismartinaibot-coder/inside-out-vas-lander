@@ -322,16 +322,17 @@ export default function InsideOutHome() {
           <div className="max-w-3xl mx-auto mb-8">
             <div 
               id="vsl-player"
-              className="rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/10 relative cursor-pointer group"
+              className="rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/10 relative cursor-pointer group aspect-video"
               onClick={(e) => {
                 const container = e.currentTarget;
+                container.style.cursor = 'default';
                 container.innerHTML = `<iframe 
                   src="https://fast.wistia.net/embed/iframe/7pdcefp4vc?seo=true&videoFoam=true&autoplay=1"
                   title="VSL Video"
                   allow="autoplay; fullscreen"
                   allowfullscreen
-                  class="w-full aspect-video"
-                  style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:1rem;"
+                  class="w-full h-full"
+                  style="border:0;"
                 ></iframe>`;
               }}
             >
@@ -339,7 +340,7 @@ export default function InsideOutHome() {
               <img 
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/SCpatQwWrloqWMQc.webp"
                 alt="Watch the Presentation"
-                className="w-full aspect-video object-cover"
+                className="w-full h-full object-cover"
               />
               {/* Play Button Overlay */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
