@@ -80,7 +80,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/60 via-primary/50 to-primary/55 z-10" />
           <img 
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/PeKYswJLDxoFokgu.jpg" 
+            src="/images/team-photo.jpg" 
             alt="VaDrop team" 
             className="w-full h-full object-cover opacity-70"
           />
