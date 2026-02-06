@@ -87,22 +87,27 @@ export default function InsideOutHome() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [mobileMenuOpen]);
 
-  // Directional scroll animations
+  // Scroll animations with staggered cards
   useEffect(() => {
     const animateOnScroll = () => {
       const elements = document.querySelectorAll('.fade-in-section, .fade-in-card, .slide-in-left, .slide-in-right, .slide-in-up');
       elements.forEach(el => {
+        // Skip if already animated
+        if (el.classList.contains('animate-in')) return;
+        
         const rect = el.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-        // Trigger animation when element is 80% down the screen
-        if (rect.top < windowHeight * 0.8) {
+        // Trigger animation when element enters viewport (100% threshold)
+        if (rect.top < windowHeight * 1.0) {
           el.classList.add('animate-in');
         }
       });
     };
 
-    // Run on mount
-    animateOnScroll();
+    // Wait for DOM to be ready, then run
+    setTimeout(() => {
+      animateOnScroll();
+    }, 100);
     
     // Run on scroll with throttling for better performance
     let ticking = false;
