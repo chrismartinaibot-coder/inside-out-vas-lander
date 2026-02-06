@@ -318,16 +318,37 @@ export default function InsideOutHome() {
             </p>
           </div>
 
-          {/* VSL Video */}
+          {/* VSL Video with Facade Pattern for Performance */}
           <div className="max-w-3xl mx-auto mb-8">
-            <div className="rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/10">
-              <iframe 
-                src="https://fast.wistia.net/embed/iframe/7pdcefp4vc?seo=true&videoFoam=true"
-                title="VSL Video"
-                allow="autoplay; fullscreen"
-                allowFullScreen
-                className="w-full aspect-video"
+            <div 
+              id="vsl-player"
+              className="rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/10 relative cursor-pointer group"
+              onClick={(e) => {
+                const container = e.currentTarget;
+                container.innerHTML = `<iframe 
+                  src="https://fast.wistia.net/embed/iframe/7pdcefp4vc?seo=true&videoFoam=true&autoplay=1"
+                  title="VSL Video"
+                  allow="autoplay; fullscreen"
+                  allowfullscreen
+                  class="w-full aspect-video"
+                  style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:1rem;"
+                ></iframe>`;
+              }}
+            >
+              {/* Thumbnail Image */}
+              <img 
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/SCpatQwWrloqWMQc.webp"
+                alt="Watch the Presentation"
+                className="w-full aspect-video object-cover"
               />
+              {/* Play Button Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
+                <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+                  <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
 
