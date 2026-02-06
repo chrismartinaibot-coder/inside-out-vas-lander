@@ -13,6 +13,7 @@ export default function InsideOutHome() {
   const [counters, setCounters] = useState({ clients: 0, vas: 0, savings: 0 });
   const [hasAnimated, setHasAnimated] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Animated counter effect
   useEffect(() => {
@@ -247,7 +248,22 @@ export default function InsideOutHome() {
               />
             </div>
             
-            {/* Navigation Links */}
+            {/* Mobile Menu Button */}
+            <button 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden text-white p-2"
+              aria-label="Toggle menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+
+            {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center space-x-6">
               <button onClick={() => document.getElementById('why-choose')?.scrollIntoView({ behavior: 'smooth' })} className="text-white hover:text-blue-200 transition-colors text-sm font-medium">
                 Why Choose Us
@@ -272,6 +288,57 @@ export default function InsideOutHome() {
               </Button>
             </div>
           </div>
+
+          {/* Mobile Navigation Menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden bg-blue-900/98 backdrop-blur-sm border-t border-white/10 py-4 mt-4">
+              <div className="flex flex-col space-y-4">
+                <button 
+                  onClick={() => { document.getElementById('why-choose')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
+                  className="text-white hover:text-blue-200 transition-colors text-sm font-medium text-left py-2"
+                >
+                  Why Choose Us
+                </button>
+                <button 
+                  onClick={() => { document.getElementById('our-process')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
+                  className="text-white hover:text-blue-200 transition-colors text-sm font-medium text-left py-2"
+                >
+                  Our Process
+                </button>
+                <button 
+                  onClick={() => { document.getElementById('global-talent')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
+                  className="text-white hover:text-blue-200 transition-colors text-sm font-medium text-left py-2"
+                >
+                  Global Talent
+                </button>
+                <button 
+                  onClick={() => { document.getElementById('roles')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
+                  className="text-white hover:text-blue-200 transition-colors text-sm font-medium text-left py-2"
+                >
+                  Roles
+                </button>
+                <button 
+                  onClick={() => { document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
+                  className="text-white hover:text-blue-200 transition-colors text-sm font-medium text-left py-2"
+                >
+                  Testimonials
+                </button>
+                <button 
+                  onClick={() => { document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }); setMobileMenuOpen(false); }}
+                  className="text-white hover:text-blue-200 transition-colors text-sm font-medium text-left py-2"
+                >
+                  FAQ
+                </button>
+                <Button 
+                  onClick={() => { scrollToForm(); setMobileMenuOpen(false); }}
+                  size="sm" 
+                  className="bg-white text-blue-900 hover:bg-blue-50 w-full"
+                >
+                  Get Started
+                </Button>
+              </div>
+            </div>
+          )}
         </nav>
       </header>
       
@@ -405,7 +472,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* Value Propositions - Asymmetric Layout inspired by Persona */}
-      <section className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section id="why-choose" className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         {/* Decorative curved shape */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 -translate-y-1/2 translate-x-1/3"></div>
         
@@ -475,7 +542,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* Process Section - Custom Timeline Visualization inspired by Persona */}
-      <section className="py-8 md:py-16 bg-white relative overflow-hidden">
+      <section id="our-process" className="py-8 md:py-16 bg-white relative overflow-hidden">
         {/* Decorative background shapes */}
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20 translate-y-1/2 -translate-x-1/3"></div>
         
@@ -548,7 +615,7 @@ export default function InsideOutHome() {
 
 
       {/* Global Talent Regions Section */}
-      <section className="py-8 md:py-16 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
+      <section id="global-talent" className="py-8 md:py-16 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
         {/* Dotted world map background */}
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
@@ -744,7 +811,7 @@ export default function InsideOutHome() {
         </div>
       </section>
       {/* Roles Section - Masonry-style layout inspired by Persona */}
-      <section className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section id="roles" className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-100 rounded-full blur-3xl opacity-20"></div>
         
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
@@ -798,7 +865,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* Video Testimonials Section 1 - Mix of portrait and landscape */}
-      <section className="py-8 md:py-16 bg-white relative overflow-hidden">
+      <section id="testimonials" className="py-8 md:py-16 bg-white relative overflow-hidden">
         {/* Decorative dot pattern background */}
         <div className="absolute inset-0 opacity-5">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -999,7 +1066,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-8 md:py-16 bg-gradient-to-b from-white to-gray-50">
+      <section id="faq" className="py-8 md:py-16 bg-gradient-to-b from-white to-gray-50">
         <div className="container" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           <div className="text-center mb-12">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
