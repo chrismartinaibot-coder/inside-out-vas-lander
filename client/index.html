@@ -24,8 +24,33 @@
   </head>
 
   <body>
+    <!-- VSL loads immediately before React app -->
+    <div id="vsl-container" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9999; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); display: flex; align-items: center; justify-content: center; padding: 1rem;">
+      <div style="max-width: 900px; width: 100%; background: rgba(0,0,0,0.3); border-radius: 1rem; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); padding: 1rem;">
+        <iframe 
+          src="https://fast.wistia.net/embed/iframe/7pdcefp4vc?seo=true&videoFoam=true"
+          title="VSL Video"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+          loading="eager"
+          fetchpriority="high"
+          style="width: 100%; aspect-ratio: 16/9; border: none; border-radius: 0.5rem;"
+        ></iframe>
+      </div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Hide VSL overlay once React app loads
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var vslContainer = document.getElementById('vsl-container');
+          if (vslContainer) {
+            vslContainer.style.display = 'none';
+          }
+        }, 100);
+      });
+    </script>
     <script
       defer
       src="%VITE_ANALYTICS_ENDPOINT%/umami"

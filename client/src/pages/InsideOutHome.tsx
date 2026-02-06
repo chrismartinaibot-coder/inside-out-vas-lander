@@ -277,19 +277,9 @@ export default function InsideOutHome() {
             </p>
           </div>
 
-          {/* VSL Video */}
-          <div className="max-w-3xl mx-auto mb-8">
-            <div className="rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/10">
-              <iframe 
-                src="https://fast.wistia.net/embed/iframe/7pdcefp4vc?seo=true&videoFoam=true"
-                title="VSL Video"
-                allow="autoplay; fullscreen"
-                allowFullScreen
-                loading="eager"
-                fetchpriority="high"
-                className="w-full aspect-video"
-              />
-            </div>
+          {/* VSL Video - Now loaded in HTML for instant display */}
+          <div id="vsl-placeholder" className="max-w-3xl mx-auto mb-8">
+            {/* VSL is in the HTML body and loads immediately */}
           </div>
 
           {/* Stats with decorative elements and animated counters */}
