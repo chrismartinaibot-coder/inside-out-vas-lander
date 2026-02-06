@@ -234,9 +234,50 @@ export default function InsideOutHome() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Navigation Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-blue-900/95 backdrop-blur-sm border-b border-white/10">
+        <nav className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <div className="flex items-center">
+              <img 
+                src="/images/insideout-logo-white.svg" 
+                alt="InsideOut" 
+                className="h-7 w-auto"
+              />
+            </div>
+            
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center space-x-6">
+              <button onClick={() => document.getElementById('why-choose')?.scrollIntoView({ behavior: 'smooth' })} className="text-white hover:text-blue-200 transition-colors text-sm font-medium">
+                Why Choose Us
+              </button>
+              <button onClick={() => document.getElementById('our-process')?.scrollIntoView({ behavior: 'smooth' })} className="text-white hover:text-blue-200 transition-colors text-sm font-medium">
+                Our Process
+              </button>
+              <button onClick={() => document.getElementById('global-talent')?.scrollIntoView({ behavior: 'smooth' })} className="text-white hover:text-blue-200 transition-colors text-sm font-medium">
+                Global Talent
+              </button>
+              <button onClick={() => document.getElementById('roles')?.scrollIntoView({ behavior: 'smooth' })} className="text-white hover:text-blue-200 transition-colors text-sm font-medium">
+                Roles
+              </button>
+              <button onClick={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })} className="text-white hover:text-blue-200 transition-colors text-sm font-medium">
+                Testimonials
+              </button>
+              <button onClick={() => document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })} className="text-white hover:text-blue-200 transition-colors text-sm font-medium">
+                FAQ
+              </button>
+              <Button onClick={scrollToForm} size="sm" className="bg-white text-blue-900 hover:bg-blue-50">
+                Get Started
+              </Button>
+            </div>
+          </div>
+        </nav>
+      </header>
+      
       {/* Hero Section with Decorative Dot Pattern Background */}
       <section 
-        className="relative py-12 md:py-24 overflow-hidden"
+        className="relative py-12 md:py-24 overflow-hidden pt-24"
         style={{
           backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/wuwGkeAhPkyEYDWC.png)',
           backgroundSize: 'cover',
