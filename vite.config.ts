@@ -166,6 +166,18 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split React vendor code for better caching
+          'react-vendor': ['react', 'react-dom', 'react/jsx-runtime'],
+          // Split router
+          'router': ['wouter'],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+    minify: 'esbuild',
   },
   server: {
     port: 3000,

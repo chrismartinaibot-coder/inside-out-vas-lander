@@ -8,19 +8,47 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <title>InsideOut Virtual Assistants - Premium Global Talent</title>
     
-    <!-- Wistia Video Optimization - Load First -->
-    <link rel="preconnect" href="https://fast.wistia.com" crossorigin>
-    <link rel="preconnect" href="https://embed-ssl.wistia.com" crossorigin>
-    <link rel="dns-prefetch" href="https://fast.wistia.com">
-    <link rel="dns-prefetch" href="https://embed-ssl.wistia.com">
-    <link rel="dns-prefetch" href="https://embedwistia-a.akamaihd.net">
+    <!-- Performance Optimizations -->
+    <!-- Preconnect to Wistia for faster VSL video loading -->
+    <link rel="preconnect" href="https://fast.wistia.com" />
+    <link rel="preconnect" href="https://embed-ssl.wistia.com" />
+    <link rel="dns-prefetch" href="https://fast.wistia.com" />
+    <link rel="dns-prefetch" href="https://embed-ssl.wistia.com" />
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <!-- Typeform Embed Script - Deferred to load after VSL -->
-    <script defer src="//embed.typeform.com/next/embed.js"></script>
+    <!-- Typeform Embed Script -->
+    <script src="//embed.typeform.com/next/embed.js"></script>
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T83JZJ6M');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- InsideOut Tracking Script -->
+    <script>
+    var head = document.head;
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = "https://t.insideoutvas.com/v1/lst/universal-script?ph=ac41bee9c46d2be91782c65b5a6e619fc124a62f2ecc6cea96364a4ecf1163b3&tag=!clicked&ref_url=" + encodeURI(document.URL) ;
+    head.appendChild(script);
+    </script>
+    
+    <!-- TikTok Pixel -->
+    <script>
+    !function (w, d, t) {
+      w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++
+    )ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=i,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=i+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+    
+      ttq.load('COCN1O3C77U0PSRTU260');
+      ttq.page();
+    }(window, document, 'ttq');
+    </script>
   </head>
 
   <body>
