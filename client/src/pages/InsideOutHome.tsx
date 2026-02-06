@@ -279,7 +279,7 @@ export default function InsideOutHome() {
       <section 
         className="relative py-12 md:py-24 overflow-hidden pt-24"
         style={{
-          backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/wuwGkeAhPkyEYDWC.png)',
+          backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/PsgJaQaREvpycWSZ.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -809,6 +809,7 @@ export default function InsideOutHome() {
                     title={`${testimonial.name} testimonial`}
                     allow="autoplay; fullscreen"
                     allowFullScreen
+                    loading="lazy"
                     className={`w-full ${testimonial.isPortrait ? 'aspect-[9/16]' : 'aspect-video'}`}
                   />
                 </div>
