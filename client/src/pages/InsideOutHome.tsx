@@ -285,6 +285,8 @@ export default function InsideOutHome() {
                 title="VSL Video"
                 allow="autoplay; fullscreen"
                 allowFullScreen
+                loading="eager"
+                fetchpriority="high"
                 className="w-full aspect-video"
               />
             </div>
