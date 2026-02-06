@@ -13,9 +13,6 @@ export default function InsideOutHome() {
   const [counters, setCounters] = useState({ clients: 0, vas: 0, savings: 0 });
   const [hasAnimated, setHasAnimated] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
-  
-  // State for lazy loading below-fold content
-  const [showBelowFold, setShowBelowFold] = useState(false);
 
   // Animated counter effect
   useEffect(() => {
@@ -74,16 +71,6 @@ export default function InsideOutHome() {
       }
     };
   }, [hasAnimated]);
-
-  // Load below-fold content after hero section loads
-  useEffect(() => {
-    // Wait for VSL and hero to load first, then load below-fold content
-    const timer = setTimeout(() => {
-      setShowBelowFold(true);
-    }, 1000); // 1 second delay to prioritize VSL loading
-    
-    return () => clearTimeout(timer);
-  }, []);
 
   // Initialize Typeform after component mounts
   useEffect(() => {
@@ -395,11 +382,8 @@ export default function InsideOutHome() {
         </div>
       </section>
 
-      {/* Below-fold content - lazy loaded for faster VSL */}
-      {showBelowFold && (
-        <>
       {/* Value Propositions - Asymmetric Layout inspired by Persona */}
-      <section id="why-choose" className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      <section className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         {/* Decorative curved shape */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 -translate-y-1/2 translate-x-1/3"></div>
         
@@ -1137,8 +1121,6 @@ export default function InsideOutHome() {
           </div>
         </div>
       </section>
-        </>
-      )}
     </div>
   );
 }
