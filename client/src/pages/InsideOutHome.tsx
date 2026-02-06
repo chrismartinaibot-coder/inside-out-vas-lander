@@ -1,4 +1,4 @@
-import { CheckCircle2, Users, Play, ArrowRight, ChevronDown, Menu, X } from 'lucide-react';
+import { CheckCircle2, Users, Play, ArrowRight, ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -13,9 +13,6 @@ export default function InsideOutHome() {
   const [counters, setCounters] = useState({ clients: 0, vas: 0, savings: 0 });
   const [hasAnimated, setHasAnimated] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
-  
-  // State for mobile menu
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Animated counter effect
   useEffect(() => {
@@ -74,53 +71,6 @@ export default function InsideOutHome() {
       }
     };
   }, [hasAnimated]);
-
-  // Close mobile menu on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      if (mobileMenuOpen) {
-        setMobileMenuOpen(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [mobileMenuOpen]);
-
-  // Scroll-triggered animations
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-        }
-      });
-    }, observerOptions);
-
-    // Wait for DOM to be fully rendered before observing
-    const timer = setTimeout(() => {
-      const elements = document.querySelectorAll('.fade-in-section, .fade-in-card');
-      elements.forEach(el => {
-        observer.observe(el);
-        // Trigger animation immediately for elements already in viewport
-        const rect = el.getBoundingClientRect();
-        const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
-        if (isInViewport) {
-          el.classList.add('animate-in');
-        }
-      });
-    }, 100);
-
-    return () => {
-      clearTimeout(timer);
-      observer.disconnect();
-    };
-  }, []);
 
   // Initialize Typeform after component mounts
   useEffect(() => {
@@ -282,145 +232,10 @@ export default function InsideOutHome() {
     }
   ];
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80; // Account for fixed nav height
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
     <div className="min-h-screen bg-white">
-      {/* Sticky Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-blue-900/95 backdrop-blur-sm border-b border-blue-800 shadow-sm">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <div className="flex items-center">
-              <img 
-                src="/images/insideout-logo-white.svg" 
-                alt="InsideOut" 
-                className="h-6 w-auto"
-              />
-            </div>
-            
-            {/* Mobile Menu Button */}
-            <button 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-white p-2"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-            
-            {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center space-x-8">
-              <button 
-                onClick={() => scrollToSection('why-choose')}
-                className="text-sm font-medium text-white/90 hover:text-white transition-colors"
-              >
-                Why Choose Us
-              </button>
-              <button 
-                onClick={() => scrollToSection('process')}
-                className="text-sm font-medium text-white/90 hover:text-white transition-colors"
-              >
-                Our Process
-              </button>
-              <button 
-                onClick={() => scrollToSection('global-talent')}
-                className="text-sm font-medium text-white/90 hover:text-white transition-colors"
-              >
-                Global Talent
-              </button>
-              <button 
-                onClick={() => scrollToSection('roles')}
-                className="text-sm font-medium text-white/90 hover:text-white transition-colors"
-              >
-                Roles
-              </button>
-              <button 
-                onClick={() => scrollToSection('testimonials')}
-                className="text-sm font-medium text-white/90 hover:text-white transition-colors"
-              >
-                Testimonials
-              </button>
-              <button 
-                onClick={() => scrollToSection('faq')}
-                className="text-sm font-medium text-white/90 hover:text-white transition-colors"
-              >
-                FAQ
-              </button>
-              <Button 
-                onClick={() => scrollToSection('typeform-section')}
-                size="sm"
-                className="bg-white text-blue-900 hover:bg-gray-100 rounded-full"
-              >
-                Get Started
-              </Button>
-            </div>
-          </div>
-          
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="md:hidden pb-4 pt-2 space-y-2">
-              <button 
-                onClick={() => { scrollToSection('why-choose'); setMobileMenuOpen(false); }}
-                className="block w-full text-left px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-blue-800 rounded transition-colors"
-              >
-                Why Choose Us
-              </button>
-              <button 
-                onClick={() => { scrollToSection('process'); setMobileMenuOpen(false); }}
-                className="block w-full text-left px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-blue-800 rounded transition-colors"
-              >
-                Our Process
-              </button>
-              <button 
-                onClick={() => { scrollToSection('global-talent'); setMobileMenuOpen(false); }}
-                className="block w-full text-left px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-blue-800 rounded transition-colors"
-              >
-                Global Talent
-              </button>
-              <button 
-                onClick={() => { scrollToSection('roles'); setMobileMenuOpen(false); }}
-                className="block w-full text-left px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-blue-800 rounded transition-colors"
-              >
-                Roles
-              </button>
-              <button 
-                onClick={() => { scrollToSection('testimonials'); setMobileMenuOpen(false); }}
-                className="block w-full text-left px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-blue-800 rounded transition-colors"
-              >
-                Testimonials
-              </button>
-              <button 
-                onClick={() => { scrollToSection('faq'); setMobileMenuOpen(false); }}
-                className="block w-full text-left px-4 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-blue-800 rounded transition-colors"
-              >
-                FAQ
-              </button>
-              <Button 
-                onClick={() => { scrollToSection('typeform-section'); setMobileMenuOpen(false); }}
-                size="sm"
-                className="w-full bg-white text-blue-900 hover:bg-gray-100 rounded-full mt-2"
-              >
-                Get Started
-              </Button>
-            </div>
-          )}
-        </div>
-      </nav>
-
       {/* Hero Section with Decorative Dot Pattern Background */}
       <section 
-        id="hero" 
         className="relative py-12 md:py-24 overflow-hidden"
         style={{
           backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/wuwGkeAhPkyEYDWC.png)',
@@ -443,8 +258,16 @@ export default function InsideOutHome() {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/95 via-blue-800/90 to-blue-700/85" />
         
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
-          {/* Headline */}
-          <div className="text-center text-white space-y-4 mb-8 pt-6 md:pt-0">
+          {/* Logo and Headline */}
+          <div className="text-center text-white space-y-4 mb-8">
+            <div className="flex items-center justify-center">
+              <img 
+                src="/images/insideout-logo-white.svg" 
+                alt="InsideOut" 
+                className="h-8 w-auto"
+              />
+            </div>
+
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-4xl mx-auto px-4">
               Hire Global Talent at 90% Lower Cost
             </h1>
@@ -457,46 +280,13 @@ export default function InsideOutHome() {
           {/* VSL Video */}
           <div className="max-w-3xl mx-auto mb-8">
             <div className="rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/10">
-              <div 
-                className="wistia_responsive_padding" 
-                style={{padding: '56.25% 0 0 0', position: 'relative'}}
-              >
-                <div 
-                  className="wistia_responsive_wrapper" 
-                  style={{height: '100%', left: 0, position: 'absolute', top: 0, width: '100%'}}
-                >
-                  <div 
-                    className="wistia_embed wistia_async_7pdcefp4vc seo=true videoFoam=true" 
-                    style={{height: '100%', position: 'relative', width: '100%'}}
-                  >
-                    <div 
-                      className="wistia_swatch" 
-                      style={{
-                        height: '100%',
-                        left: 0,
-                        opacity: 0,
-                        overflow: 'hidden',
-                        position: 'absolute',
-                        top: 0,
-                        transition: 'opacity 200ms',
-                        width: '100%'
-                      }}
-                    >
-                      <img 
-                        src="https://fast.wistia.com/embed/medias/7pdcefp4vc/swatch" 
-                        style={{
-                          filter: 'blur(5px)',
-                          height: '100%',
-                          objectFit: 'contain',
-                          width: '100%'
-                        }} 
-                        alt="Video thumbnail" 
-                        aria-hidden="true"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <iframe 
+                src="https://fast.wistia.net/embed/iframe/7pdcefp4vc?seo=true&videoFoam=true"
+                title="VSL Video"
+                allow="autoplay; fullscreen"
+                allowFullScreen
+                className="w-full aspect-video"
+              />
             </div>
           </div>
 
@@ -552,12 +342,12 @@ export default function InsideOutHome() {
       </section>
 
       {/* Value Propositions - Asymmetric Layout inspired by Persona */}
-      <section id="why-choose" className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden fade-in-section">
+      <section className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         {/* Decorative curved shape */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 -translate-y-1/2 translate-x-1/3"></div>
         
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
-          <div className="text-center mb-16 fade-in-section">
+          <div className="text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
               Why Choose InsideOut
             </h2>
@@ -569,7 +359,7 @@ export default function InsideOutHome() {
           {/* Balanced 3-column grid layout */}
           <div className="grid md:grid-cols-3 gap-8 mb-12 max-w-6xl mx-auto">
             {/* Card 1 */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1 fade-in-card">
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1">
               <div className="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
                 <CheckCircle2 className="w-8 h-8 text-blue-900" />
               </div>
@@ -582,7 +372,7 @@ export default function InsideOutHome() {
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1 fade-in-card">
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1">
               <div className="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
                 <CheckCircle2 className="w-8 h-8 text-blue-900" />
               </div>
@@ -595,7 +385,7 @@ export default function InsideOutHome() {
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1 fade-in-card">
+            <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1">
               <div className="w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
                 <CheckCircle2 className="w-8 h-8 text-blue-900" />
               </div>
@@ -608,12 +398,21 @@ export default function InsideOutHome() {
             </div>
           </div>
 
-
+          <div className="text-center">
+            <Button 
+              onClick={scrollToForm}
+              size="lg"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+            >
+              Start Your Search Today
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* Process Section - Custom Timeline Visualization inspired by Persona */}
-      <section id="process" className="py-8 md:py-16 bg-white relative overflow-hidden fade-in-section">
+      <section className="py-8 md:py-16 bg-white relative overflow-hidden">
         {/* Decorative background shapes */}
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20 translate-y-1/2 -translate-x-1/3"></div>
         
@@ -675,7 +474,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="cta-button bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Get Started Now
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -686,7 +485,7 @@ export default function InsideOutHome() {
 
 
       {/* Global Talent Regions Section */}
-      <section id="global-talent" className="py-8 md:py-16 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden fade-in-section">
+      <section className="py-8 md:py-16 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
         {/* Dotted world map background */}
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
@@ -873,7 +672,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="cta-button bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Find Your Perfect VA
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -882,7 +681,7 @@ export default function InsideOutHome() {
         </div>
       </section>
       {/* Roles Section - Masonry-style layout inspired by Persona */}
-      <section id="roles" className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden fade-in-section">
+      <section className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-100 rounded-full blur-3xl opacity-20"></div>
         
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
@@ -926,7 +725,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="cta-button bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Find Your Perfect VA
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -935,134 +734,8 @@ export default function InsideOutHome() {
         </div>
       </section>
 
-
-      {/* ROI Comparison Section */}
-      <section className="py-8 md:py-16 bg-white fade-in-section">
-        <div className="container">
-          <h3 className="text-3xl md:text-4xl font-serif font-bold text-center text-blue-900 mb-4">
-            Why Smart Business Owners Choose InsideOut
-          </h3>
-          <p className="text-center text-gray-600 text-lg mb-12 max-w-2xl mx-auto">
-            Get elite talent at a fraction of the cost—without the headaches of agencies or US hiring.
-          </p>
-          
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {/* InsideOut - Highlighted */}
-            <div className="bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-xl p-6 shadow-xl relative border-2 border-blue-400 transform md:scale-105">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-400 text-blue-900 px-4 py-1 text-xs font-semibold tracking-wide uppercase">
-                Recommended
-              </div>
-              <h4 className="text-xl font-bold mb-3 mt-2">InsideOut</h4>
-              <div className="text-3xl font-bold mb-1">One-Time Fee</div>
-              <div className="text-blue-200 text-sm mb-6">Pay only when you hire</div>
-              
-              <ul className="space-y-2 mb-6 text-sm">
-                <li className="flex items-start">
-                  <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
-                  <span>Elite pre-vetted talent</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
-                  <span>Hire directly, no middleman</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
-                  <span>Candidates in 5 days</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle2 className="w-4 h-4 mr-2 flex-shrink-0 mt-0.5 text-blue-300" />
-                  <span>You own the relationship</span>
-                </li>
-              </ul>
-              
-              <div className="border-t border-blue-600 pt-3">
-                <div className="text-xs text-blue-200 mb-1">Average Client Saves</div>
-                <div className="text-2xl font-bold text-yellow-300">$50K+ Per Year</div>
-                <div className="text-xs text-blue-300 mt-1">5-10x ROI on your investment</div>
-              </div>
-            </div>
-
-            {/* Agency */}
-            <div className="bg-gray-50 rounded-xl p-6 shadow-lg border-2 border-gray-300 opacity-80">
-              <h4 className="text-xl font-bold mb-3 text-gray-900">Agency</h4>
-              <div className="text-3xl font-bold mb-1 text-gray-700">$2K-3.5K</div>
-              <div className="text-gray-500 text-sm mb-6">/month recurring</div>
-              
-              <ul className="space-y-2 mb-6 text-sm text-gray-600">
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                  <span>They own the VA</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                  <span>You overpay monthly</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                  <span>Shared resources</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                  <span>Locked into contracts</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                  <span>Lower quality talent, less committed</span>
-                </li>
-              </ul>
-              
-              <div className="border-t border-gray-300 pt-3">
-                <div className="text-xs text-gray-500 mb-1">Annual Cost</div>
-                <div className="text-2xl font-bold text-gray-700">$24K - $42K</div>
-              </div>
-            </div>
-
-            {/* US Hire */}
-            <div className="bg-gray-50 rounded-xl p-6 shadow-lg border-2 border-gray-300 opacity-80">
-              <h4 className="text-xl font-bold mb-3 text-gray-900">US Hire</h4>
-              <div className="text-3xl font-bold mb-1 text-gray-700">$4K-15K</div>
-              <div className="text-gray-500 text-sm mb-6">/month + benefits</div>
-              
-              <ul className="space-y-2 mb-6 text-sm text-gray-600">
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                  <span>5-10x more expensive</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                  <span>Benefits & overhead</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                  <span>Months to hire</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2 flex-shrink-0 mt-0.5">✗</span>
-                  <span>Limited talent pool</span>
-                </li>
-              </ul>
-              
-              <div className="border-t border-gray-300 pt-3">
-                <div className="text-xs text-gray-500 mb-1">Annual Cost</div>
-                <div className="text-2xl font-bold text-gray-700">$48K - $180K</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center mt-12">
-            <Button 
-              onClick={scrollToForm}
-              size="lg"
-              className="cta-button bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
-            >
-              Start Your Search Today
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
-        </div>
-      </section>
       {/* Video Testimonials Section 1 - Mix of portrait and landscape */}
-      <section id="testimonials" className="py-8 md:py-16 bg-white relative overflow-hidden fade-in-section">
+      <section className="py-8 md:py-16 bg-white relative overflow-hidden">
         {/* Decorative dot pattern background */}
         <div className="absolute inset-0 opacity-5">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -1110,7 +783,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="cta-button bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Join Them Today
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -1120,7 +793,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* Written Testimonials - Elegant card layout */}
-      <section className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white fade-in-section">
+      <section className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white">
         <div className="container" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           <div className="text-center mb-16">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
@@ -1157,7 +830,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="cta-button bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Get Your VA Today
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -1167,7 +840,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* Video Testimonials Section 2 - All portraits near the end */}
-      <section className="py-8 md:py-16 bg-white relative overflow-hidden fade-in-section">
+      <section className="py-8 md:py-16 bg-white relative overflow-hidden">
         {/* Decorative background */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20"></div>
@@ -1252,7 +925,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="cta-button bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
+              className="bg-blue-900 hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all"
             >
               Start Your Search Today
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -1262,7 +935,7 @@ export default function InsideOutHome() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-8 md:py-16 bg-gradient-to-b from-white to-gray-50 fade-in-section">
+      <section className="py-8 md:py-16 bg-gradient-to-b from-white to-gray-50">
         <div className="container" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           <div className="text-center mb-12">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
@@ -1370,13 +1043,13 @@ export default function InsideOutHome() {
       </section>
 
       {/* Final CTA Section with organic shapes */}
-      <section className="py-32 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative overflow-hidden fade-in-section">
+      <section className="py-32 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative overflow-hidden">
         {/* Decorative organic shapes */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-2xl"></div>
         
-        <div className="container relative z-10 py-8 md:py-12">
+        <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           <div className="text-center max-w-4xl mx-auto">
             <h2 className="font-serif text-5xl md:text-6xl font-bold mb-6">
               Ready to Build Your Dream Team?
@@ -1388,7 +1061,7 @@ export default function InsideOutHome() {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="cta-button cta-button-glow bg-white hover:bg-gray-100 text-blue-900 px-12 py-8 text-xl rounded-full shadow-2xl hover:shadow-3xl transition-all font-semibold"
+              className="bg-white hover:bg-gray-100 text-blue-900 px-12 py-8 text-xl rounded-full shadow-2xl hover:shadow-3xl transition-all font-semibold"
             >
               Start Your Search Today
               <ArrowRight className="ml-3 h-6 w-6" />
