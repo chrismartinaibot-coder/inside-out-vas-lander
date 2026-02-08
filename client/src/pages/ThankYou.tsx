@@ -164,19 +164,19 @@ export default function ThankYou({ fireScheduleEvent = false }: ThankYouProps) {
             👉 Without this, your calendar won't remind you and you'll likely miss the call.
           </div>
 
-          {/* Email confirmation screenshots - using placeholder images */}
+          {/* Email confirmation screenshots */}
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white rounded-lg p-4 shadow-xl">
               <img 
-                src="https://via.placeholder.com/600x400/ffffff/000000?text=Email+Confirmation+Step+1" 
-                alt="Email confirmation step 1"
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/CACSTixwZpSsiTaT.png" 
+                alt="I know the sender button in calendar invite"
                 className="w-full rounded"
               />
             </div>
             <div className="bg-white rounded-lg p-4 shadow-xl">
               <img 
-                src="https://via.placeholder.com/600x400/ffffff/000000?text=Email+Confirmation+Step+2" 
-                alt="Email confirmation step 2"
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/ipLPLgHDKTShqyPN.png" 
+                alt="Press Yes on calendar invite"
                 className="w-full rounded"
               />
             </div>
