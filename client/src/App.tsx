@@ -5,11 +5,14 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import InsideOutHome from "./pages/InsideOutHome";
+import ThankYou from "./pages/ThankYou";
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={InsideOutHome} />
+      <Route path={"/thankyou"} component={() => <ThankYou fireScheduleEvent={false} />} />
+      <Route path={"/thank-you"} component={() => <ThankYou fireScheduleEvent={true} />} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
