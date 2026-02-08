@@ -108,7 +108,7 @@ export default function ThankYou({ fireScheduleEvent = false }: ThankYouProps) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-900 via-blue-800 to-blue-900">
       {/* Header Section */}
-      <section className="py-16 text-center">
+      <section className="py-8 md:py-12 text-center">
         <div className="container">
           <img 
             src="/images/insideout-logo-white.svg" 
@@ -116,12 +116,12 @@ export default function ThankYou({ fireScheduleEvent = false }: ThankYouProps) {
             className="h-8 w-auto mx-auto mb-12"
           />
           
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8">
+          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
             Congrats! Your Call Has Been Booked.
           </h1>
           
           {/* Scroll Down Arrow */}
-          <div className="flex flex-col items-center gap-3 mt-6">
+          <div className="flex flex-col items-center gap-3 mt-4">
             <span className="text-yellow-400 font-bold text-xl">Scroll Down</span>
             <svg className="w-8 h-8 text-yellow-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
