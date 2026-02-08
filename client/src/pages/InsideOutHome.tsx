@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useEffect, useState, useRef } from 'react';
+import Footer from "@/components/Footer";
 
 export default function InsideOutHome() {
   // State for animated counters
@@ -1211,6 +1212,9 @@ export default function InsideOutHome() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

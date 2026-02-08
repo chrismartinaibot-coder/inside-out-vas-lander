@@ -1,3 +1,5 @@
+import Footer from "@/components/Footer";
+
 export default function TermsAndConditions() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-blue-50">
@@ -165,6 +167,9 @@ export default function TermsAndConditions() {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

@@ -1,3 +1,5 @@
+import Footer from "@/components/Footer";
+
 export default function ThankYou2() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-blue-50 flex items-center justify-center px-4 py-12">
@@ -49,9 +51,10 @@ export default function ThankYou2() {
           </div>
         </div>
 
-        {/* Footer spacing */}
-        <div className="h-12"></div>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

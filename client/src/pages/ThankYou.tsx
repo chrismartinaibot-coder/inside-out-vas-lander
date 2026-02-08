@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import { useEffect } from 'react';
 import { useLocation } from 'wouter';
+import Footer from "@/components/Footer";
 
 interface ThankYouProps {
   fireScheduleEvent?: boolean;
@@ -446,6 +447,9 @@ export default function ThankYou({ fireScheduleEvent = false }: ThankYouProps) {
           </Accordion>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

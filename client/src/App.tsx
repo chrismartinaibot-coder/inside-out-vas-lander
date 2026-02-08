@@ -8,6 +8,7 @@ import InsideOutHome from "./pages/InsideOutHome";
 import ThankYou from "./pages/ThankYou";
 import ThankYou2 from "./pages/ThankYou2";
 import TermsAndConditions from "./pages/TermsAndConditions";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function Router() {
   return (
@@ -17,6 +18,7 @@ function Router() {
       <Route path={"/thank-you"} component={() => <ThankYou fireScheduleEvent={true} />} />
       <Route path={"/thankyou2"} component={ThankYou2} />
       <Route path={"/terms-and-conditions"} component={TermsAndConditions} />
+      <Route path={"/privacy-policy"} component={PrivacyPolicy} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
