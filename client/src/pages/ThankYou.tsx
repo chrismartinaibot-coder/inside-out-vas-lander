@@ -43,6 +43,54 @@ export default function ThankYou({ fireScheduleEvent = false }: ThankYouProps) {
     { name: "Marc Sieber", company: "Wow 1 Day Painting", videoId: "0bqco9u2rq", isPortrait: false },
   ];
 
+  const writtenTestimonials = [
+    {
+      name: "Aiden Clark",
+      company: "ArcStone Construction",
+      quote: "Inside Out helped me reclaim 30 hours per week. I was swamped and had no time to spend on hiring an assistant."
+    },
+    {
+      name: "Anna Tan",
+      company: "Dynamic Marketing",
+      quote: "I was hesitant to delegate at first, worried no one could match my standards, but this service proved me wrong. They found me an A-player who I can no longer survive without!"
+    },
+    {
+      name: "Daniel Aroustamian",
+      company: "CJC Roofing",
+      quote: "I was missing phone calls from prospective customers and get distracted while on job sites. Hiring a VA has allowed me to scale my roofing business. Chris' team saved me dozens of hours of having to interview people myself."
+    },
+    {
+      name: "Anthony Lazarus",
+      company: "HappyNuts",
+      quote: "Hiring a virtual assistant allowed me to stop spending time on lower value work so I could finally scale my D2C e-commerce brand into physical retailers."
+    },
+    {
+      name: "Shea Trecwicz",
+      company: "Stylez Salon",
+      quote: "I went from being a 'solopreneur' to an actual CEO by hiring virtual assistants and it was way easier than I thought it would be. I wish I took action a lot earlier!"
+    },
+    {
+      name: "Ryan Garvin",
+      company: "TFG Benefits Insurance",
+      quote: "I've thought about hiring a VA for years but I had no idea where to find them or what to look for. Chris' team at Inside Out held my hand throughout the recruitment process and found me a rockstar in less than a week."
+    },
+    {
+      name: "Simon Ellery",
+      company: "White Rabbit",
+      quote: "Working with Inside Out has been such a seamless and efficient experience. The whole process was handled so well – great communication the whole way through, and they made it incredibly easy for me."
+    },
+    {
+      name: "Stephen Ceausu",
+      company: "Axe Property Management",
+      quote: "We struggled to keep up with high lead volume, tenant communications, and daily admin while scaling. The process has been seamless — clear communication, smooth onboarding, and a responsive, professional team."
+    },
+    {
+      name: "Michael Kozlowski",
+      company: "FreeportForRent.com",
+      quote: "I have been hiring and building teams for 20 years and I have never ever seen anything like this service. Your company provides excellent service."
+    }
+  ];
+
   // FAQ videos with real Wistia IDs
   const faqVideos = [
     { title: "How Do I Know You'll Deliver Top Talent?", videoId: "esm7rrseuk" },
@@ -73,9 +121,9 @@ export default function ThankYou({ fireScheduleEvent = false }: ThankYouProps) {
           </h1>
           
           {/* Scroll Down Arrow */}
-          <div className="flex flex-col items-center gap-2 mt-8">
-            <span className="text-yellow-400 font-bold text-sm">Scroll Down</span>
-            <svg className="w-6 h-6 text-yellow-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="flex flex-col items-center gap-3 mt-6">
+            <span className="text-yellow-400 font-bold text-xl">Scroll Down</span>
+            <svg className="w-8 h-8 text-yellow-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </div>
@@ -83,7 +131,7 @@ export default function ThankYou({ fireScheduleEvent = false }: ThankYouProps) {
       </section>
 
       {/* Step 1: Congratulations Video */}
-      <section className="py-16 bg-blue-900">
+      <section className="py-8 bg-blue-900">
         <div className="container max-w-4xl">
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-white text-center mb-8">
             <span className="underline decoration-yellow-400">STEP 1:</span> MUST WATCH: How Our Clients Win Big With Us
@@ -164,52 +212,167 @@ export default function ThankYou({ fireScheduleEvent = false }: ThankYouProps) {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-16 bg-black">
-        <div className="container">
-          <div className="text-center mb-12">
-            <p className="text-gray-400 uppercase tracking-wider text-sm mb-2">TESTIMONIALS</p>
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-white">
-              Don't Worry, You're In Good Hands
+      {/* Video Testimonials Section 1 */}
+      <section className="py-8 md:py-16 bg-white relative overflow-hidden">
+        {/* Decorative dot pattern background */}
+        <div className="absolute inset-0 opacity-5">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="testimonial-dots" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+                <circle cx="40" cy="40" r="3" fill="currentColor" className="text-blue-900" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#testimonial-dots)" />
+          </svg>
+        </div>
+
+        <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+              Trusted by 1,500+ Business Owners
             </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Real stories from leaders who found their ideal team through InsideOut
+            </p>
           </div>
 
-          {/* First batch of testimonials */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {videoTestimonialsSection1.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-xl">
-                <div className="aspect-[9/16] mb-4 rounded-lg overflow-hidden">
-                  <iframe
-                    src={`https://fast.wistia.net/embed/iframe/${testimonial.videoId}?seo=true&videoFoam=false`}
+              <div key={index} className="relative group">
+                <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1 ring-2 ring-gray-100 hover:ring-blue-300">
+                  <iframe 
+                    src={`https://fast.wistia.net/embed/iframe/${testimonial.videoId}?seo=true&videoFoam=true`}
                     title={`${testimonial.name} testimonial`}
                     allow="autoplay; fullscreen"
                     allowFullScreen
                     loading="lazy"
-                    className="w-full h-full"
-                  ></iframe>
+                    className={`w-full ${testimonial.isPortrait ? 'aspect-[9/16]' : 'aspect-video'}`}
+                  />
                 </div>
-                <h3 className="font-bold text-lg text-blue-900">{testimonial.name} - {testimonial.company}</h3>
+                <div className="text-center mt-4">
+                  <p className="font-semibold text-blue-900">{testimonial.name}</p>
+                  <p className="text-sm text-gray-600">{testimonial.company}</p>
+                </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Second batch of testimonials */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {videoTestimonialsSection2.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-xl">
-                <div className={`${testimonial.isPortrait ? "aspect-[9/16]" : "aspect-video"} mb-4 rounded-lg overflow-hidden`}>
-                  <iframe
-                    src={`https://fast.wistia.net/embed/iframe/${testimonial.videoId}?seo=true&videoFoam=false`}
-                    title={`${testimonial.name} testimonial`}
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                    loading="lazy"
-                    className="w-full h-full"
-                  ></iframe>
+      {/* Written Testimonials */}
+      <section className="py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+              What Our Clients Say
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Real results from business owners who transformed their operations with elite VAs
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {writtenTestimonials.map((testimonial, index) => (
+              <div 
+                key={index} 
+                className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all hover:-translate-y-1"
+              >
+                <div className="mb-6">
+                  <svg className="w-10 h-10 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
                 </div>
-                <h3 className="font-bold text-sm text-blue-900">{testimonial.name} - {testimonial.company}</h3>
+                <p className="text-gray-700 leading-relaxed mb-6 italic">
+                  {testimonial.quote}
+                </p>
+                <div className="pt-4 border-t border-gray-100">
+                  <p className="font-bold text-blue-900">{testimonial.name}</p>
+                  <p className="text-sm text-gray-500">{testimonial.company}</p>
+                </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Video Testimonials Section 2 */}
+      <section className="py-8 md:py-16 bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-20"></div>
+
+        <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-blue-900 mb-4">
+              More Success Stories
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Hear from more business owners who scaled with InsideOut VAs
+            </p>
+          </div>
+
+          <div className="max-w-6xl mx-auto">
+            {/* Top row - 3 portraits */}
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              {videoTestimonialsSection2.slice(0, 3).map((testimonial, index) => (
+                <div key={index} className="relative group">
+                  <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1 ring-2 ring-gray-100 hover:ring-blue-300">
+                    <iframe 
+                      src={`https://fast.wistia.net/embed/iframe/${testimonial.videoId}?seo=true&videoFoam=true`}
+                      title={`${testimonial.name} testimonial`}
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      className={`w-full ${testimonial.isPortrait ? 'aspect-[9/16]' : 'aspect-video'}`}
+                    />
+                  </div>
+                  <div className="text-center mt-4">
+                    <p className="font-semibold text-blue-900">{testimonial.name}</p>
+                    <p className="text-sm text-gray-600">{testimonial.company}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            {/* Middle row - 3 more portraits */}
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              {videoTestimonialsSection2.slice(3, 6).map((testimonial, index) => (
+                <div key={index} className="relative group">
+                  <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1 ring-2 ring-gray-100 hover:ring-blue-300">
+                    <iframe 
+                      src={`https://fast.wistia.net/embed/iframe/${testimonial.videoId}?seo=true&videoFoam=true`}
+                      title={`${testimonial.name} testimonial`}
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      className={`w-full ${testimonial.isPortrait ? 'aspect-[9/16]' : 'aspect-video'}`}
+                    />
+                  </div>
+                  <div className="text-center mt-4">
+                    <p className="font-semibold text-blue-900">{testimonial.name}</p>
+                    <p className="text-sm text-gray-600">{testimonial.company}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            {/* Bottom row - 2 landscape videos centered */}
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {videoTestimonialsSection2.slice(6, 8).map((testimonial, index) => (
+                <div key={index} className="relative group">
+                  <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-1 ring-2 ring-gray-100 hover:ring-blue-300">
+                    <iframe 
+                      src={`https://fast.wistia.net/embed/iframe/${testimonial.videoId}?seo=true&videoFoam=true`}
+                      title={`${testimonial.name} testimonial`}
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      className={`w-full ${testimonial.isPortrait ? 'aspect-[9/16]' : 'aspect-video'}`}
+                    />
+                  </div>
+                  <div className="text-center mt-4">
+                    <p className="font-semibold text-blue-900">{testimonial.name}</p>
+                    <p className="text-sm text-gray-600">{testimonial.company}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
