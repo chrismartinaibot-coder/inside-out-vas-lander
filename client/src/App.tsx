@@ -7,6 +7,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import InsideOutHome from "./pages/InsideOutHome";
 import ThankYou from "./pages/ThankYou";
 import ThankYou2 from "./pages/ThankYou2";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 function Router() {
   return (
@@ -15,6 +16,7 @@ function Router() {
       <Route path={"/thankyou"} component={() => <ThankYou fireScheduleEvent={false} />} />
       <Route path={"/thank-you"} component={() => <ThankYou fireScheduleEvent={true} />} />
       <Route path={"/thankyou2"} component={ThankYou2} />
+      <Route path={"/terms-and-conditions"} component={TermsAndConditions} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
