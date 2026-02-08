@@ -161,19 +161,7 @@ export default function PrivacyPolicy() {
               </p>
             </section>
 
-            {/* Contact */}
-            <section>
-              <h2 className="font-serif text-2xl font-bold text-gray-900 mb-4">
-                Contact Us
-              </h2>
-              <p className="text-gray-700 leading-relaxed">
-                If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:
-              </p>
-              <div className="mt-4 p-6 bg-blue-50 rounded-lg">
-                <p className="text-gray-900 font-semibold">Inside Out Virtual Assistants</p>
-                <p className="text-gray-700 mt-2">Email: support@insideoutvas.com</p>
-              </div>
-            </section>
+
           </div>
 
           {/* Footer */}
