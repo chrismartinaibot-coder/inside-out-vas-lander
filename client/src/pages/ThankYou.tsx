@@ -16,13 +16,6 @@ interface ThankYouProps {
 export default function ThankYou({ fireScheduleEvent = false }: ThankYouProps) {
   const [location] = useLocation();
 
-  // Fire Facebook Schedule event for qualified leads
-  useEffect(() => {
-    if (fireScheduleEvent && typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'Schedule');
-    }
-  }, [fireScheduleEvent]);
-
   // Video testimonials data from main page
   const videoTestimonialsSection1 = [
     { name: "Aiden Clark", company: "ArcStone Construction", videoId: "fzm8fc424t", isPortrait: true },
