@@ -529,6 +529,15 @@ export default function InsideOutHome() {
             </div>
           </div>
 
+          {/* Wistia Video Embed */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <script src="https://fast.wistia.com/player.js" async></script>
+            <script src="https://fast.wistia.com/embed/zhs1dip9av.js" async type="module"></script>
+            <style>{`wistia-player[media-id='zhs1dip9av']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/zhs1dip9av/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }`}</style>
+            {/* @ts-ignore */}
+            <wistia-player media-id="zhs1dip9av" aspect="1.7777777777777777"></wistia-player>
+          </div>
+
           <div className="text-center">
             <Button 
               onClick={scrollToForm}
