@@ -97,6 +97,28 @@ export default function InsideOutHome() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Listen for Typeform height change messages and resize container accordingly
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      try {
+        // Typeform sends postMessage events with height info
+        if (event.data && typeof event.data === 'object') {
+          const data = event.data;
+          // Typeform embed height message format
+          if (data.type === 'form-height' || data.type === 'embed-height' || (data.embedId && data.height)) {
+            const container = document.querySelector('[data-tf-live]') as HTMLElement;
+            if (container && data.height) {
+              container.style.minHeight = `${data.height}px`;
+              container.style.height = `${data.height}px`;
+            }
+          }
+        }
+      } catch (_) {}
+    };
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
+
   const scrollToForm = () => {
     const formElement = document.getElementById('typeform-section');
     if (formElement) {
@@ -466,7 +488,10 @@ export default function InsideOutHome() {
               </div>
               
               {/* Typeform Embed */}
-              <div data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13" style={{ minHeight: "500px" }}></div>
+              <div
+                data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
+                style={{ minHeight: "200px", transition: "height 0.3s ease" }}
+              ></div>
             </div>
           </div>
         </div>
