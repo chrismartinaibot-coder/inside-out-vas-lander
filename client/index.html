@@ -16,13 +16,15 @@
     })(window,document,'script','dataLayer','GTM-T83JZJ6M');</script>
     <!-- End Google Tag Manager -->
     
-    <!-- Hyros Tracking -->
+    <!-- Hyros Tracking - deferred so it does not block page render -->
     <script>
-    var head = document.head;
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = "https://c.insideoutvas.com/v1/lst/universal-script?ph=ac41bee9c46d2be91782c65b5a6e619fc124a62f2ecc6cea96364a4ecf1163b3&tag=!clicked&ref_url=" + encodeURI(document.URL) ;
-    head.appendChild(script);
+    window.addEventListener('load', function() {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "https://c.insideoutvas.com/v1/lst/universal-script?ph=ac41bee9c46d2be91782c65b5a6e619fc124a62f2ecc6cea96364a4ecf1163b3&tag=!clicked&ref_url=" + encodeURI(document.URL);
+      document.head.appendChild(script);
+    });
     </script>
     
     <!-- TikTok Pixel -->
@@ -36,15 +38,13 @@
     }(window, document, 'ttq');
     </script>
     
-    <!-- Wistia VSL Optimization -->
-    <link rel="preconnect" href="https://fast.wistia.com" />
-    <link rel="dns-prefetch" href="https://embed-ssl.wistia.com" />
-    <!-- Google Fonts -->
+    <!-- Preconnect only to origins actually used on page load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Google Fonts - non-blocking -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
-    <!-- Typeform Embed Script - Deferred for performance -->
+    <!-- Typeform Embed Script - deferred, loads after page is interactive -->
     <script defer src="//embed.typeform.com/next/embed.js"></script>
   </head>
 

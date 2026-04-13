@@ -15,6 +15,8 @@ export default function InsideOutHome() {
   const [hasAnimated, setHasAnimated] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [typeformVisible, setTypeformVisible] = useState(false);
+  const typeformRef = useRef<HTMLDivElement>(null);
 
   // Animated counter effect
   useEffect(() => {
@@ -74,28 +76,22 @@ export default function InsideOutHome() {
     };
   }, [hasAnimated]);
 
-  // Initialize Typeform after component mounts
+  // Lazy-load Typeform only when user scrolls near the form section
   useEffect(() => {
-    // Add a small delay to ensure DOM is ready
-    const timer = setTimeout(() => {
-      if (typeof window !== 'undefined' && (window as any).tf) {
-        (window as any).tf.load();
-      } else if (typeof window !== 'undefined') {
-        // If not loaded yet, wait and try again
-        const checkTypeform = setInterval(() => {
-          if ((window as any).tf) {
-            (window as any).tf.load();
-            clearInterval(checkTypeform);
-          }
-        }, 200);
-        
-        // Clear interval after 10 seconds
-        setTimeout(() => clearInterval(checkTypeform), 10000);
-      }
-    }, 500);
-    
-    return () => clearTimeout(timer);
-  }, []);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !typeformVisible) {
+          setTypeformVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' } // start loading 200px before it enters viewport
+    );
+    if (typeformRef.current) {
+      observer.observe(typeformRef.current);
+    }
+    return () => observer.disconnect();
+  }, [typeformVisible]);
 
   // Listen for Typeform height change messages and resize container accordingly
   useEffect(() => {
@@ -431,6 +427,9 @@ export default function InsideOutHome() {
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/SCpatQwWrloqWMQc.webp"
                 alt="Watch the Presentation"
                 className="w-full h-full object-cover"
+                fetchPriority="high"
+                width="760"
+                height="428"
               />
               {/* Play Button Overlay */}
               <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
@@ -474,8 +473,8 @@ export default function InsideOutHome() {
             </div>
           </div>
 
-          {/* Typeform */}
-          <div id="typeform-section" className="max-w-2xl mx-auto">
+          {/* Typeform - lazy loaded via IntersectionObserver */}
+          <div id="typeform-section" className="max-w-2xl mx-auto" ref={typeformRef}>
             <div className="bg-white rounded-2xl shadow-2xl p-8 lg:p-12">
               <div className="text-center mb-6">
                 <h3 className="font-serif text-3xl md:text-4xl font-bold text-blue-900 mb-3">
@@ -487,11 +486,17 @@ export default function InsideOutHome() {
                 <p className="text-gray-600">Takes 1 minute ✓</p>
               </div>
               
-              {/* Typeform Embed */}
-              <div
-                data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
-                style={{ minHeight: "200px", transition: "height 0.3s ease" }}
-              ></div>
+              {/* Typeform Embed - only rendered once visible in viewport */}
+              {typeformVisible ? (
+                <div
+                  data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
+                  style={{ minHeight: "200px", transition: "height 0.3s ease" }}
+                ></div>
+              ) : (
+                <div style={{ minHeight: "200px" }} className="flex items-center justify-center">
+                  <div className="w-8 h-8 border-2 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+                </div>
+              )}
             </div>
           </div>
         </div>
