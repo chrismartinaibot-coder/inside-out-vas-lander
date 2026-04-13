@@ -567,6 +567,22 @@ export default function InsideOutHome() {
         </div>
       </section>
 
+      {/* Wave Divider: Why Choose (gray-50) → Process (white) */}
+      <div className="relative bg-gradient-to-b from-gray-50 to-white -mb-1" style={{ lineHeight: 0 }}>
+        <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full block" style={{ height: "80px" }}>
+          <path d="M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1380,20 1440,40 L1440,80 L0,80 Z" fill="#1e3a8a" opacity="0.08" />
+          <path d="M0,55 C200,20 400,70 600,45 C800,20 1000,65 1200,40 C1300,28 1380,50 1440,55 L1440,80 L0,80 Z" fill="#1e3a8a" opacity="0.05" />
+        </svg>
+        {/* Centered connector badge */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="flex items-center gap-3 bg-white border border-blue-100 shadow-md rounded-full px-5 py-2">
+            <div className="w-2 h-2 rounded-full bg-blue-900 animate-pulse"></div>
+            <span className="text-xs font-bold uppercase tracking-widest text-blue-900">Here's How It Works</span>
+            <div className="w-2 h-2 rounded-full bg-blue-900 animate-pulse"></div>
+          </div>
+        </div>
+      </div>
+
       {/* Process Section - Custom Timeline Visualization inspired by Persona */}
       <section id="our-process" className="py-8 md:py-16 bg-white relative overflow-hidden">
         {/* Decorative background shapes */}
