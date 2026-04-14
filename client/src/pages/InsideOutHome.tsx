@@ -377,26 +377,35 @@ export default function InsideOutHome() {
       
       {/* Hero Section with Decorative Dot Pattern Background */}
       <section 
-        className="relative py-12 md:py-24 overflow-hidden pt-24 bg-blue-900"
-        style={{
-          backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/PsgJaQaREvpycWSZ.webp)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
+        className="relative py-12 md:py-24 overflow-hidden pt-24"
+        style={{ backgroundColor: '#1e1b4b' }}
       >
-        {/* Decorative dot pattern overlay - inspired by Persona */}
+        {/* Background image layer */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/PsgJaQaREvpycWSZ.webp)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: 0.15,
+          }}
+        />
+        {/* Solid dark blue overlay — fully opaque, works on all Safari versions */}
+        <div 
+          className="absolute inset-0"
+          style={{ backgroundColor: '#1e3a8a', opacity: 0.88 }}
+        />
+        {/* Decorative dot pattern overlay */}
         <div className="absolute inset-0 opacity-10">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="dot-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                <circle cx="30" cy="30" r="2" fill="currentColor" className="text-white" />
+                <circle cx="30" cy="30" r="2" fill="white" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#dot-pattern)" />
           </svg>
         </div>
-        
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(30,27,75,0.97) 0%, rgba(30,64,175,0.95) 50%, rgba(29,78,216,0.93) 100%)' }} />
         
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           {/* Logo and Headline */}
