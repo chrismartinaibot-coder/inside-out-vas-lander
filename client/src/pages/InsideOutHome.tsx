@@ -377,7 +377,7 @@ export default function InsideOutHome() {
       
       {/* Hero Section with Decorative Dot Pattern Background */}
       <section 
-        className="relative py-12 md:py-24 overflow-hidden pt-24"
+        className="relative py-12 md:py-24 overflow-hidden pt-24 bg-blue-900"
         style={{
           backgroundImage: 'url(https://files.manuscdn.com/user_upload_by_module/session_file/310519663103922102/PsgJaQaREvpycWSZ.webp)',
           backgroundSize: 'cover',
@@ -396,7 +396,7 @@ export default function InsideOutHome() {
           </svg>
         </div>
         
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/95 via-blue-800/90 to-blue-700/85" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(30,27,75,0.97) 0%, rgba(30,64,175,0.95) 50%, rgba(29,78,216,0.93) 100%)' }} />
         
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           {/* Logo and Headline */}
