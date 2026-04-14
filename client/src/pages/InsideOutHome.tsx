@@ -77,6 +77,23 @@ export default function InsideOutHome() {
     };
   }, [hasAnimated]);
 
+  // Lazy-load Typeform: set typeformVisible=true when section scrolls into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !typeformVisible) {
+          setTypeformVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    if (typeformRef.current) {
+      observer.observe(typeformRef.current);
+    }
+    return () => observer.disconnect();
+  }, [typeformVisible]);
+
   // Lock body scroll when modal is open
   useEffect(() => {
     if (typeformModalOpen) {
