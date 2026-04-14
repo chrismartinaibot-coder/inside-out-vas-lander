@@ -150,20 +150,39 @@ export default function InsideOutHome() {
     return () => clearTimeout(t);
   }, [typeformModalOpen]);
 
-  // Listen for Typeform height change messages and resize container accordingly
+  // Listen for Typeform postMessage events:
+  // - Auto-expand to full-screen modal the moment user advances past the welcome screen
+  // - Resize inline container based on height messages
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       try {
-        // Typeform sends postMessage events with height info
-        if (event.data && typeof event.data === 'object') {
-          const data = event.data;
-          // Typeform embed height message format
-          if (data.type === 'form-height' || data.type === 'embed-height' || (data.embedId && data.height)) {
-            const container = document.querySelector('[data-tf-live]') as HTMLElement;
-            if (container && data.height) {
-              container.style.minHeight = `${data.height}px`;
-              container.style.height = `${data.height}px`;
-            }
+        if (!event.data || typeof event.data !== 'object') return;
+        const data = event.data;
+
+        // Typeform fires 'form-ready' when welcome screen is dismissed and Q1 is shown
+        // It also fires 'screen-changed' or 'question-changed' on navigation
+        const type = data.type || data.eventName || '';
+        const isFormAdvanced =
+          type === 'form-ready' ||
+          type === 'question-changed' ||
+          type === 'screen-changed' ||
+          // Some Typeform embed versions use these event names
+          type === 'form:screen-changed' ||
+          type === 'form:question-changed' ||
+          // Older embed SDK uses numeric questionIndex
+          (data.questionIndex !== undefined && data.questionIndex >= 0);
+
+        if (isFormAdvanced) {
+          // User clicked past welcome screen — expand to full-screen so no scroll bleed
+          setTypeformModalOpen(prev => prev ? prev : true);
+        }
+
+        // Height resize for inline container
+        if (data.type === 'form-height' || data.type === 'embed-height' || (data.embedId && data.height)) {
+          const container = document.querySelector('[data-tf-live]') as HTMLElement;
+          if (container && data.height) {
+            container.style.minHeight = `${data.height}px`;
+            container.style.height = `${data.height}px`;
           }
         }
       } catch (_) {}
@@ -551,21 +570,10 @@ export default function InsideOutHome() {
                 <p className="text-gray-500 text-sm">Takes 1 minute ✓ &nbsp;·&nbsp; No credit card required</p>
               </div>
 
-              {/* Inline Typeform — visible immediately. On mobile, tapping anywhere
-                  triggers the full-screen modal so the page can't scroll underneath. */}
-              <div
-                className="relative"
-                style={{ minHeight: '420px' }}
-              >
-                {/* Invisible tap-capture overlay — mobile only, captures first touch
-                    and opens the full-screen modal before Typeform steals focus */}
-                <div
-                  className="absolute inset-0 z-10 md:hidden"
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => setTypeformModalOpen(true)}
-                  aria-label="Open application form"
-                />
-
+              {/* Inline Typeform — fully interactive. The postMessage listener above
+                  detects when the user advances past the welcome screen and auto-expands
+                  to full-screen modal, preventing any scroll bleed on mobile. */}
+              <div style={{ minHeight: '420px' }}>
                 {typeformVisible ? (
                   <div
                     data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
