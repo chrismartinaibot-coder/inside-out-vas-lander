@@ -16,6 +16,7 @@ export default function InsideOutHome() {
   const statsRef = useRef<HTMLDivElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [typeformVisible, setTypeformVisible] = useState(false);
+  const [typeformModalOpen, setTypeformModalOpen] = useState(false);
   const typeformRef = useRef<HTMLDivElement>(null);
 
   // Animated counter effect
@@ -76,22 +77,34 @@ export default function InsideOutHome() {
     };
   }, [hasAnimated]);
 
-  // Lazy-load Typeform only when user scrolls near the form section
+  // Lock body scroll when modal is open
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !typeformVisible) {
-          setTypeformVisible(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: '200px' } // start loading 200px before it enters viewport
-    );
-    if (typeformRef.current) {
-      observer.observe(typeformRef.current);
+    if (typeformModalOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.overflow = 'hidden';
+      document.body.dataset.scrollY = String(scrollY);
+    } else {
+      const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+      window.scrollTo(0, scrollY);
     }
-    return () => observer.disconnect();
-  }, [typeformVisible]);
+    return () => {
+      // Cleanup on unmount
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+    };
+  }, [typeformModalOpen]);
 
   // Once typeformVisible is true, the data-tf-live div is in the DOM —
   // call tf.load() so Typeform's script picks up the newly rendered element
@@ -106,6 +119,19 @@ export default function InsideOutHome() {
     }, 50);
     return () => clearTimeout(t);
   }, [typeformVisible]);
+
+  // Pre-load Typeform JS as soon as modal is opened
+  useEffect(() => {
+    if (!typeformModalOpen) return;
+    setTypeformVisible(true);
+    const t = setTimeout(() => {
+      const tf = (window as any).tf;
+      if (tf && typeof tf.load === 'function') {
+        tf.load();
+      }
+    }, 80);
+    return () => clearTimeout(t);
+  }, [typeformModalOpen]);
 
   // Listen for Typeform height change messages and resize container accordingly
   useEffect(() => {
@@ -130,10 +156,11 @@ export default function InsideOutHome() {
   }, []);
 
   const scrollToForm = () => {
-    const formElement = document.getElementById('typeform-section');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    setTypeformModalOpen(true);
+  };
+
+  const closeTypeformModal = () => {
+    setTypeformModalOpen(false);
   };
 
   // First batch of video testimonials - 6 portraits as specified by user
@@ -496,30 +523,23 @@ export default function InsideOutHome() {
             </div>
           </div>
 
-          {/* Typeform - lazy loaded via IntersectionObserver */}
-          <div id="typeform-section" className="max-w-2xl mx-auto" ref={typeformRef}>
-            <div className="bg-white rounded-2xl shadow-2xl p-8 lg:p-12">
-              <div className="text-center mb-6">
-                <h3 className="font-serif text-3xl md:text-4xl font-bold text-blue-900 mb-3">
-                  Zero Risk. Pay When You Hire.
-                </h3>
-                <h4 className="font-serif text-2xl font-semibold text-blue-800 mb-2">
-                  See If You Qualify
-                </h4>
-                <p className="text-gray-600">Takes 1 minute ✓</p>
-              </div>
-              
-              {/* Typeform Embed - only rendered once visible in viewport */}
-              {typeformVisible ? (
-                <div
-                  data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
-                  style={{ minHeight: "200px", transition: "height 0.3s ease" }}
-                ></div>
-              ) : (
-                <div style={{ minHeight: "200px" }} className="flex items-center justify-center">
-                  <div className="w-8 h-8 border-2 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
-                </div>
-              )}
+          {/* CTA button that opens the Typeform modal */}
+          <div id="typeform-section" ref={typeformRef} className="max-w-2xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-2xl p-8 lg:p-12 text-center">
+              <h3 className="font-serif text-3xl md:text-4xl font-bold text-blue-900 mb-3">
+                Zero Risk. Pay When You Hire.
+              </h3>
+              <h4 className="font-serif text-2xl font-semibold text-blue-800 mb-2">
+                See If You Qualify
+              </h4>
+              <p className="text-gray-600 mb-6">Takes 1 minute ✓</p>
+              <Button
+                onClick={scrollToForm}
+                size="lg"
+                className="bg-blue-700 hover:bg-blue-800 text-white text-lg px-10 py-4 rounded-xl shadow-lg w-full sm:w-auto"
+              >
+                Apply Now — It's Free
+              </Button>
             </div>
           </div>
         </div>
@@ -1281,6 +1301,83 @@ export default function InsideOutHome() {
           </div>
         </div>
       </section>
+
+      {/* Typeform Full-Screen Modal */}
+      {typeformModalOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 9999,
+            backgroundColor: '#fff',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          {/* Modal Header */}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '12px 16px',
+              backgroundColor: '#1e3a8a',
+              flexShrink: 0,
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <img
+                src="/images/insideout-logo-white.svg"
+                alt="InsideOut"
+                style={{ height: '28px', width: 'auto' }}
+              />
+              <span style={{ color: '#bfdbfe', fontSize: '14px' }}>See If You Qualify</span>
+            </div>
+            <button
+              onClick={closeTypeformModal}
+              aria-label="Close form"
+              style={{
+                background: 'rgba(255,255,255,0.15)',
+                border: 'none',
+                borderRadius: '8px',
+                color: '#fff',
+                fontSize: '14px',
+                fontWeight: 600,
+                padding: '8px 14px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L13 13M13 1L1 13" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+              Close
+            </button>
+          </div>
+
+          {/* Typeform fills remaining height */}
+          <div
+            style={{
+              flex: 1,
+              overflow: 'hidden',
+              position: 'relative',
+            }}
+          >
+            {typeformVisible ? (
+              <div
+                data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
+                style={{ width: '100%', height: '100%' }}
+              ></div>
+            ) : (
+              <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="w-10 h-10 border-2 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <Footer />
