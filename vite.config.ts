@@ -1,3 +1,4 @@
+import legacy from "@vitejs/plugin-legacy";
 import { jsxLocPlugin } from "@builder.io/vite-plugin-jsx-loc";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
@@ -158,6 +159,12 @@ const plugins = [
   vitePluginManusRuntime(),
   vitePluginManusDebugCollector(),
   visualizer({ open: false, filename: 'dist/stats.html', gzipSize: true }),
+  legacy({
+    targets: ['ios >= 12', 'safari >= 12', 'chrome >= 70'],
+    additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
+    renderLegacyChunks: true,
+    modernPolyfills: true,
+  }),
 ];
 
 export default defineConfig({
