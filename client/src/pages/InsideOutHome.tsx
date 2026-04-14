@@ -120,10 +120,10 @@ export default function InsideOutHome() {
     return () => clearTimeout(t);
   }, [typeformVisible]);
 
-  // Pre-load Typeform JS as soon as modal is opened
+  // When modal opens: mark typeform visible and re-init Typeform script
   useEffect(() => {
     if (!typeformModalOpen) return;
-    setTypeformVisible(true);
+    // typeformVisible may already be true from inline load — just re-init
     const t = setTimeout(() => {
       const tf = (window as any).tf;
       if (tf && typeof tf.load === 'function') {
@@ -523,23 +523,43 @@ export default function InsideOutHome() {
             </div>
           </div>
 
-          {/* CTA button that opens the Typeform modal */}
+          {/* Typeform section — inline preview that expands to full-screen modal on interaction */}
           <div id="typeform-section" ref={typeformRef} className="max-w-2xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-2xl p-8 lg:p-12 text-center">
-              <h3 className="font-serif text-3xl md:text-4xl font-bold text-blue-900 mb-3">
-                Zero Risk. Pay When You Hire.
-              </h3>
-              <h4 className="font-serif text-2xl font-semibold text-blue-800 mb-2">
-                See If You Qualify
-              </h4>
-              <p className="text-gray-600 mb-6">Takes 1 minute ✓</p>
-              <Button
-                onClick={scrollToForm}
-                size="lg"
-                className="bg-blue-700 hover:bg-blue-800 text-white text-lg px-10 py-4 rounded-xl shadow-lg w-full sm:w-auto"
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+              {/* Header */}
+              <div className="px-8 pt-8 pb-4 text-center">
+                <h3 className="font-serif text-3xl md:text-4xl font-bold text-blue-900 mb-2">
+                  Zero Risk. Pay When You Hire.
+                </h3>
+                <p className="text-gray-500 text-sm">Takes 1 minute ✓ &nbsp;·&nbsp; No credit card required</p>
+              </div>
+
+              {/* Inline Typeform — visible immediately. On mobile, tapping anywhere
+                  triggers the full-screen modal so the page can't scroll underneath. */}
+              <div
+                className="relative"
+                style={{ minHeight: '420px' }}
               >
-                Apply Now — It's Free
-              </Button>
+                {/* Invisible tap-capture overlay — mobile only, captures first touch
+                    and opens the full-screen modal before Typeform steals focus */}
+                <div
+                  className="absolute inset-0 z-10 md:hidden"
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setTypeformModalOpen(true)}
+                  aria-label="Open application form"
+                />
+
+                {typeformVisible ? (
+                  <div
+                    data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
+                    style={{ minHeight: '420px', transition: 'height 0.3s ease' }}
+                  ></div>
+                ) : (
+                  <div style={{ minHeight: '420px' }} className="flex items-center justify-center">
+                    <div className="w-8 h-8 border-2 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
