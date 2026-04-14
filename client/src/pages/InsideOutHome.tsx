@@ -1420,15 +1420,19 @@ export default function InsideOutHome() {
             </button>
           </div>
 
-          {/* Typeform fills remaining height — the single embed below is moved here via CSS */}
+          {/* Typeform embed inside modal */}
           <div
-            id="typeform-modal-body"
             style={{
               flex: 1,
               overflow: 'hidden',
               position: 'relative',
             }}
-          />
+          >
+            <div
+              data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
+              style={{ width: '100%', height: '100%' }}
+            ></div>
+          </div>
         </div>
       )}
 
