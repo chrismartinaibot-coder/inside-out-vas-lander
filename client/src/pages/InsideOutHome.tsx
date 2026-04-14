@@ -567,9 +567,11 @@ export default function InsideOutHome() {
             </div>
           </div>
 
-          {/* Typeform section — inline preview that expands to full-screen modal on interaction */}
+          {/* Typeform section — inline preview. Tapping anywhere on the card
+              immediately locks page scroll and opens the full-screen modal.
+              This prevents the page from scrolling under the form on mobile. */}
           <div id="typeform-section" ref={typeformRef} className="max-w-2xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden relative">
               {/* Header */}
               <div className="px-8 pt-8 pb-4 text-center">
                 <h3 className="font-serif text-3xl md:text-4xl font-bold text-blue-900 mb-2">
@@ -578,19 +580,12 @@ export default function InsideOutHome() {
                 <p className="text-gray-500 text-sm">Takes 1 minute ✓ &nbsp;·&nbsp; No credit card required</p>
               </div>
 
-              {/* Inline Typeform — single embed instance. On click, 350ms delay then
-                  the embed node is physically moved into the full-screen modal so
-                  Typeform never re-initializes and the welcome screen never repeats. */}
-              <div
-                ref={typeformInlineSlotRef}
-                style={{ minHeight: '420px' }}
-                onClick={handleTypeformClick}
-              >
+              {/* Inline Typeform preview */}
+              <div style={{ minHeight: '420px' }}>
                 {typeformVisible ? (
                   <div
-                    ref={typeformEmbedRef}
                     data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
-                    style={{ minHeight: '420px', transition: 'height 0.3s ease' }}
+                    style={{ minHeight: '420px' }}
                   ></div>
                 ) : (
                   <div style={{ minHeight: '420px' }} className="flex items-center justify-center">
@@ -598,6 +593,16 @@ export default function InsideOutHome() {
                   </div>
                 )}
               </div>
+
+              {/* Invisible tap overlay — covers the entire card.
+                  On tap: instantly locks scroll + opens full-screen modal.
+                  Desktop: hidden (md:hidden), users interact with inline form directly. */}
+              <div
+                className="absolute inset-0 z-20 md:hidden"
+                style={{ cursor: 'pointer', background: 'transparent' }}
+                onClick={() => setTypeformModalOpen(true)}
+                aria-label="Open application form"
+              />
             </div>
           </div>
         </div>
