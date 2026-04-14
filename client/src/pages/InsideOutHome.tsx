@@ -150,35 +150,36 @@ export default function InsideOutHome() {
     return () => clearTimeout(t);
   }, [typeformModalOpen]);
 
+  // Track whether user has interacted with the inline Typeform
+  // (prevents modal from opening on Typeform's own init/ready events)
+  const typeformUserInteracted = useRef(false);
+
   // Listen for Typeform postMessage events:
-  // - Auto-expand to full-screen modal the moment user advances past the welcome screen
+  // - Auto-expand to full-screen modal ONLY after a genuine user navigation
   // - Resize inline container based on height messages
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       try {
         if (!event.data || typeof event.data !== 'object') return;
         const data = event.data;
+        const type: string = data.type || data.eventName || '';
 
-        // Typeform fires 'form-ready' when welcome screen is dismissed and Q1 is shown
-        // It also fires 'screen-changed' or 'question-changed' on navigation
-        const type = data.type || data.eventName || '';
-        const isFormAdvanced =
-          type === 'form-ready' ||
-          type === 'question-changed' ||
-          type === 'screen-changed' ||
-          // Some Typeform embed versions use these event names
-          type === 'form:screen-changed' ||
+        // These events fire on genuine user navigation (clicking Start / answering a question)
+        // 'form-submit' fires on final submission
+        // 'question-changed' fires when user moves to a new question
+        // We explicitly EXCLUDE 'form-ready' and 'screen-changed' — those fire on init
+        const isUserNavigation =
+          type === 'form-submit' ||
           type === 'form:question-changed' ||
-          // Older embed SDK uses numeric questionIndex
-          (data.questionIndex !== undefined && data.questionIndex >= 0);
+          // The standard Typeform embed SDK event for moving between questions
+          (type === 'question-changed' && typeformUserInteracted.current);
 
-        if (isFormAdvanced) {
-          // User clicked past welcome screen — expand to full-screen so no scroll bleed
+        if (isUserNavigation) {
           setTypeformModalOpen(prev => prev ? prev : true);
         }
 
         // Height resize for inline container
-        if (data.type === 'form-height' || data.type === 'embed-height' || (data.embedId && data.height)) {
+        if (type === 'form-height' || type === 'embed-height' || (data.embedId && data.height)) {
           const container = document.querySelector('[data-tf-live]') as HTMLElement;
           if (container && data.height) {
             container.style.minHeight = `${data.height}px`;
@@ -573,7 +574,10 @@ export default function InsideOutHome() {
               {/* Inline Typeform — fully interactive. The postMessage listener above
                   detects when the user advances past the welcome screen and auto-expands
                   to full-screen modal, preventing any scroll bleed on mobile. */}
-              <div style={{ minHeight: '420px' }}>
+              <div
+                style={{ minHeight: '420px' }}
+                onClick={() => { typeformUserInteracted.current = true; }}
+              >
                 {typeformVisible ? (
                   <div
                     data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
