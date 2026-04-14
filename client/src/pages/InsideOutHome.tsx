@@ -16,7 +16,6 @@ export default function InsideOutHome() {
   const statsRef = useRef<HTMLDivElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [typeformVisible, setTypeformVisible] = useState(false);
-  const [typeformModalOpen, setTypeformModalOpen] = useState(false);
   const typeformRef = useRef<HTMLDivElement>(null);
 
   // Animated counter effect
@@ -94,117 +93,19 @@ export default function InsideOutHome() {
     return () => observer.disconnect();
   }, [typeformVisible]);
 
-  // Lock body scroll when modal is open
-  useEffect(() => {
-    if (typeformModalOpen) {
-      const scrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.left = '0';
-      document.body.style.right = '0';
-      document.body.style.overflow = 'hidden';
-      document.body.dataset.scrollY = String(scrollY);
-    } else {
-      const scrollY = parseInt(document.body.dataset.scrollY || '0', 10);
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
-      document.body.style.overflow = '';
-      window.scrollTo(0, scrollY);
-    }
-    return () => {
-      // Cleanup on unmount
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
-      document.body.style.overflow = '';
-    };
-  }, [typeformModalOpen]);
-
-  // Once typeformVisible is true, the data-tf-live div is in the DOM —
-  // call tf.load() so Typeform's script picks up the newly rendered element
+  // Once typeformVisible is true, call tf.load() so Typeform picks up the rendered element
   useEffect(() => {
     if (!typeformVisible) return;
-    // Give React one tick to flush the DOM update, then trigger Typeform
     const t = setTimeout(() => {
       const tf = (window as any).tf;
-      if (tf && typeof tf.load === 'function') {
-        tf.load();
-      }
+      if (tf && typeof tf.load === 'function') tf.load();
     }, 50);
     return () => clearTimeout(t);
   }, [typeformVisible]);
 
-  // When modal opens: mark typeform visible and re-init Typeform script
-  useEffect(() => {
-    if (!typeformModalOpen) return;
-    // typeformVisible may already be true from inline load — just re-init
-    const t = setTimeout(() => {
-      const tf = (window as any).tf;
-      if (tf && typeof tf.load === 'function') {
-        tf.load();
-      }
-    }, 80);
-    return () => clearTimeout(t);
-  }, [typeformModalOpen]);
-
-  // Delay timer ref — used to open modal after user clicks Start in inline form
-  const typeformClickTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // When user clicks anywhere inside the inline Typeform container, wait 350ms
-  // (enough for Typeform to process the Start click and advance to Q1 internally)
-  // then expand to full-screen. This way the same iframe is shown full-screen
-  // already on Q1 — no second welcome screen.
-  const handleTypeformClick = () => {
-    if (typeformModalOpen) return; // already open
-    if (typeformClickTimer.current) clearTimeout(typeformClickTimer.current);
-    typeformClickTimer.current = setTimeout(() => {
-      setTypeformModalOpen(true);
-    }, 350);
-  };
-
-  // Cleanup timer on unmount
-  useEffect(() => {
-    return () => {
-      if (typeformClickTimer.current) clearTimeout(typeformClickTimer.current);
-    };
-  }, []);
-
-  // Move the single Typeform embed DOM node between inline container and modal
-  // This avoids re-initializing Typeform (which would restart the welcome screen)
-  const typeformEmbedRef = useRef<HTMLDivElement>(null);
-  const typeformInlineSlotRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const embed = typeformEmbedRef.current;
-    if (!embed) return;
-    if (typeformModalOpen) {
-      const modalBody = document.getElementById('typeform-modal-body');
-      if (modalBody) {
-        modalBody.appendChild(embed);
-        embed.style.width = '100%';
-        embed.style.height = '100%';
-        embed.style.minHeight = '';
-      }
-    } else {
-      const inlineSlot = typeformInlineSlotRef.current;
-      if (inlineSlot && !inlineSlot.contains(embed)) {
-        inlineSlot.appendChild(embed);
-        embed.style.width = '';
-        embed.style.height = '';
-        embed.style.minHeight = '420px';
-      }
-    }
-  }, [typeformModalOpen]);
-
   const scrollToForm = () => {
-    setTypeformModalOpen(true);
-  };
-
-  const closeTypeformModal = () => {
-    setTypeformModalOpen(false);
+    const el = document.getElementById('typeform-section');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   // First batch of video testimonials - 6 portraits as specified by user
@@ -567,11 +468,9 @@ export default function InsideOutHome() {
             </div>
           </div>
 
-          {/* Typeform section — inline preview. Tapping anywhere on the card
-              immediately locks page scroll and opens the full-screen modal.
-              This prevents the page from scrolling under the form on mobile. */}
+          {/* Typeform section — simple inline embed */}
           <div id="typeform-section" ref={typeformRef} className="max-w-2xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden relative">
+            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
               {/* Header */}
               <div className="px-8 pt-8 pb-4 text-center">
                 <h3 className="font-serif text-3xl md:text-4xl font-bold text-blue-900 mb-2">
@@ -580,7 +479,7 @@ export default function InsideOutHome() {
                 <p className="text-gray-500 text-sm">Takes 1 minute ✓ &nbsp;·&nbsp; No credit card required</p>
               </div>
 
-              {/* Inline Typeform preview */}
+              {/* Inline Typeform */}
               <div style={{ minHeight: '420px' }}>
                 {typeformVisible ? (
                   <div
@@ -593,16 +492,6 @@ export default function InsideOutHome() {
                   </div>
                 )}
               </div>
-
-              {/* Invisible tap overlay — covers the entire card.
-                  On tap: instantly locks scroll + opens full-screen modal.
-                  Desktop: hidden (md:hidden), users interact with inline form directly. */}
-              <div
-                className="absolute inset-0 z-20 md:hidden"
-                style={{ cursor: 'pointer', background: 'transparent' }}
-                onClick={() => setTypeformModalOpen(true)}
-                aria-label="Open application form"
-              />
             </div>
           </div>
         </div>
@@ -1364,77 +1253,6 @@ export default function InsideOutHome() {
           </div>
         </div>
       </section>
-
-      {/* Typeform Full-Screen Modal */}
-      {typeformModalOpen && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 9999,
-            backgroundColor: '#fff',
-            display: 'flex',
-            flexDirection: 'column',
-          }}
-        >
-          {/* Modal Header */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '12px 16px',
-              backgroundColor: '#1e3a8a',
-              flexShrink: 0,
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <img
-                src="/images/insideout-logo-white.svg"
-                alt="InsideOut"
-                style={{ height: '28px', width: 'auto' }}
-              />
-              <span style={{ color: '#bfdbfe', fontSize: '14px' }}>See If You Qualify</span>
-            </div>
-            <button
-              onClick={closeTypeformModal}
-              aria-label="Close form"
-              style={{
-                background: 'rgba(255,255,255,0.15)',
-                border: 'none',
-                borderRadius: '8px',
-                color: '#fff',
-                fontSize: '14px',
-                fontWeight: 600,
-                padding: '8px 14px',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-              }}
-            >
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 1L13 13M13 1L1 13" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
-              Close
-            </button>
-          </div>
-
-          {/* Typeform embed inside modal */}
-          <div
-            style={{
-              flex: 1,
-              overflow: 'hidden',
-              position: 'relative',
-            }}
-          >
-            <div
-              data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
-              style={{ width: '100%', height: '100%' }}
-            ></div>
-          </div>
-        </div>
-      )}
 
       {/* Footer */}
       <Footer />
