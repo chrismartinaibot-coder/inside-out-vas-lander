@@ -93,6 +93,20 @@ export default function InsideOutHome() {
     return () => observer.disconnect();
   }, [typeformVisible]);
 
+  // Once typeformVisible is true, the data-tf-live div is in the DOM —
+  // call tf.load() so Typeform's script picks up the newly rendered element
+  useEffect(() => {
+    if (!typeformVisible) return;
+    // Give React one tick to flush the DOM update, then trigger Typeform
+    const t = setTimeout(() => {
+      const tf = (window as any).tf;
+      if (tf && typeof tf.load === 'function') {
+        tf.load();
+      }
+    }, 50);
+    return () => clearTimeout(t);
+  }, [typeformVisible]);
+
   // Listen for Typeform height change messages and resize container accordingly
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
