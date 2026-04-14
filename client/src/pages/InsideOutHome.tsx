@@ -150,47 +150,54 @@ export default function InsideOutHome() {
     return () => clearTimeout(t);
   }, [typeformModalOpen]);
 
-  // Track whether user has interacted with the inline Typeform
-  // (prevents modal from opening on Typeform's own init/ready events)
-  const typeformUserInteracted = useRef(false);
+  // Delay timer ref — used to open modal after user clicks Start in inline form
+  const typeformClickTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Listen for Typeform postMessage events:
-  // - Auto-expand to full-screen modal ONLY after a genuine user navigation
-  // - Resize inline container based on height messages
+  // When user clicks anywhere inside the inline Typeform container, wait 350ms
+  // (enough for Typeform to process the Start click and advance to Q1 internally)
+  // then expand to full-screen. This way the same iframe is shown full-screen
+  // already on Q1 — no second welcome screen.
+  const handleTypeformClick = () => {
+    if (typeformModalOpen) return; // already open
+    if (typeformClickTimer.current) clearTimeout(typeformClickTimer.current);
+    typeformClickTimer.current = setTimeout(() => {
+      setTypeformModalOpen(true);
+    }, 350);
+  };
+
+  // Cleanup timer on unmount
   useEffect(() => {
-    const handleMessage = (event: MessageEvent) => {
-      try {
-        if (!event.data || typeof event.data !== 'object') return;
-        const data = event.data;
-        const type: string = data.type || data.eventName || '';
-
-        // These events fire on genuine user navigation (clicking Start / answering a question)
-        // 'form-submit' fires on final submission
-        // 'question-changed' fires when user moves to a new question
-        // We explicitly EXCLUDE 'form-ready' and 'screen-changed' — those fire on init
-        const isUserNavigation =
-          type === 'form-submit' ||
-          type === 'form:question-changed' ||
-          // The standard Typeform embed SDK event for moving between questions
-          (type === 'question-changed' && typeformUserInteracted.current);
-
-        if (isUserNavigation) {
-          setTypeformModalOpen(prev => prev ? prev : true);
-        }
-
-        // Height resize for inline container
-        if (type === 'form-height' || type === 'embed-height' || (data.embedId && data.height)) {
-          const container = document.querySelector('[data-tf-live]') as HTMLElement;
-          if (container && data.height) {
-            container.style.minHeight = `${data.height}px`;
-            container.style.height = `${data.height}px`;
-          }
-        }
-      } catch (_) {}
+    return () => {
+      if (typeformClickTimer.current) clearTimeout(typeformClickTimer.current);
     };
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
   }, []);
+
+  // Move the single Typeform embed DOM node between inline container and modal
+  // This avoids re-initializing Typeform (which would restart the welcome screen)
+  const typeformEmbedRef = useRef<HTMLDivElement>(null);
+  const typeformInlineSlotRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const embed = typeformEmbedRef.current;
+    if (!embed) return;
+    if (typeformModalOpen) {
+      const modalBody = document.getElementById('typeform-modal-body');
+      if (modalBody) {
+        modalBody.appendChild(embed);
+        embed.style.width = '100%';
+        embed.style.height = '100%';
+        embed.style.minHeight = '';
+      }
+    } else {
+      const inlineSlot = typeformInlineSlotRef.current;
+      if (inlineSlot && !inlineSlot.contains(embed)) {
+        inlineSlot.appendChild(embed);
+        embed.style.width = '';
+        embed.style.height = '';
+        embed.style.minHeight = '420px';
+      }
+    }
+  }, [typeformModalOpen]);
 
   const scrollToForm = () => {
     setTypeformModalOpen(true);
@@ -571,15 +578,17 @@ export default function InsideOutHome() {
                 <p className="text-gray-500 text-sm">Takes 1 minute ✓ &nbsp;·&nbsp; No credit card required</p>
               </div>
 
-              {/* Inline Typeform — fully interactive. The postMessage listener above
-                  detects when the user advances past the welcome screen and auto-expands
-                  to full-screen modal, preventing any scroll bleed on mobile. */}
+              {/* Inline Typeform — single embed instance. On click, 350ms delay then
+                  the embed node is physically moved into the full-screen modal so
+                  Typeform never re-initializes and the welcome screen never repeats. */}
               <div
+                ref={typeformInlineSlotRef}
                 style={{ minHeight: '420px' }}
-                onClick={() => { typeformUserInteracted.current = true; }}
+                onClick={handleTypeformClick}
               >
                 {typeformVisible ? (
                   <div
+                    ref={typeformEmbedRef}
                     data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
                     style={{ minHeight: '420px', transition: 'height 0.3s ease' }}
                   ></div>
@@ -1406,25 +1415,15 @@ export default function InsideOutHome() {
             </button>
           </div>
 
-          {/* Typeform fills remaining height */}
+          {/* Typeform fills remaining height — the single embed below is moved here via CSS */}
           <div
+            id="typeform-modal-body"
             style={{
               flex: 1,
               overflow: 'hidden',
               position: 'relative',
             }}
-          >
-            {typeformVisible ? (
-              <div
-                data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
-                style={{ width: '100%', height: '100%' }}
-              ></div>
-            ) : (
-              <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div className="w-10 h-10 border-2 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
-              </div>
-            )}
-          </div>
+          />
         </div>
       )}
 
