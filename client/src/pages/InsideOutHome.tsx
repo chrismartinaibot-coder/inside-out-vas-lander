@@ -496,20 +496,17 @@ export default function InsideOutHome() {
                 <p className="text-gray-500 text-sm">Takes 1 minute ✓ &nbsp;·&nbsp; No credit card required</p>
               </div>
 
-              {/* Inline Typeform — height synced dynamically via postMessage so OK button is always visible */}
+              {/* Inline Typeform — no height constraints, iframe drives its own height via Typeform Auto height setting */}
               <div style={{ padding: '0 16px 16px 16px' }}>
-                <div style={{ height: `${typeformHeight}px`, minHeight: '360px', transition: 'height 0.2s ease' }}>
-                  {typeformVisible ? (
-                    <div
-                      data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
-                      style={{ height: `${typeformHeight}px`, minHeight: '360px' }}
-                    ></div>
-                  ) : (
-                    <div style={{ height: `${typeformHeight}px`, minHeight: '360px' }} className="flex items-center justify-center">
-                      <div className="w-8 h-8 border-2 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
-                    </div>
-                  )}
-                </div>
+                {typeformVisible ? (
+                  <div
+                    data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
+                  ></div>
+                ) : (
+                  <div style={{ minHeight: '360px' }} className="flex items-center justify-center">
+                    <div className="w-8 h-8 border-2 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
