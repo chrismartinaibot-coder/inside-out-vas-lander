@@ -479,16 +479,16 @@ export default function InsideOutHome() {
                 <p className="text-gray-500 text-sm">Takes 1 minute ✓ &nbsp;·&nbsp; No credit card required</p>
               </div>
 
-              {/* Inline Typeform */}
+              {/* Inline Typeform — height capped to viewport so user never needs to scroll inside the iframe */}
               <div style={{ padding: '0 16px 16px 16px' }}>
-                <div style={{ minHeight: '420px' }}>
+                <div style={{ height: 'min(520px, calc(100vh - 180px))', minHeight: '360px' }}>
                   {typeformVisible ? (
                     <div
                       data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
-                      style={{ minHeight: '420px' }}
+                      style={{ height: 'min(520px, calc(100vh - 180px))', minHeight: '360px' }}
                     ></div>
                   ) : (
-                    <div style={{ minHeight: '420px' }} className="flex items-center justify-center">
+                    <div style={{ height: 'min(520px, calc(100vh - 180px))', minHeight: '360px' }} className="flex items-center justify-center">
                       <div className="w-8 h-8 border-2 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
                     </div>
                   )}
