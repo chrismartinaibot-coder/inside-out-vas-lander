@@ -399,13 +399,6 @@ export default function InsideOutHome() {
         <div className="container relative z-10" style={{ paddingTop: "24px", paddingBottom: "24px" }}>
           {/* Logo and Headline */}
           <div className="text-center text-white space-y-4 mb-8">
-            <div className="flex items-center justify-center">
-              <img 
-                src="/images/insideout-logo-white.svg" 
-                alt="InsideOut" 
-                className="h-8 w-auto"
-              />
-            </div>
 
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-4xl mx-auto px-4">
               Hire Global Talent at 90% Lower Cost
