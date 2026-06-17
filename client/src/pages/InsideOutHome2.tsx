@@ -16,6 +16,7 @@ export default function InsideOutHome2() {
   const statsRef = useRef<HTMLDivElement>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [typeformVisible, setTypeformVisible] = useState(false);
+  const [typeformHeight, setTypeformHeight] = useState(400);
   const typeformRef = useRef<HTMLDivElement>(null);
 
   // Animated counter effect
@@ -102,6 +103,22 @@ export default function InsideOutHome2() {
     }, 50);
     return () => clearTimeout(t);
   }, [typeformVisible]);
+
+  // Listen for Typeform postMessage height updates and sync card height dynamically
+  useEffect(() => {
+    const handleMessage = (e: MessageEvent) => {
+      try {
+        const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+        // Typeform sends { type: 'form-height', data: { height: number } }
+        if (data && data.type === 'form-height' && data.data && data.data.height) {
+          const h = Number(data.data.height);
+          if (h > 0) setTypeformHeight(h + 40); // +40px buffer for OK button
+        }
+      } catch {}
+    };
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
 
   const scrollToForm = () => {
     const el = document.getElementById('typeform-section');
@@ -472,20 +489,17 @@ export default function InsideOutHome2() {
                 <p className="text-gray-500 text-sm">Takes 1 minute ✓ &nbsp;·&nbsp; No credit card required</p>
               </div>
 
-              {/* Inline Typeform */}
+              {/* Inline Typeform — no height constraints, iframe drives its own height via Typeform Auto height setting */}
               <div style={{ padding: '0 16px 16px 16px' }}>
-                <div style={{ minHeight: '420px' }}>
-                  {typeformVisible ? (
-                    <div
-                      data-tf-live="01KPY245XWZZS87F3WPNGNDRBM"
-                      style={{ minHeight: '420px' }}
-                    ></div>
-                  ) : (
-                    <div style={{ minHeight: '420px' }} className="flex items-center justify-center">
-                      <div className="w-8 h-8 border-2 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
-                    </div>
-                  )}
-                </div>
+                {typeformVisible ? (
+                  <div
+                    data-tf-live="01JSJDSKMS5ZETT7ECR59YFC13"
+                  ></div>
+                ) : (
+                  <div style={{ minHeight: '360px' }} className="flex items-center justify-center">
+                    <div className="w-8 h-8 border-2 border-blue-200 border-t-blue-600 rounded-full animate-spin"></div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
