@@ -8,6 +8,7 @@ import InsideOutHome from "./pages/InsideOutHome";
 import InsideOutHome1 from "./pages/InsideOutHome1";
 import InsideOutHome2 from "./pages/InsideOutHome2";
 import InsideOutHome3 from "./pages/InsideOutHome3";
+import InsideOutHome4 from "./pages/InsideOutHome4";
 import ThankYou from "./pages/ThankYou";
 import ThankYou2 from "./pages/ThankYou2";
 import TermsAndConditions from "./pages/TermsAndConditions";
@@ -20,6 +21,7 @@ function Router() {
       <Route path={"/1"} component={InsideOutHome1} />
       <Route path={"/2"} component={InsideOutHome2} />
       <Route path={"/3"} component={InsideOutHome3} />
+      <Route path={"/4"} component={InsideOutHome4} />
       <Route path={"/thankyou"} component={() => <ThankYou fireScheduleEvent={false} />} />
       <Route path={"/thank-you"} component={() => <ThankYou fireScheduleEvent={true} />} />
       <Route path={"/thankyou2"} component={ThankYou2} />
